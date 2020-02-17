@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="lib" path="libs/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang3-3.9.jar"/>
+	<classpathentry kind="lib" path="libs/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.core.contenttype_3.7.300.v20190215-2048.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.core.jobs_3.10.400.v20190506-1457.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.core.resources_3.13.400.v20190505-1655.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.core.runtime_3.15.300.v20190508-0543.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.equinox.common_3.10.400.v20190516-1504.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.equinox.preferences_3.7.400.v20190516-1504.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.jdt.core_3.18.0.v20190522-0428.jar"/>
+	<classpathentry kind="lib" path="libs/org.eclipse.osgi_3.14.0.v20190517-1309.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,22 @@
+CHANGELOG
+----------
+By Guilherme Lacerda
+http://drtools.site
+
+1.3
+- Inclusion of type resonance output
+- Improvement of unit tests
+- Inclusion of gauge feature
+
+1.2
+- Inclusion of fan-in and fan-out metrics
+- Improvement of unit tests
+- Inclusion of -mv --save option, integrating features with metric-visualization
+
+1.1
+- Inclusion of internal class parsing
+- Refactorings to improve understandability and maintainability 
+
+1.0
+- Major version, including all 31 metrics and features listed in drtools.site
+
