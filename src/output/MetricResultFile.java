@@ -55,7 +55,7 @@ public class MetricResultFile implements MetricOutput {
 	@Override
 	public void showMethods() {
 		InfoConsole.print("\nMethods info (CSV)..................");
-		InfoConsole.print(generateTypesFile(METHODS_INFO) ? "[DONE]" : "[FAIL]");
+		InfoConsole.print(generateMethodsFile(METHODS_INFO) ? "[DONE]" : "[FAIL]");
 	}
 
 	public boolean generateMethodsFile(String fileName) {
