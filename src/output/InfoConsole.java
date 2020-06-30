@@ -1,7 +1,7 @@
 package output;
 
 public class InfoConsole {
-	private static final String VERSION = "1.3";
+	private static final String VERSION = "1.4";
 
 	private InfoConsole() {
 	}
