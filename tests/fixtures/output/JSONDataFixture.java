@@ -14,6 +14,7 @@ import fixtures.output.data.MethodData;
 import fixtures.output.data.MetricThresholdData;
 import fixtures.output.data.NamespaceCouplingData;
 import fixtures.output.data.NamespaceData;
+import fixtures.output.data.NamespaceDependencyData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
@@ -263,5 +264,43 @@ public class JSONDataFixture extends DataFixture {
 				.add("wmc", typeData.getWmc()).create());
 		}
 		return typeList;
-	}	
+	}
+
+	public String generateNamespacesDependencies() {
+		JsonObject namespaceList = new JsonObject();
+
+		namespaceList.add("nodes", generateNamespacesFromProject());
+		namespaceList.add("links", generateLinksBetweenNamespaces());
+		
+		return gson.toJson(namespaceList);
+	}
+	
+	private JsonArray generateNamespacesFromProject() {
+		JsonArray nodesList = new JsonArray();
+
+		for (NamespaceData namespace : getNamespaceData()) {
+			nodesList.add(
+					new JSONBuilder()
+					.add("name", namespace.getName())
+					.add("label", namespace.getName())
+					.add("id", namespace.getName())
+					.add("size", namespace.getNoc()).create()
+					);
+		}
+
+		return nodesList;
+	}
+
+	private JsonArray generateLinksBetweenNamespaces() {
+		JsonArray linksList = new JsonArray();
+		
+		for (NamespaceDependencyData namespace : getNamespaceDependencyData()) {
+				linksList.add(new JSONBuilder()
+				.add("source", namespace.getSource())
+				.add("target", namespace.getTarget()).create()
+				);
+		}
+		
+		return linksList;
+	}
 }

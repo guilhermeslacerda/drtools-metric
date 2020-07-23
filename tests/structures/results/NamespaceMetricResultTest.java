@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import fixtures.NamespaceMetricFixture;
 import structures.metrics.NamespaceMetric;
-import structures.results.NamespaceMetricResult;
 
 public class NamespaceMetricResultTest {
 	private NamespaceMetricResult nmr;

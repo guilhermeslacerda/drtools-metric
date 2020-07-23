@@ -130,4 +130,10 @@ public class MetricResultJSONTest {
 		projectInfo.show("-t");
 		assertEquals(jdf.generateTypesResonance(), mr.generateTypesResonance());
 	}
+
+	@Test
+	public void testForNamespacesDependenciesJSON() {
+		projectInfo.show("-n");
+		assertEquals(jdf.generateNamespacesDependencies(), mr.generateNamespacesDependencies());
+	}
 }

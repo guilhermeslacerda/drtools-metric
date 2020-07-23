@@ -320,7 +320,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		
 		return gson.toJson(rootList);
 	}
-
+	
 	private void addTypesToNamespace(JsonArray namespaceList) {
 		Map<String, LinkedHashSet<TypeMetric>> typesResonance = tmr.getTypesResonance();
 		for (String name : typesResonance.keySet()) {
@@ -345,5 +345,46 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 			.add("wmc", tmr.getTotalCycloBy(typeMetric.getFullName())).create());
 		}
 		return typeList;
+	}
+
+	public String generateNamespacesDependencies() {
+		JsonObject namespaceList = new JsonObject();
+		
+		namespaceList.add("nodes", generateNamespacesFromProject());
+		namespaceList.add("links", generateLinksBetweenNamespaces());
+		
+		return gson.toJson(namespaceList);
+	}
+
+	private JsonArray generateNamespacesFromProject() {
+		JsonArray nodesList = new JsonArray();
+		
+		for (String name : nmr.getNamesResult()) {
+			NamespaceMetric namespace = nmr.getNamespace(name);
+			nodesList.add(
+					new JSONBuilder()
+					.add("name", name)
+					.add("label", name)
+					.add("id", name)
+					.add("size", namespace.getNumOfTypes()).create()
+					);
+		}
+		
+		return nodesList;
+	}
+
+	private JsonArray generateLinksBetweenNamespaces() {
+		JsonArray linksList = new JsonArray();
+		
+		for (String name : nmr.getNamesResult()) {
+			Set<String> links = tmr.getInternalImportsBy(name);
+			for (String link : links)
+				linksList.add(new JSONBuilder()
+				.add("source", name)
+				.add("target", link).create()
+				);
+		}
+		
+		return linksList;
 	}
 }

@@ -56,6 +56,11 @@ public class TypeMetricFixture {
 		return this;
 	}
 
+	public TypeMetricFixture withInternalImports(Set<String> internalImports) {
+		typeMetric.setInternalImports(internalImports);
+		return this;
+	}
+
 	public TypeMetric create() {
 		return typeMetric;
 	}

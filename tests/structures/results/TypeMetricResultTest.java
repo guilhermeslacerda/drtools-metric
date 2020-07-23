@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import fixtures.TypeMetricFixture;
 import structures.metrics.TypeMetric;
-import structures.results.TypeMetricResult;
 
 public class TypeMetricResultTest {
 	private TypeMetricResult tmr;
@@ -99,6 +98,11 @@ public class TypeMetricResultTest {
 		assertEquals(1, tmr.getTotalNumberOfPublicMethods("services.InvoiceService"));
 	}
 
+	@Test
+	public void testgetInternalImportsByNamespaces() {
+		assertEquals(3, tmr.getInternalImportsBy("services").size());
+	}
+
 	private void createTypes() {
 		Set<String> imports1 = new TreeSet<>();
 		Set<String> imports2 = new TreeSet<>();
@@ -109,6 +113,11 @@ public class TypeMetricResultTest {
 		imports2.add("test.model.Client");
 		
 		
+		Set<String> internalImports = new TreeSet<>();
+		internalImports.add("test.listeners.ButtonListener");
+		internalImports.add("test.model.AbstractLogin");
+		internalImports.add("test.services.CustomerService");
+		
 		TypeMetric t1 = new TypeMetricFixture().withName("Client").withNamespace("test.model").withVariables(3)
 							.withMethods(5).withImports(imports1).withSloc(50).create();
 		TypeMetric t2 = new TypeMetricFixture().withName("CustomerService").withNamespace("test.services")
@@ -118,7 +127,7 @@ public class TypeMetricResultTest {
 		TypeMetric t4 = new TypeMetricFixture().withName("ButtonListener").withNamespace("test.listeners")
 				.withMethods(2).isInterface(true).withSloc(10).create();
 		TypeMetric t5 = new TypeMetricFixture().withName("InvoiceService").withNamespace("services")
-				.withMethods(2).withPublicMethods(1).isInterface(false).withSloc(15).create();
+				.withMethods(2).withPublicMethods(1).isInterface(false).withInternalImports(internalImports).withSloc(15).create();
 
 		tmr.add(t1);
 		tmr.add(t2);

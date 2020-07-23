@@ -5,12 +5,15 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import fixtures.output.data.CyclicDependencyData;
 import fixtures.output.data.MethodData;
 import fixtures.output.data.MetricThresholdData;
 import fixtures.output.data.NamespaceCouplingData;
 import fixtures.output.data.NamespaceData;
+import fixtures.output.data.NamespaceDependencyData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
@@ -25,6 +28,7 @@ public abstract class DataFixture implements MetricFile {
 	private List<NamespaceCouplingData> namespaceCoupling;
 	private List<MetricThresholdData> thresholds;
 	private List<CyclicDependencyData> dependencies;
+	private Set<NamespaceDependencyData> namespacesDependencies;
 	
 	public DataFixture() {
 		typesResonanceData = new LinkedHashMap<>(); 
@@ -35,6 +39,7 @@ public abstract class DataFixture implements MetricFile {
 		namespaceCoupling = new ArrayList<>();
 		thresholds = new ArrayList<>();
 		dependencies = new ArrayList<>();
+		namespacesDependencies = new LinkedHashSet<>(); 
 	}
 
 	public abstract String getNamespacesWithLimit();
@@ -202,6 +207,16 @@ public abstract class DataFixture implements MetricFile {
 				0, 1));
 	
 		return thresholds;
+	}
+
+	public Set<NamespaceDependencyData> getNamespaceDependencyData() {
+		namespacesDependencies.add(new NamespaceDependencyData("javaProject.com.controller", "javaProject.com.model"));
+		namespacesDependencies.add(new NamespaceDependencyData("javaProject.com.controller", "javaProject.others"));
+		namespacesDependencies.add(new NamespaceDependencyData("javaProject.com.view", "javaProject.com.controller"));
+		namespacesDependencies.add(new NamespaceDependencyData("javaProject.one", "javaProject.two"));
+		namespacesDependencies.add(new NamespaceDependencyData("javaProject.two", "javaProject.one"));
+		
+		return namespacesDependencies;
 	}
 
 	public List<TypeData> getTypeCouplingData() {

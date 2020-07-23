@@ -16,6 +16,7 @@ public class MetricResultFile implements MetricOutput {
 	private static final String METRIC_THRESHOLDS_INFO = "drtools-metric-thresholds.csv";
 	private static final String TYPE_COUPLING_INFO = "drtools-metric-type-coupling.csv";
 	private static final String TYPE_RESONANCE_INFO = "drtools-metric-resonance.json";
+	private static final String NAMESPACES_DEPENDENCIES_INFO = "drtools-metric-namespaces-dependencies.json";
 	private TypeMetricResult tmr;
 	private MetricResultCSV csv;
 	private MetricResultJSON json;
@@ -74,6 +75,7 @@ public class MetricResultFile implements MetricOutput {
 		showCyclicDependencies();
 		showThresholds();
 		showTypeCoupling();
+		showNamespacesDependencies();
 		InfoConsole.printMetricVisualizationUsage();
 	}
 
@@ -157,5 +159,14 @@ public class MetricResultFile implements MetricOutput {
 
 	public boolean generateTypesResonanceFile(String fileName) {
 		return SystemUtils.writeFile(fileName, json.generateTypesResonance());
+	}
+
+	public void showNamespacesDependencies() {
+		InfoConsole.print("\nNamespaces dependencies info (JSON).");
+		InfoConsole.print(generateNamespacesDependenciesFile(NAMESPACES_DEPENDENCIES_INFO) ? "[DONE]" : "[FAIL]");
+	}
+
+	public boolean generateNamespacesDependenciesFile(String fileName) {
+		return SystemUtils.writeFile(fileName, json.generateNamespacesDependencies());
 	}
 }

@@ -330,4 +330,19 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	public Set<String> getFanIn() {
 		return typeFanIn.keySet();
 	}
+
+	public Set<String> getInternalImportsBy(String namespace) {
+		Set<String> internalImportsOnlyNamespaces = new TreeSet<>();
+		
+		for (String name : this.getTypesName()) {
+			TypeMetric type = this.getType(name);
+			if (type.getNamespace().equals(namespace)) {
+				Set<String> internalImports = type.getInternalImports();
+				for (String fullName : internalImports) 
+					internalImportsOnlyNamespaces.add(StringFormat.getNamespaceFrom(fullName, NAMESPACE_SEPARATOR));
+			}
+		}
+		
+		return internalImportsOnlyNamespaces;
+	}
 }
