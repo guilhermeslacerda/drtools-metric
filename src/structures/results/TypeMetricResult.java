@@ -44,18 +44,12 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	}
 
 	private void addToResonance(TypeMetric metric) {
-		if (!typesResonance.containsKey(metric.getNamespace())) {
-			LinkedHashSet<TypeMetric> typeMetricResonance = new LinkedHashSet<TypeMetric>();
-			typeMetricResonance.add(metric);
-			typesResonance.put(metric.getNamespace(), typeMetricResonance);
-		}
-		else  {
-			LinkedHashSet<TypeMetric> typeMetricResonance = typesResonance.get(metric.getNamespace());
-			typeMetricResonance.add(metric);
-			typesResonance.replace(metric.getNamespace(), typeMetricResonance);
-		}
+		LinkedHashSet<TypeMetric> typeMetricResonance = !typesResonance.containsKey(metric.getNamespace()) ?
+				new LinkedHashSet<TypeMetric>(): typesResonance.get(metric.getNamespace());
+		typeMetricResonance.add(metric);
+		typesResonance.put(metric.getNamespace(), typeMetricResonance);
 	}
-	
+
 	public Map<String, LinkedHashSet<TypeMetric>> getTypesResonance() {
 		return typesResonance;
 	}
