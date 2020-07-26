@@ -330,6 +330,7 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 		
 		for (String name : this.getTypesName()) {
 			TypeMetric type = this.getType(name);
+			if (type == null || type.getNamespace() == null) 	continue;
 			if (type.getNamespace().equals(namespace)) {
 				Set<String> internalImports = type.getInternalImports();
 				for (String fullName : internalImports) 

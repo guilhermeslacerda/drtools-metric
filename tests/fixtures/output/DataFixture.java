@@ -6,7 +6,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 import fixtures.output.data.CyclicDependencyData;
 import fixtures.output.data.MethodData;
@@ -58,6 +57,7 @@ public abstract class DataFixture implements MetricFile {
 	}
 
 	public List<SummaryData> getSummaryData() {
+		summary.add(new SummaryData("total_namespaces", 6, 100));
 		summary.add(new SummaryData("total_types", 17, 2));
 		summary.add(new SummaryData("total_sloc", 391, 23));
 		summary.add(new SummaryData("total_methods", 55, 3));

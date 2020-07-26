@@ -95,6 +95,7 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\"description\",value,percent\n");
+		sb.append("\"total_namespaces\"," + nmr.getTotalNumberOfNamespaces() + ",100\n");
 		sb.append("\"total_types\"," + nmr.getTotalNumberOfTypes() + ","
 				+ String.valueOf(nmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces()).replace(',', '.') + "\n");
 		sb.append("\"total_sloc\"," + tmr.getTotalSLOC() + ","

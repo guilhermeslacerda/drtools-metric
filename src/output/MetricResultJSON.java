@@ -119,6 +119,11 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 	public String generateSummary() {
 		JsonArray summaryList = new JsonArray();
 
+		JsonObject totalNamespaces = new JsonObject();
+		totalNamespaces.addProperty("description", "total_namespaces");
+		totalNamespaces.addProperty("value", nmr.getTotalNumberOfNamespaces());
+		totalNamespaces.addProperty("percent", 100);
+
 		JsonObject totalTypes = new JsonObject();
 		totalTypes.addProperty("description", "total_types");
 		totalTypes.addProperty("value", nmr.getTotalNumberOfTypes());
@@ -139,6 +144,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		totalCyclo.addProperty("value", mmr.getTotalCyclo());
 		totalCyclo.addProperty("percent", mmr.getTotalCyclo() / nmr.getTotalNumberOfTypes());
 		
+		summaryList.add(totalNamespaces);
 		summaryList.add(totalTypes);
 		summaryList.add(totalSloc);
 		summaryList.add(totalMethods);
@@ -377,6 +383,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		JsonArray linksList = new JsonArray();
 		
 		for (String name : nmr.getNamesResult()) {
+			if (name == null) 	continue;
 			Set<String> links = tmr.getInternalImportsBy(name);
 			for (String link : links)
 				linksList.add(new JSONBuilder()
