@@ -87,7 +87,7 @@ public class InfoConsole {
 
 	public static void printElapsedTime(long startTime) {
 		if (startTime == 0) return;
-		long elapsedTime = (System.currentTimeMillis() - startTime) ;
+		long elapsedTime = (System.currentTimeMillis() - startTime);
 		System.out.println("\n\tProcessing time: " + (elapsedTime <= 1000 ? elapsedTime + 
 								" milliseconds" : elapsedTime/1000 + " seconds") );
 	}
