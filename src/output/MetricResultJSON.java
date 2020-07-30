@@ -45,12 +45,9 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 		for (String name : nmr.getNamesResult()) {
 			NamespaceMetric namespace = nmr.getNamespace(name);
-			namespaceList.add(
-					new JSONBuilder()
-					.add("namespace", namespace.getName())
-					.add("noc", namespace.getNumOfTypes())
-					.add("nac", tmr.getTotalOfAbstractTypesIn(namespace.getName())).create()
-					);
+			namespaceList
+					.add(new JSONBuilder().add("namespace", namespace.getName()).add("noc", namespace.getNumOfTypes())
+							.add("nac", tmr.getTotalOfAbstractTypesIn(namespace.getName())).create());
 		}
 		return gson.toJson(namespaceList);
 	}
@@ -65,18 +62,11 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		JsonArray typeList = new JsonArray();
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
-			typeList.add(
-					new JSONBuilder()
-					.add("type", type.getFullName())
-					.add("sloc", type.getSloc())
-					.add("nom", type.getNumOfMethods())
-					.add("npm", type.getNumOfPublicMethods())
-					.add("wmc", tmr.getTotalCycloBy(type.getFullName()))
-					.add("dep", type.getNumberOfDependencies())
-					.add("i-dep", type.getNumberOfInternalDependencies())
-					.add("fan-in", tmr.getFanInOf(name))
-					.add("fan-out", type.getFanOut())
-					.add("noa", type.getNumOfVariables()).create());
+			typeList.add(new JSONBuilder().add("type", type.getFullName()).add("sloc", type.getSloc())
+					.add("nom", type.getNumOfMethods()).add("npm", type.getNumOfPublicMethods())
+					.add("wmc", tmr.getTotalCycloBy(type.getFullName())).add("dep", type.getNumberOfDependencies())
+					.add("i-dep", type.getNumberOfInternalDependencies()).add("fan-in", tmr.getFanInOf(name))
+					.add("fan-out", type.getFanOut()).add("noa", type.getNumOfVariables()).create());
 		}
 		return gson.toJson(typeList);
 	}
@@ -89,18 +79,12 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 	@Override
 	public String generateMethods() {
 		JsonArray methodList = new JsonArray();
-		
+
 		for (String name : mmr.getNamesResult()) {
 			MethodMetric method = mmr.getMethod(name);
-			methodList.add(
-					new JSONBuilder()
-					.add("method", method.getName())
-					.add("loc", method.getLoc())
-					.add("cyclo", method.getCyclo())
-					.add("calls", method.getCalls())
-					.add("nbd", method.getNestedBlockDepth())
-					.add("parameters", method.getNumOfParameters()).create()
-					);
+			methodList.add(new JSONBuilder().add("method", method.getName()).add("loc", method.getLoc())
+					.add("cyclo", method.getCyclo()).add("calls", method.getCalls())
+					.add("nbd", method.getNestedBlockDepth()).add("parameters", method.getNumOfParameters()).create());
 		}
 		return gson.toJson(methodList);
 	}
@@ -138,12 +122,12 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		totalMethods.addProperty("description", "total_methods");
 		totalMethods.addProperty("value", mmr.getTotalNumberOfMethods());
 		totalMethods.addProperty("percent", mmr.getTotalNumberOfMethods() / nmr.getTotalNumberOfTypes());
-		
+
 		JsonObject totalCyclo = new JsonObject();
 		totalCyclo.addProperty("description", "total_cyclo");
 		totalCyclo.addProperty("value", mmr.getTotalCyclo());
 		totalCyclo.addProperty("percent", mmr.getTotalCyclo() / nmr.getTotalNumberOfTypes());
-		
+
 		summaryList.add(totalNamespaces);
 		summaryList.add(totalTypes);
 		summaryList.add(totalSloc);
@@ -159,7 +143,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 	public String generateDependencies() {
 		JsonArray typeList = new JsonArray();
-		
+
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
 			JsonArray dependenciesList = new JsonArray();
@@ -167,12 +151,8 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 			for (String dependency : dependencies) {
 				dependenciesList.add(dependency);
 			}
-			typeList.add(
-					new JSONBuilder()
-					.add("type", type.getFullName())
-					.add("size", type.getSloc())
-					.add("dependencies", dependenciesList).create()
-					);
+			typeList.add(new JSONBuilder().add("type", type.getFullName()).add("size", type.getSloc())
+					.add("dependencies", dependenciesList).create());
 		}
 		return gson.toJson(typeList);
 	}
@@ -191,16 +171,12 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 	public String generateCyclicDependencies() {
 		JsonArray typeList = new JsonArray();
 		Set<String> names = tmr.getCyclicDependencies();
-		if (names.isEmpty()) return "[]";
-		
+		if (names.isEmpty())
+			return "[]";
+
 		for (String name : names) {
 			String[] types = name.split(" - ");
-			typeList.add(
-					new JSONBuilder()
-					.add("from", types[0])
-					.add("to", types[1])
-					.add("number", 1).create()
-					);
+			typeList.add(new JSONBuilder().add("from", types[0]).add("to", types[1]).add("number", 1).create());
 		}
 		return gson.toJson(typeList);
 	}
@@ -220,12 +196,8 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 			for (String dependency : dependencies) {
 				dependenciesList.add(dependency);
 			}
-			typeList.add(
-					new JSONBuilder()
-					.add("type", type.getFullName())
-					.add("size", type.getSloc())
-					.add("dependencies", dependenciesList).create()
-					);
+			typeList.add(new JSONBuilder().add("type", type.getFullName()).add("size", type.getSloc())
+					.add("dependencies", dependenciesList).create());
 		}
 		return gson.toJson(typeList);
 	}
@@ -243,19 +215,14 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 			NamespaceMetric namespace = nmr.getNamespace(name);
 			int ca = tmr.getAfferentCoupling(namespace.getName());
 			int ce = tmr.getEfferentCoupling(namespace.getName());
-			double abstractness = nmr.getAbstractness(tmr.getTotalOfAbstractTypesIn(namespace.getName()), namespace.getNumOfTypes());
+			double abstractness = nmr.getAbstractness(tmr.getTotalOfAbstractTypesIn(namespace.getName()),
+					namespace.getNumOfTypes());
 			double instability = nmr.getInstability(ca, ce);
 			double distance = nmr.getDistance(abstractness, instability);
 
-			namespaceList.add(
-					new JSONBuilder()
-					.add("namespace", namespace.getName())
-					.add("ca", ca)
-					.add("ce", ce)
-					.add("instability", instability)
-					.add("abstractness", abstractness)
-					.add("distance", distance).create()
-					);
+			namespaceList.add(new JSONBuilder().add("namespace", namespace.getName()).add("ca", ca).add("ce", ce)
+					.add("instability", instability).add("abstractness", abstractness).add("distance", distance)
+					.create());
 		}
 		return gson.toJson(namespaceList);
 	}
@@ -276,16 +243,11 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 		MetricThreshold mt = new MetricThreshold();
 		for (MetricDefinition metric : mt.getThresholds()) {
-			thresholdsList.add(
-					new JSONBuilder()
-					.add("acronym", metric.getAcronym())
-					.add("name", metric.getName())
-					.add("description", metric.getDescription())
-					.add("min", metric.getMin())
-					.add("max", metric.getMax()).create()
-					);
+			thresholdsList.add(new JSONBuilder().add("acronym", metric.getAcronym()).add("name", metric.getName())
+					.add("description", metric.getDescription()).add("min", metric.getMin()).add("max", metric.getMax())
+					.create());
 		}
-		
+
 		return gson.toJson(thresholdsList);
 	}
 
@@ -304,39 +266,32 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		JsonArray typeList = new JsonArray();
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
-			typeList.add(
-					new JSONBuilder()
-					.add("type", type.getFullName())
-					.add("dep", type.getNumberOfDependencies())
-					.add("i-dep", type.getNumberOfInternalDependencies())
-					.add("fan-in", tmr.getFanInOf(name))
+			typeList.add(new JSONBuilder().add("type", type.getFullName()).add("dep", type.getNumberOfDependencies())
+					.add("i-dep", type.getNumberOfInternalDependencies()).add("fan-in", tmr.getFanInOf(name))
 					.add("fan-out", type.getFanOut()).create());
 		}
-		
+
 		return gson.toJson(typeList);
 	}
-	
+
 	public String generateTypesResonance() {
 		JsonObject rootList = new JsonObject();
 		rootList.addProperty("name", "variants");
 		JsonArray namespaceList = new JsonArray();
-		
+
 		addTypesToNamespace(namespaceList);
 		rootList.add("children", namespaceList);
-		
+
 		return gson.toJson(rootList);
 	}
-	
+
 	private void addTypesToNamespace(JsonArray namespaceList) {
 		Map<String, LinkedHashSet<TypeMetric>> typesResonance = tmr.getTypesResonance();
 		for (String name : typesResonance.keySet()) {
 			HashSet<TypeMetric> types = typesResonance.get(name);
 
 			JsonArray typeList = addTypesResonance(types);
-			namespaceList.add(
-					new JSONBuilder()
-					.add("name", name)
-					.add("children", typeList.getAsJsonArray()).create());
+			namespaceList.add(new JSONBuilder().add("name", name).add("children", typeList.getAsJsonArray()).create());
 
 		}
 	}
@@ -344,54 +299,44 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 	private JsonArray addTypesResonance(HashSet<TypeMetric> types) {
 		JsonArray typeList = new JsonArray();
 		for (TypeMetric typeMetric : types) {
-			typeList.add(
-			new JSONBuilder()
-			.add("name", typeMetric.getName())
-			.add("sloc", typeMetric.getSloc())
-			.add("wmc", tmr.getTotalCycloBy(typeMetric.getFullName())).create());
+			typeList.add(new JSONBuilder().add("name", typeMetric.getName()).add("sloc", typeMetric.getSloc())
+					.add("wmc", tmr.getTotalCycloBy(typeMetric.getFullName())).create());
 		}
 		return typeList;
 	}
 
 	public String generateNamespacesDependencies() {
 		JsonObject namespaceList = new JsonObject();
-		
+
 		namespaceList.add("nodes", generateNamespacesFromProject());
 		namespaceList.add("links", generateLinksBetweenNamespaces());
-		
+
 		return gson.toJson(namespaceList);
 	}
 
 	private JsonArray generateNamespacesFromProject() {
 		JsonArray nodesList = new JsonArray();
-		
+
 		for (String name : nmr.getNamesResult()) {
 			NamespaceMetric namespace = nmr.getNamespace(name);
-			nodesList.add(
-					new JSONBuilder()
-					.add("name", name)
-					.add("label", name)
-					.add("id", name)
-					.add("size", namespace.getNumOfTypes()).create()
-					);
+			nodesList.add(new JSONBuilder().add("name", name).add("label", name).add("id", name)
+					.add("size", namespace.getNumOfTypes()).create());
 		}
-		
+
 		return nodesList;
 	}
 
 	private JsonArray generateLinksBetweenNamespaces() {
 		JsonArray linksList = new JsonArray();
-		
+
 		for (String name : nmr.getNamesResult()) {
-			if (name == null) 	continue;
+			if (name == null)
+				continue;
 			Set<String> links = tmr.getInternalImportsBy(name);
 			for (String link : links)
-				linksList.add(new JSONBuilder()
-				.add("source", name)
-				.add("target", link).create()
-				);
+				linksList.add(new JSONBuilder().add("source", name).add("target", link).create());
 		}
-		
+
 		return linksList;
 	}
 }
