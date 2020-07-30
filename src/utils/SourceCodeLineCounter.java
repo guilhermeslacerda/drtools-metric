@@ -19,14 +19,14 @@ import java.io.StringReader;
  * set commentBegan = true goto Start End: print count
  */
 public class SourceCodeLineCounter {
-	
+
 	/**
 	 * adapted by @author Guilherme Lacerda to get a code in String Format
 	 */
 	public int getNumberOfLines(String code) throws IOException {
 		return getNumberOfLines(new BufferedReader(new StringReader(code)));
 	}
-	
+
 	public int getNumberOfLines(BufferedReader bReader) throws IOException {
 		int count = 0;
 		boolean commentBegan = false;
@@ -34,27 +34,31 @@ public class SourceCodeLineCounter {
 
 		while ((line = bReader.readLine()) != null) {
 			line = line.trim();
-			if ("".equals(line) || line.startsWith("//")) {
+
+			if (isEmptyOrLineComment(line))
 				continue;
-			}
+
 			if (commentBegan) {
 				if (commentEnded(line)) {
 					line = line.substring(line.indexOf("*/") + 2).trim();
 					commentBegan = false;
-					if ("".equals(line) || line.startsWith("//")) {
+					if (isEmptyOrLineComment(line))
 						continue;
-					}
 				} else
 					continue;
 			}
-			if (isSourceCodeLine(line)) {
+
+			if (isSourceCodeLine(line))
 				count++;
-			}
-			if (commentBegan(line)) {
+			if (commentBegan(line))
 				commentBegan = true;
-			}
 		}
+
 		return count;
+	}
+
+	private boolean isEmptyOrLineComment(String line) {
+		return "".equals(line) || line.startsWith("//");
 	}
 
 	/**
@@ -67,10 +71,11 @@ public class SourceCodeLineCounter {
 		// If line = /* */, this method will return false
 		// If line = /* */ /*, this method will return true
 		int index = line.indexOf("/*");
-		if (index < 0) {
+		if (index < 0)
 			return false;
-		}
+
 		int quoteStartIndex = line.indexOf("\"");
+
 		if (quoteStartIndex != -1 && quoteStartIndex < index) {
 			while (quoteStartIndex > -1) {
 				line = line.substring(quoteStartIndex + 1);
@@ -93,13 +98,12 @@ public class SourceCodeLineCounter {
 		// If line = */ /* , this method will return false
 		// If line = */ /* */, this method will return true
 		int index = line.indexOf("*/");
-		if (index < 0) {
+		if (index < 0)
 			return false;
-		} else {
+		else {
 			String subString = line.substring(index + 2).trim();
-			if ("".equals(subString) || subString.startsWith("//")) {
+			if (isEmptyOrLineComment(subString))
 				return true;
-			}
 			if (commentBegan(subString)) {
 				return false;
 			} else {
@@ -120,37 +124,33 @@ public class SourceCodeLineCounter {
 	private boolean isSourceCodeLine(String line) {
 		boolean isSourceCodeLine = false;
 		line = line.trim();
-		if ("".equals(line) || line.startsWith("//")) {
+		if (isEmptyOrLineComment(line))
 			return isSourceCodeLine;
-		}
-		if (line.length() == 1) {
+		if (line.length() == 1)
 			return true;
-		}
-		int index = line.indexOf("/*");
-		if (index != 0) {
-			return true;
-		} else {
-			while (line.length() > 0) {
-				line = line.substring(index + 2);
-				int endCommentPosition = line.indexOf("*/");
-				if (endCommentPosition < 0) {
-					return false;
-				}
-				if (endCommentPosition == line.length() - 2) {
-					return false;
-				} else {
-					String subString = line.substring(endCommentPosition + 2).trim();
-					if ("".equals(subString) || subString.indexOf("//") == 0) {
-						return false;
-					} else {
-						if (subString.startsWith("/*")) {
-							line = subString;
-							continue;
-						}
-						return true;
-					}
-				}
 
+		int index = line.indexOf("/*");
+		if (index != 0)
+			return true;
+
+		while (line.length() > 0) {
+			line = line.substring(index + 2);
+			int endCommentPosition = line.indexOf("*/");
+			if (endCommentPosition < 0)
+				return false;
+			if (endCommentPosition == line.length() - 2)
+				return false;
+			else {
+				String subString = line.substring(endCommentPosition + 2).trim();
+				if ("".equals(subString) || subString.indexOf("//") == 0)
+					return false;
+				else {
+					if (subString.startsWith("/*")) {
+						line = subString;
+						continue;
+					}
+					return true;
+				}
 			}
 		}
 		return isSourceCodeLine;
