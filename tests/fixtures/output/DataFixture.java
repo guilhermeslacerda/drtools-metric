@@ -59,9 +59,9 @@ public abstract class DataFixture implements MetricFile {
 	public List<SummaryData> getSummaryData() {
 		summary.add(new SummaryData("total_namespaces", 6, 100));
 		summary.add(new SummaryData("total_types", 17, 2));
-		summary.add(new SummaryData("total_sloc", 391, 23));
-		summary.add(new SummaryData("total_methods", 55, 3));
-		summary.add(new SummaryData("total_cyclo", 85, 5));
+		summary.add(new SummaryData("total_sloc", 393, 23));
+		summary.add(new SummaryData("total_methods", 56, 3));
+		summary.add(new SummaryData("total_cyclo", 86, 5));
 
 		return summary;
 	}
@@ -69,7 +69,7 @@ public abstract class DataFixture implements MetricFile {
 	public List<TypeData> getTypeData() {
 		types.add(new TypeData("javaProject.com.controller.Type",245,35,25,58,7,2,0,9,13));
 		types.add(new TypeData("javaProject.com.model.Man",29,5,5,9,1,0,1,2,0));
-		types.add(new TypeData("javaProject.com.controller.Dispatcher",25,3,3,3,4,4,1,4,3));
+		types.add(new TypeData("javaProject.com.controller.Dispatcher",27,4,4,4,4,4,1,4,3));
 		types.add(new TypeData("javaProject.com.model.Woman",16,3,3,5,0,0,1,1,0));
 		types.add(new TypeData("javaProject.com.model.Human",10,2,2,2,0,0,2,1,1));
 		types.add(new TypeData("javaProject.com.view.QueueViewer",10,0,1,2,1,1,0,2,0));
@@ -139,6 +139,7 @@ public abstract class DataFixture implements MetricFile {
 		methods.add(new MethodData("javaProject.com.controller.XClass.getXMethods()",3,1,0,0,0));
 		methods.add(new MethodData("javaProject.others.AnalysisContext.currentAnalysisContext()",3,1,0,0,0));
 		methods.add(new MethodData("javaProject.others.ClassVertex.isFinished()",3,1,0,0,0));
+		methods.add(new MethodData("javaProject.com.controller.Dispatcher.foo(@parameterId('id') int id)",2,1,0,0,1));
 		methods.add(new MethodData("javaProject.com.model.Human.Human(String name)",2,1,0,0,1));
 		methods.add(new MethodData("javaProject.com.controller.Dispatcher.hasNext()",2,1,0,0,0));
 		methods.add(new MethodData("javaProject.com.model.Child.getName()",2,1,0,0,0));
@@ -232,7 +233,7 @@ public abstract class DataFixture implements MetricFile {
 	public Map<String, LinkedHashSet<TypeResonanceData>> getTypesResonance() {
 		LinkedHashSet<TypeResonanceData> typesToController = new LinkedHashSet<TypeResonanceData>();
 		typesToController.add(new TypeResonanceData("ClassWithComments", 8, 1));
-		typesToController.add(new TypeResonanceData("Dispatcher", 25, 3));
+		typesToController.add(new TypeResonanceData("Dispatcher", 27, 4));
 		typesToController.add(new TypeResonanceData("Type", 245, 58));
 		typesToController.add(new TypeResonanceData("XClass", 6, 1));
 		typesToController.add(new TypeResonanceData("XMethod", 3, 1));

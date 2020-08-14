@@ -38,6 +38,7 @@ public class Bootstrapper {
 
 	private static void verifyAllSituations(String[] args) {
 		verifyValidDirectory();
+		verifyInvalidOptions();
 		verifyOptions();
 		verifySaveOption();
 		verifyOutput();
@@ -140,6 +141,23 @@ public class Bootstrapper {
 		}
 	}
 
+	private static void verifyInvalidOptions() {
+		String[][] options = {{"-a", "--csv", "This option is only available in console format..."},
+				{"-d", "--csv", "This option is only available in console and JSON format..."},
+				{"-id", "--csv", "This option is only available in console and JSON format..."},
+				{"-ac", "--csv", "This option is only available in console format..."},
+				{"-a", "--json", "This option is only available in console format..."},
+				{"-ac", "--json", "This option is only available in console format..."}};
+		
+		for (int indx = 0; indx < options.length; indx++) {
+			if(argument.equalsIgnoreCase(options[indx][0]) 
+					&& outputFormat.equalsIgnoreCase(options[indx][1])) { 
+				InfoConsole.printHeader(options[indx][2]);
+				System.exit(0);
+			}
+		}
+	}
+	
 	private static void verifyValidDirectory() {
 		if (!isValidDirectory(option)) {
 			InfoConsole.printUsage();

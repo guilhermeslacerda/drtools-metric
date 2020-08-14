@@ -15,7 +15,7 @@ public class SourceCodeLineCounterTest {
 	@Test
 	public void testGetNumberOfLines() throws FileNotFoundException, IOException {
 		SourceCodeLineCounter code = new SourceCodeLineCounter();
-		assertEquals(25, code.getNumberOfLines(
+		assertEquals(27, code.getNumberOfLines(
 			new BufferedReader(
 				new InputStreamReader(
 						new FileInputStream("./resources/javaProject/com/controller/Dispatcher.java")))));

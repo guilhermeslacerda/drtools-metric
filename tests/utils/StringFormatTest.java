@@ -42,4 +42,11 @@ public class StringFormatTest {
 	public void testGetTypeFromSingleType() {
 		assertEquals("Client", StringFormat.getTypeFrom("Client", "."));
 	}
+
+	@Test
+	public void testGetStringWithConvertQuotation() {
+		assertEquals("void foo(int @parameter(\'id\') id)", 
+						StringFormat.convertQuotation("void foo(int @parameter(\"id\") id)"));
+	}
+
 }

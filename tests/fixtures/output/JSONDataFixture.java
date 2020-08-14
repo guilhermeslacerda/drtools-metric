@@ -103,7 +103,7 @@ public class JSONDataFixture extends DataFixture {
 		sb = new StringBuilder();
 		sb.append("[{\"type\":\"javaProject.com.controller.Type\",\"size\":245,\"dependencies\":[\"java.util.HashMap\",\"java.util.HashSet\",\"java.util.LinkedList\",\"java.util.Set\",\"javaProject.others.ClassDescriptor\",\"javaProject.others.ClassVertex\",\"javax.lang.model.type.ReferenceType\"]},");
 		sb.append("{\"type\":\"javaProject.com.model.Man\",\"size\":29,\"dependencies\":[\"java.util.ArrayList\"]},");
-		sb.append("{\"type\":\"javaProject.com.controller.Dispatcher\",\"size\":25,\"dependencies\":[\"javaProject.com.model.Child\",\"javaProject.com.model.Man\",\"javaProject.com.model.Person\",\"javaProject.com.model.Woman\"]},");
+		sb.append("{\"type\":\"javaProject.com.controller.Dispatcher\",\"size\":27,\"dependencies\":[\"javaProject.com.model.Child\",\"javaProject.com.model.Man\",\"javaProject.com.model.Person\",\"javaProject.com.model.Woman\"]},");
 		sb.append("{\"type\":\"javaProject.com.model.Woman\",\"size\":16,\"dependencies\":[]},");
 		sb.append("{\"type\":\"javaProject.com.model.Human\",\"size\":10,\"dependencies\":[]},");
 		sb.append("{\"type\":\"javaProject.com.view.QueueViewer\",\"size\":10,\"dependencies\":[\"javaProject.com.controller.Dispatcher\"]},");
@@ -125,7 +125,7 @@ public class JSONDataFixture extends DataFixture {
 		sb = new StringBuilder();
 		sb.append("[{\"type\":\"javaProject.com.controller.Type\",\"size\":245,\"dependencies\":[\"javaProject.others.ClassDescriptor\",\"javaProject.others.ClassVertex\"]},");
 		sb.append("{\"type\":\"javaProject.com.model.Man\",\"size\":29,\"dependencies\":[]},");
-		sb.append("{\"type\":\"javaProject.com.controller.Dispatcher\",\"size\":25,\"dependencies\":[\"javaProject.com.model.Child\",\"javaProject.com.model.Man\",\"javaProject.com.model.Person\",\"javaProject.com.model.Woman\"]},");
+		sb.append("{\"type\":\"javaProject.com.controller.Dispatcher\",\"size\":27,\"dependencies\":[\"javaProject.com.model.Child\",\"javaProject.com.model.Man\",\"javaProject.com.model.Person\",\"javaProject.com.model.Woman\"]},");
 		sb.append("{\"type\":\"javaProject.com.model.Woman\",\"size\":16,\"dependencies\":[]},");
 		sb.append("{\"type\":\"javaProject.com.model.Human\",\"size\":10,\"dependencies\":[]},");
 		sb.append("{\"type\":\"javaProject.com.view.QueueViewer\",\"size\":10,\"dependencies\":[\"javaProject.com.controller.Dispatcher\"]},");

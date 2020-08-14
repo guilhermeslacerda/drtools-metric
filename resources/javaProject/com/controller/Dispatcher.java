@@ -29,4 +29,8 @@ public class Dispatcher {
 		// returns the next person
 		return name;
 	}
+	
+	public void foo(@parameterId("id") int id) {
+		
+	}
 }

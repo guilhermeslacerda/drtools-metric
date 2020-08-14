@@ -3,6 +3,10 @@ CHANGELOG
 By Guilherme Lacerda
 http://drtools.site
 
+1.5.1
+- fixed the validation of method parameters, allow the use of annotation
+- previous validations in invalid options (before parsing)
+
 1.5.0
 - Update feature to generate File methods in CSV Format
 - Refactorings to improve understandability and maintainability 

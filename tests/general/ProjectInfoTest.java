@@ -52,7 +52,7 @@ public class ProjectInfoTest {
 	
 	@Test
 	public void testGetNumberOfMethods() {
-		assertEquals(54, projectInfo.getTypeMetricResult().getTotalNumberOfMethods());
+		assertEquals(55, projectInfo.getTypeMetricResult().getTotalNumberOfMethods());
 	}
 
 	@Test
@@ -62,17 +62,17 @@ public class ProjectInfoTest {
 
 	@Test
 	public void testGetTotalSLOC() {
-		assertEquals(391, projectInfo.getTypeMetricResult().getTotalSLOC());
+		assertEquals(393, projectInfo.getTypeMetricResult().getTotalSLOC());
 	}
 
 	@Test
 	public void testGetTotalCyclo() {
-		assertEquals(85, projectInfo.getMethodMetricResult().getTotalCyclo());
+		assertEquals(86, projectInfo.getMethodMetricResult().getTotalCyclo());
 	}
 
 	@Test
 	public void testGetTotalMLOC() {
-		assertEquals(367, projectInfo.getMethodMetricResult().getTotalMLOC());
+		assertEquals(369, projectInfo.getMethodMetricResult().getTotalMLOC());
 	}
 
 	@Test

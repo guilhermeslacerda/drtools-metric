@@ -19,6 +19,7 @@ import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
 import utils.JSONBuilder;
+import utils.StringFormat;
 
 public class MetricResultJSON implements MetricOutput, MetricFile {
 	private NamespaceMetricResult nmr;
@@ -82,16 +83,18 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 		for (String name : mmr.getNamesResult()) {
 			MethodMetric method = mmr.getMethod(name);
-			methodList.add(new JSONBuilder().add("method", method.getName()).add("loc", method.getLoc())
+			methodList.add(new JSONBuilder()
+					.add("method", StringFormat.convertQuotation(method.getName()))
+					.add("loc", method.getLoc())
 					.add("cyclo", method.getCyclo()).add("calls", method.getCalls())
-					.add("nbd", method.getNestedBlockDepth()).add("parameters", method.getNumOfParameters()).create());
+					.add("nbd", method.getNestedBlockDepth())
+					.add("parameters", method.getNumOfParameters()).create());
 		}
 		return gson.toJson(methodList);
 	}
 
 	@Override
 	public void show() {
-		InfoConsole.printHeader("This option is only available in console format...");
 	}
 
 	@Override
@@ -229,7 +232,6 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 	@Override
 	public void showAllCoupling() {
-		InfoConsole.printHeader("This option is only available in console format...");
 	}
 
 	@Override

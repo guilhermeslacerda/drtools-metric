@@ -17,4 +17,8 @@ public class StringFormat {
 		int position = fullName.lastIndexOf(separator);
 		return (position == -1) ? fullName : fullName.substring(0, position);
 	}
+	
+	public static String convertQuotation(String string) {
+		return string.replace('\"', '\'');
+	}
 }

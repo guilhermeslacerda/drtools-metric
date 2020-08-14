@@ -10,6 +10,7 @@ import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
+import utils.StringFormat;
 
 public class MetricResultCSV implements MetricOutput, MetricFile {
 	private NamespaceMetricResult nmr;
@@ -72,7 +73,8 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 		sb.append("\"method\",\"loc\",\"cyclo\",\"calls\",\"nbd\",\"param\"\n");
 		for (String name : mmr.getNamesResult()) {
 			MethodMetric method = mmr.getMethod(name);
-			sb.append(String.format("\"%s\",%d,%d,%d,%d,%d\n", method.getName(), method.getLoc(), method.getCyclo(), 
+			sb.append(String.format("\"%s\",%d,%d,%d,%d,%d\n", StringFormat.convertQuotation(method.getName()), 
+					method.getLoc(), method.getCyclo(), 
 					method.getCalls(), method.getNestedBlockDepth(), method.getNumOfParameters()));
 		}
 		return sb.toString();
@@ -80,7 +82,6 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 
 	@Override
 	public void show() {
-		InfoConsole.printHeader("This option is only available in console format...");
 	}
 
 	@Override
@@ -110,7 +111,6 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 
 	@Override
 	public void showDependencies() {
-		InfoConsole.printHeader("This option is only available in console and JSON format...");
 	}
 
 	@Override
@@ -140,7 +140,6 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 
 	@Override
 	public void showInternalDependencies() {
-		InfoConsole.printHeader("This option is only available in console and JSON format...");
 	}
 
 	@Override
@@ -170,7 +169,6 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 
 	@Override
 	public void showAllCoupling() {
-		InfoConsole.printHeader("This option is only available in console format...");
 	}
 	
 	@Override
