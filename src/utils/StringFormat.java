@@ -19,6 +19,7 @@ public class StringFormat {
 	}
 	
 	public static String convertQuotation(String string) {
-		return string.replace('\"', '\'');
+		int position = string.lastIndexOf("\"");
+		return (position == -1) ? string : string.replace('\"', '\'');
 	}
 }

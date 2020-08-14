@@ -3,6 +3,9 @@ CHANGELOG
 By Guilherme Lacerda
 http://drtools.site
 
+1.5.2
+- fixed the validation of method parameters, allow the use of annotation (null pointer)
+
 1.5.1
 - fixed the validation of method parameters, allow the use of annotation
 - previous validations in invalid options (before parsing)
