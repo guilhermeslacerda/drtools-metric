@@ -83,6 +83,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 		for (String name : mmr.getNamesResult()) {
 			MethodMetric method = mmr.getMethod(name);
+			if (name == null) 	continue;
 			methodList.add(new JSONBuilder()
 					.add("method", StringFormat.convertQuotation(method.getName()))
 					.add("loc", method.getLoc())
