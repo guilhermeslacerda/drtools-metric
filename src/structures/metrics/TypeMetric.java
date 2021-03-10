@@ -25,6 +25,8 @@ public class TypeMetric implements Comparable<TypeMetric> {
 	private Set<String> imports;
 	private Set<String> internalImports;
 	private Set<String> internalTypes;
+	private Set<String> variables;
+	private Set<String> variablesUsedInMethods;
 	private int fanOut;
 	
 	public TypeMetric() {
@@ -171,4 +173,21 @@ public class TypeMetric implements Comparable<TypeMetric> {
 	public int getFanOut() {
 		return fanOut - (getNumberOfDependencies() - getNumberOfInternalDependencies());
 	}
+	
+	public Set<String> getVariables() {
+		return variables;
+	}
+
+	public void setVariables(Set<String> variables) {
+		this.variables = variables;
+	}
+
+	public void setVariablesUsedInMethods(Set<String> variablesUsedInMethods) {
+		this.variablesUsedInMethods = variablesUsedInMethods;
+	}
+	
+	public Set<String> getVariablesUsedInMethods() {
+		return variablesUsedInMethods;
+	}
+
 }

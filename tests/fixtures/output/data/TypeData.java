@@ -11,8 +11,10 @@ public class TypeData {
 	private int fanIn;
 	private int fanOut;
 	private int noa;
+	private String lcom3;
 		
-	public TypeData(String type, int sloc, int nom, int npm, int wmc, int dep, int iDep, int fanIn, int fanOut, int noa) {
+	public TypeData(String type, int sloc, int nom, int npm, int wmc, int dep, 
+				int iDep, int fanIn, int fanOut, int noa, double lcom3) {
 		this.type = type;
 		this.sloc = sloc;
 		this.nom = nom;
@@ -23,6 +25,7 @@ public class TypeData {
 		this.fanIn = fanIn;
 		this.fanOut = fanOut;
 		this.noa = noa;
+		this.lcom3 = String.valueOf(lcom3);
 	}
 
 	public String getType() {
@@ -63,5 +66,9 @@ public class TypeData {
 
 	public int getFanOut() {
 		return fanOut;
+	}
+
+	public String getLcom3() {
+		return lcom3;
 	}
 }
