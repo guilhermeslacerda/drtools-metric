@@ -26,18 +26,21 @@ public class MetricResultFileTest {
 	private static final String TYPE_COUPLING_INFO = SAVED_FILES + "drtools-metric-type-coupling.csv";
 	private static final String TYPE_RESONANCE_INFO = SAVED_FILES + "drtools-metric-resonance.json";
 	private static final String NAMESPACES_DEPENDENCIES_INFO = SAVED_FILES + "drtools-metric-namespaces-dependencies.json";
+	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
 
 	private static ProjectInfo projectInfo;
 	private static MetricResultFile file;
 	private static MetricResultCSV csv;
 	private static MetricResultJSON json;
+	private static MetricResultDOT dot;
 	
 	@BeforeClass
 	public static void setUp() {
 		deleteFiles();
 		file = new MetricResultFile();
-		csv = new MetricResultCSV();
+		csv  = new MetricResultCSV();
 		json = new MetricResultJSON();
+		dot  = new MetricResultDOT();
 		projectInfo = new ProjectInfo(PROJECT_DIRECTORY, file);
 		projectInfo.analyze();
 		projectInfo.show("-mv");
@@ -45,6 +48,7 @@ public class MetricResultFileTest {
 				projectInfo.getTypeMetricResult(), projectInfo.getMethodMetricResult());
 		json.setResults(projectInfo.getNamespaceMetricResult(), 
 				projectInfo.getTypeMetricResult(), projectInfo.getMethodMetricResult());
+		dot.setResults(projectInfo.getNamespaceMetricResult(), projectInfo.getTypeMetricResult());
 	}
 
 	private static void deleteFiles() {
@@ -58,6 +62,7 @@ public class MetricResultFileTest {
 		new File(METRIC_THRESHOLDS_INFO).delete();
 		new File(TYPE_COUPLING_INFO).delete();
 		new File(TYPE_RESONANCE_INFO).delete();
+		new File(ARCHITECTURAL_DEPENDENCIES_INFO).delete();
 	}
 
 	@Test
@@ -135,6 +140,13 @@ public class MetricResultFileTest {
 		assertTrue(file.generateNamespacesDependenciesFile(NAMESPACES_DEPENDENCIES_INFO));
 		assertTrue(new File(NAMESPACES_DEPENDENCIES_INFO).exists());
 		assertEquals(json.generateNamespacesDependencies(), readStringFrom(NAMESPACES_DEPENDENCIES_INFO));
+	}
+
+	@Test
+	public void testForArchitecturalDependenciesFile() {
+		assertTrue(file.generateArchitecturalDependenciesFile(ARCHITECTURAL_DEPENDENCIES_INFO));
+		assertTrue(new File(ARCHITECTURAL_DEPENDENCIES_INFO).exists());
+		assertEquals(dot.generateArchitecturalDependencies(), readStringFrom(ARCHITECTURAL_DEPENDENCIES_INFO));
 	}
 
 	private String readStringFrom(String fileName) {

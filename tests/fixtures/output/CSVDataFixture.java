@@ -27,20 +27,23 @@ public class CSVDataFixture extends DataFixture {
 	@Override
 	public String generateSummary() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("\"description\",value,percent\n");
+		sb.append("\"description\",value,percent,median,std_dev\n");
 		for (SummaryData summary : getSummaryData()) 
-			sb.append(String.format("\"%s\",%d,%d\n", summary.getDescription(), summary.getValue(), summary.getPercent()));
+			sb.append(String.format("\"%s\",%d,%d,%s,%s\n", summary.getDescription(), summary.getValue(), 
+					summary.getPercent(), String.valueOf(summary.getMedian()).replace(',', '.'), 
+					String.valueOf(summary.getStdDev()).replace(',', '.')));
 		return sb.toString();
 	}
 
 	@Override
 	public String generateTypes() {
 		sb = new StringBuilder();
-		sb.append("\"type\",\"sloc\",\"nom\",\"npm\",\"wmc\",\"dep\",\"i-dep\",\"fan-in\",\"fan-out\",\"noa\"\n");
+		sb.append("\"type\",\"sloc\",\"nom\",\"npm\",\"wmc\",\"dep\",\"i-dep\",\"fan-in\",\"fan-out\",\"noa\",\"lcom3\"\n");
 		for (TypeData type : getTypeData()) 
-			sb.append(String.format("\"%s\",%d,%d,%d,%d,%d,%d,%d,%d,%d\n", type.getType(), type.getSloc(), 
+			sb.append(String.format("\"%s\",%d,%d,%d,%d,%d,%d,%d,%d,%d,%s\n", type.getType(), type.getSloc(), 
 					type.getNom(), type.getNpm(), type.getWmc(), type.getDep(), type.getiDep(), 
-					type.getFanIn(), type.getFanOut(), type.getNoa()));
+					type.getFanIn(), type.getFanOut(), type.getNoa(),
+					type.getLcom3()));
 		return sb.toString();
 	}
 
@@ -89,8 +92,8 @@ public class CSVDataFixture extends DataFixture {
 	@Override
 	public String getTypesWithLimit() {
 		sb = new StringBuilder();
-		sb.append("\"type\",\"sloc\",\"nom\",\"npm\",\"wmc\",\"dep\",\"i-dep\",\"fan-in\",\"fan-out\",\"noa\"\n");
-		sb.append("\"javaProject.com.controller.Type\",245,35,25,58,7,2,0,9,13\n");
+		sb.append("\"type\",\"sloc\",\"nom\",\"npm\",\"wmc\",\"dep\",\"i-dep\",\"fan-in\",\"fan-out\",\"noa\",\"lcom3\"\n");
+		sb.append("\"javaProject.com.controller.Type\",245,35,25,58,7,2,0,9,13,0.8484162895927602\n");
 		return sb.toString();
 	}
 

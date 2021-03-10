@@ -61,7 +61,8 @@ public class JSONDataFixture extends DataFixture {
 					.add("i-dep", type.getiDep())
 					.add("fan-in", type.getFanIn())
 					.add("fan-out", type.getFanOut())
-					.add("noa", type.getNoa()).create());
+					.add("noa", type.getNoa())
+					.add("lcom3", Double.parseDouble(type.getLcom3())).create());
 		}
 		return gson.toJson(typeList);
 	}
@@ -93,7 +94,9 @@ public class JSONDataFixture extends DataFixture {
 					new JSONBuilder()
 					.add("description", summary.getDescription())
 					.add("value", summary.getValue())
-					.add("percent", summary.getPercent()).create()
+					.add("percent", summary.getPercent())
+					.add("median", summary.getMedian())
+					.add("std_dev", summary.getStdDev()).create()
 					);
 		}
 		return gson.toJson(summaryList);
@@ -191,7 +194,7 @@ public class JSONDataFixture extends DataFixture {
 	@Override
 	public String getTypesWithLimit() {
 		sb = new StringBuilder();
-		sb.append("[{\"type\":\"javaProject.com.controller.Type\",\"sloc\":245,\"nom\":35,\"npm\":25,\"wmc\":58,\"dep\":7,\"i-dep\":2,\"fan-in\":0,\"fan-out\":9,\"noa\":13}]");
+		sb.append("[{\"type\":\"javaProject.com.controller.Type\",\"sloc\":245,\"nom\":35,\"npm\":25,\"wmc\":58,\"dep\":7,\"i-dep\":2,\"fan-in\":0,\"fan-out\":9,\"noa\":13,\"lcom3\":0.8484162895927602}]");
 		return sb.toString();
 	}
 
