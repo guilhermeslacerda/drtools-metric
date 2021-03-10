@@ -40,17 +40,17 @@ public class MetricResultConsole implements MetricOutput {
 	@Override
 	public void showTypes() {
 		System.out.println(
-				"\n\n-----------------------------------------------------------------------------------------------------------------------------------");
-		System.out.println("TYPES\t\t\t\t\t\t\t\tSLOC\tNOM\tNPM\tWMC\tDEP\tI-DEP\tFAN-IN\tFAN-OUT\tNOA");
+				"\n\n---------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("TYPES\t\t\t\t\t\t\t\tSLOC\tNOM\tNPM\tWMC\tDEP\tI-DEP\tFAN-IN\tFAN-OUT\tNOA\tLCOM3");
 		System.out.println(
-				"-----------------------------------------------------------------------------------------------------------------------------------");
+				"---------------------------------------------------------------------------------------------------------------------------------------------");
 
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
-			System.out.printf("%60s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n", StringFormat.withLimit(type.getFullName(), 60),
+			System.out.printf("%60s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%.2f\n", StringFormat.withLimit(type.getFullName(), 60),
 					type.getSloc(), type.getNumOfMethods(), type.getNumOfPublicMethods(), tmr.getTotalCycloBy(type.getFullName()),
 					type.getNumberOfDependencies(), type.getNumberOfInternalDependencies(), tmr.getFanInOf(name),
-					type.getFanOut(), type.getNumOfVariables());
+					type.getFanOut(), type.getNumOfVariables(), tmr.getLackCohesionMethods(type.getFullName()));
 		}
 	} 
 
@@ -77,13 +77,14 @@ public class MetricResultConsole implements MetricOutput {
 		System.out.println("------------------");
 		System.out.printf("            Total of Namespaces: %d", nmr.getTotalNumberOfNamespaces());
 		System.out.printf("\n                 Total of Types: %d", nmr.getTotalNumberOfTypes());
-		System.out.printf(" - %.2f (number of types/namespaces)",
-				(float) nmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces());
+		System.out.printf(" - %.2f (number of types/namespaces - median: %.2f - std dev: %.2f)",
+				(float) nmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces(), nmr.getMedianOfTypes(), nmr.getStandardDeviationTypes());
 		System.out.printf("\n                  Total of SLOC: %d", tmr.getTotalSLOC());
-		System.out.printf(" - %.2f (number of SLOC/types)", (float) tmr.getTotalSLOC() / nmr.getTotalNumberOfTypes());
+		System.out.printf(" - %.2f (number of SLOC/types - median: %.2f - std dev: %.2f)", (float) tmr.getTotalSLOC() / nmr.getTotalNumberOfTypes(), 
+						tmr.getMedianOfSLOC(), tmr.getStandardDeviationSLOC());
 		System.out.printf("\n               Total of Methods: %d", mmr.getTotalNumberOfMethods());
-		System.out.printf(" - %.2f (number of methods/types)",
-				(float) mmr.getTotalNumberOfMethods() / nmr.getTotalNumberOfTypes());
+		System.out.printf(" - %.2f (number of methods/types - median: %.2f - std dev: %.2f)",
+				(float) mmr.getTotalNumberOfMethods() / nmr.getTotalNumberOfTypes(), mmr.getMedianOfMethods(), mmr.getStandardDeviationSLOC());
 		System.out.printf("\n                 Total of CYCLO: %d", mmr.getTotalCyclo());
 		System.out.printf(" - %.2f (number of CYCLO/types)", (float) mmr.getTotalCyclo() / nmr.getTotalNumberOfTypes());
 	}

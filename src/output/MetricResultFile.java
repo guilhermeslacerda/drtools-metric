@@ -17,27 +17,31 @@ public class MetricResultFile implements MetricOutput {
 	private static final String TYPE_COUPLING_INFO = "drtools-metric-type-coupling.csv";
 	private static final String TYPE_RESONANCE_INFO = "drtools-metric-resonance.json";
 	private static final String NAMESPACES_DEPENDENCIES_INFO = "drtools-metric-namespaces-dependencies.json";
+	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
 	private static final String DONE = "[DONE]";
 	private static final String FAIL = "[FAIL]";
 	private TypeMetricResult tmr;
 	private MetricResultCSV csv;
 	private MetricResultJSON json;
-
+	private MetricResultDOT dot;
+	
 	public MetricResultFile() {
-		csv = new MetricResultCSV();
+		csv  = new MetricResultCSV();
 		json = new MetricResultJSON();
-	}
+		dot  = new MetricResultDOT();
+ 	}
 	
 	@Override
 	public void setResults(NamespaceMetricResult nmr, TypeMetricResult tmr, MethodMetricResult mmr) {
 		this.tmr = tmr;
 		csv.setResults(nmr, tmr, mmr);
 		json.setResults(nmr, tmr, mmr);
+		dot.setResults(nmr, tmr);
 	}
 
 	@Override
 	public void showNamespaces() {
-		InfoConsole.print("\nNamespaces info (CSV)................");
+		InfoConsole.print("\nNamespaces info (CSV).................");
 		InfoConsole.print(generateNamespacesFile(NAMESPACES_INFO) ? DONE : FAIL);
 	}
 
@@ -47,7 +51,7 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showTypes() {
-		InfoConsole.print("\nTypes info (CSV).....................");
+		InfoConsole.print("\nTypes info (CSV)......................");
 		InfoConsole.print(generateTypesFile(TYPES_INFO) ? DONE : FAIL);
 	}
 
@@ -57,7 +61,7 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showMethods() {
-		InfoConsole.print("\nMethods info (CSV)...................");
+		InfoConsole.print("\nMethods info (CSV)....................");
 		InfoConsole.print(generateMethodsFile(METHODS_INFO) ? DONE : FAIL);
 	}
 
@@ -78,12 +82,13 @@ public class MetricResultFile implements MetricOutput {
 		showThresholds();
 		showTypeCoupling();
 		showNamespacesDependencies();
+		showArchitecturalDependencies();
 		InfoConsole.printMetricVisualizationUsage();
 	}
 
 	@Override
 	public void showSummary() {
-		InfoConsole.print("\nSummary info (CSV)...................");
+		InfoConsole.print("\nSummary info (CSV)....................");
 		InfoConsole.print(generateSummaryFile(SUMMARY_INFO) ? DONE : FAIL);
 	}
 
@@ -102,7 +107,7 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showCyclicDependencies() {
-		InfoConsole.print("\nCyclic dependencies info (CSV).......");
+		InfoConsole.print("\nCyclic dependencies info (CSV)........");
 		InfoConsole.print(generateCyclicDependenciesFile(CYCLIC_DEPENDENCIES_INFO) ? DONE : FAIL);
 	}
 
@@ -112,7 +117,7 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showInternalDependencies() {
-		InfoConsole.print("\nInternal dependencies info (JSON)....");
+		InfoConsole.print("\nInternal dependencies info (JSON).....");
 		InfoConsole.print(generateInternalDependenciesFile(INTERNAL_DEPENDENCIES_INFO) ? DONE : FAIL);
 	}
 
@@ -122,7 +127,7 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showNamespaceCoupling() {
-		InfoConsole.print("\nNamespace coupling info (CSV)........");
+		InfoConsole.print("\nNamespace coupling info (CSV).........");
 		InfoConsole.print(generateNamespaceCouplingFile(NAMESPACE_COUPLING_INFO) ? DONE : FAIL);
 	}
 
@@ -136,7 +141,7 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showThresholds() {
-		InfoConsole.print("\nMetric thresholds info (CSV).........");
+		InfoConsole.print("\nMetric thresholds info (CSV)..........");
 		InfoConsole.print(generateMetricThresholdsFile(METRIC_THRESHOLDS_INFO) ? DONE : FAIL);
 	}
 
@@ -146,7 +151,7 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showTypeCoupling() {
-		InfoConsole.print("\nType coupling info (CSV).............");
+		InfoConsole.print("\nType coupling info (CSV)..............");
 		InfoConsole.print(generateTypeCouplingFile(TYPE_COUPLING_INFO) ? DONE : FAIL);
 	}
 
@@ -155,7 +160,7 @@ public class MetricResultFile implements MetricOutput {
 	}
 
 	public void showTypesResonance() {
-		InfoConsole.print("\nCode resonance info (JSON)...........");
+		InfoConsole.print("\nCode resonance info (JSON)............");
 		InfoConsole.print(generateTypesResonanceFile(TYPE_RESONANCE_INFO) ? DONE : FAIL);
 	}
 
@@ -164,11 +169,20 @@ public class MetricResultFile implements MetricOutput {
 	}
 
 	public void showNamespacesDependencies() {
-		InfoConsole.print("\nNamespaces dependencies info (JSON)..");
+		InfoConsole.print("\nNamespaces dependencies info (JSON)...");
 		InfoConsole.print(generateNamespacesDependenciesFile(NAMESPACES_DEPENDENCIES_INFO) ? DONE : FAIL);
 	}
 
 	public boolean generateNamespacesDependenciesFile(String fileName) {
 		return SystemUtils.writeFile(fileName, json.generateNamespacesDependencies());
+	}
+
+	public void showArchitecturalDependencies() {
+		InfoConsole.print("\nArchitectural dependencies info (DOT).");
+		InfoConsole.print(generateArchitecturalDependenciesFile(ARCHITECTURAL_DEPENDENCIES_INFO) ? DONE : FAIL);
+	}
+
+	public boolean generateArchitecturalDependenciesFile(String fileName) {
+		return SystemUtils.writeFile(fileName, dot.generateArchitecturalDependencies());
 	}
 }

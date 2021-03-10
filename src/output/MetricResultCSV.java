@@ -51,12 +51,13 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 	@Override
 	public String generateTypes() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("\"type\",\"sloc\",\"nom\",\"npm\",\"wmc\",\"dep\",\"i-dep\",\"fan-in\",\"fan-out\",\"noa\"\n");
+		sb.append("\"type\",\"sloc\",\"nom\",\"npm\",\"wmc\",\"dep\",\"i-dep\",\"fan-in\",\"fan-out\",\"noa\",\"lcom3\"\n");
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
-			sb.append(String.format("\"%s\",%d,%d,%d,%d,%d,%d,%d,%d,%d\n", type.getFullName(), type.getSloc(), type.getNumOfMethods(),
+			sb.append(String.format("\"%s\",%d,%d,%d,%d,%d,%d,%d,%d,%d,%s\n", type.getFullName(), type.getSloc(), type.getNumOfMethods(),
 					type.getNumOfPublicMethods(), tmr.getTotalCycloBy(type.getFullName()), type.getNumberOfDependencies(), 
-					type.getNumberOfInternalDependencies(), tmr.getFanInOf(name), type.getFanOut(), type.getNumOfVariables()));
+					type.getNumberOfInternalDependencies(), tmr.getFanInOf(name), type.getFanOut(), 
+					type.getNumOfVariables(), String.valueOf(tmr.getLackCohesionMethods(name)).replace(',', '.')));
 		}
 		return sb.toString();
 	}
@@ -96,16 +97,22 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 	public String generateSummary() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("\"description\",value,percent\n");
-		sb.append("\"total_namespaces\"," + nmr.getTotalNumberOfNamespaces() + ",100\n");
-		sb.append("\"total_types\"," + nmr.getTotalNumberOfTypes() + ","
-				+ String.valueOf(nmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces()).replace(',', '.') + "\n");
-		sb.append("\"total_sloc\"," + tmr.getTotalSLOC() + ","
-				+ String.valueOf(tmr.getTotalSLOC() / nmr.getTotalNumberOfTypes()).replace(',', '.') + "\n");
-		sb.append("\"total_methods\"," + mmr.getTotalNumberOfMethods() + ","
-				+ String.valueOf(mmr.getTotalNumberOfMethods() / nmr.getTotalNumberOfTypes()).replace(',', '.') + "\n");
-		sb.append("\"total_cyclo\"," + mmr.getTotalCyclo() + ","
-				+ String.valueOf(mmr.getTotalCyclo() / nmr.getTotalNumberOfTypes()).replace(',', '.') + "\n");
+		sb.append("\"description\",value,percent,median,std_dev\n");
+		sb.append("\"total_namespaces\"," + nmr.getTotalNumberOfNamespaces() + ",100,0.0,0.0\n");
+		sb.append("\"total_types\"," + nmr.getTotalNumberOfTypes() 
+				+ "," + String.valueOf(nmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces()).replace(',', '.') 
+				+ "," + String.valueOf(nmr.getMedianOfTypes()).replace(',', '.') 
+				+ "," + String.valueOf(nmr.getStandardDeviationTypes()).replace(',', '.') + "\n");
+		sb.append("\"total_sloc\"," + tmr.getTotalSLOC() 
+				+ "," + String.valueOf(tmr.getTotalSLOC() / nmr.getTotalNumberOfTypes()).replace(',', '.') 
+				+ "," + String.valueOf(tmr.getMedianOfSLOC()).replace(',', '.') 
+				+ "," + String.valueOf(tmr.getStandardDeviationSLOC()).replace(',', '.') + "\n");
+		sb.append("\"total_methods\"," + mmr.getTotalNumberOfMethods() 
+				+ "," + String.valueOf(mmr.getTotalNumberOfMethods() / nmr.getTotalNumberOfTypes()).replace(',', '.') 
+				+ "," + String.valueOf(mmr.getMedianOfMethods()).replace(',', '.') 
+				+ "," + String.valueOf(mmr.getStandardDeviationSLOC()).replace(',', '.') + "\n");
+		sb.append("\"total_cyclo\"," + mmr.getTotalCyclo() 
+				+ "," + String.valueOf(mmr.getTotalCyclo() / nmr.getTotalNumberOfTypes()).replace(',', '.') + ",0.0,0.0\n");
 
 		return sb.toString();
 	}

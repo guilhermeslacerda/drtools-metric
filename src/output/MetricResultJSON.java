@@ -67,7 +67,8 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 					.add("nom", type.getNumOfMethods()).add("npm", type.getNumOfPublicMethods())
 					.add("wmc", tmr.getTotalCycloBy(type.getFullName())).add("dep", type.getNumberOfDependencies())
 					.add("i-dep", type.getNumberOfInternalDependencies()).add("fan-in", tmr.getFanInOf(name))
-					.add("fan-out", type.getFanOut()).add("noa", type.getNumOfVariables()).create());
+					.add("fan-out", type.getFanOut()).add("noa", type.getNumOfVariables())
+					.add("lcom3", tmr.getLackCohesionMethods(name)).create());
 		}
 		return gson.toJson(typeList);
 	}
@@ -111,26 +112,36 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		totalNamespaces.addProperty("description", "total_namespaces");
 		totalNamespaces.addProperty("value", nmr.getTotalNumberOfNamespaces());
 		totalNamespaces.addProperty("percent", 100);
-
+		totalNamespaces.addProperty("median", 0.0);
+		totalNamespaces.addProperty("std_dev", 0.0);
+		
 		JsonObject totalTypes = new JsonObject();
 		totalTypes.addProperty("description", "total_types");
 		totalTypes.addProperty("value", nmr.getTotalNumberOfTypes());
 		totalTypes.addProperty("percent", nmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces());
+		totalTypes.addProperty("median", nmr.getMedianOfTypes());
+		totalTypes.addProperty("std_dev", nmr.getStandardDeviationTypes());
 
 		JsonObject totalSloc = new JsonObject();
 		totalSloc.addProperty("description", "total_sloc");
 		totalSloc.addProperty("value", tmr.getTotalSLOC());
 		totalSloc.addProperty("percent", tmr.getTotalSLOC() / nmr.getTotalNumberOfTypes());
+		totalSloc.addProperty("median", tmr.getMedianOfSLOC());
+		totalSloc.addProperty("std_dev",tmr.getStandardDeviationSLOC());
 
 		JsonObject totalMethods = new JsonObject();
 		totalMethods.addProperty("description", "total_methods");
 		totalMethods.addProperty("value", mmr.getTotalNumberOfMethods());
 		totalMethods.addProperty("percent", mmr.getTotalNumberOfMethods() / nmr.getTotalNumberOfTypes());
+		totalMethods.addProperty("median", mmr.getMedianOfMethods());
+		totalMethods.addProperty("std_dev", mmr.getStandardDeviationSLOC());
 
 		JsonObject totalCyclo = new JsonObject();
 		totalCyclo.addProperty("description", "total_cyclo");
 		totalCyclo.addProperty("value", mmr.getTotalCyclo());
 		totalCyclo.addProperty("percent", mmr.getTotalCyclo() / nmr.getTotalNumberOfTypes());
+		totalCyclo.addProperty("median", 0.0);
+		totalCyclo.addProperty("std_dev", 0.0);
 
 		summaryList.add(totalNamespaces);
 		summaryList.add(totalTypes);
