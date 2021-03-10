@@ -17,7 +17,6 @@ import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
 import output.MetricFile;
-import structures.metrics.MetricDefinition;
 
 public abstract class DataFixture implements MetricFile {
 	private Map<String, LinkedHashSet<TypeResonanceData>> typesResonanceData;
