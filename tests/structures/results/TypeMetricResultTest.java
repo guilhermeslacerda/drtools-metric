@@ -94,6 +94,17 @@ public class TypeMetricResultTest {
 	}
 
 	@Test
+	public void testGetMedianOfSLOC() {
+		assertEquals(50.0, tmr.getMedianOfSLOC(), 0.001);
+	}	
+	
+	@Test
+	public void testGetStandardDeviationSLOC() {
+		tmr.defineNumberOfSLOCPerTypes();
+		assertEquals(99.649, tmr.getStandardDeviationSLOC(), 0.001);
+	}	
+	
+	@Test
 	public void testGetPublicMethods() {
 		assertEquals(1, tmr.getTotalNumberOfPublicMethods("services.InvoiceService"));
 	}
