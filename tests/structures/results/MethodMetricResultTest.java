@@ -40,6 +40,17 @@ public class MethodMetricResultTest {
 	}
 
 	@Test
+	public void testGetMedianOfMethods() {
+		assertEquals(27.0, mmr.getMedianOfMethods(), 0.001);
+	}
+
+	@Test
+	public void testGetStandardDeviationSLOC() {
+		mmr.defineNumberOfMethodsPerType();
+		assertEquals(40.286, mmr.getStandardDeviationSLOC(), 0.001);
+	}
+
+	@Test
 	public void testNestedBlockDepth() {
 		LinkedHashMap<String, MethodMetric> methods = mmr.getSortedMethodMetrics();
 		MethodMetric m = null;

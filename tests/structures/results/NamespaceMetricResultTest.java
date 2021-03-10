@@ -30,6 +30,17 @@ public class NamespaceMetricResultTest {
 	}
 
 	@Test
+	public void testGetMedianOfTypes() {
+		assertEquals(6, nmr.getMedianOfTypes(), 0.001);
+	}
+	
+	@Test
+	public void testGetStandardDeviationTypes() {
+		nmr.defineNumberOfTypesPerNamespace();
+		assertEquals(4.949, nmr.getStandardDeviationTypes(), 0.001);
+	}
+
+	@Test
 	public void testGetMethodMetrics() {
 		assertEquals(2, nmr.getNamespaceMetrics().size());
 	}

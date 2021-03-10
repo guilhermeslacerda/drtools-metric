@@ -1,6 +1,7 @@
 package structures.results;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -13,6 +14,7 @@ import structures.metrics.MethodMetric;
 
 public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 	private Map<String, MethodMetric> methodMetrics;
+	private int methodsPerType[];
 	private int number = 0;
 
 	public MethodMetricResult() {
@@ -97,4 +99,43 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 		return new LinkedHashSet<>(methodList.subList(0, 
 				number > methodList.size() ? methodList.size() : number));
 	}
+	
+	public void defineNumberOfMethodsPerType() {
+		methodsPerType = new int[ getTotalNumberOfMethods() ];
+		int position = 0;
+		for (String name : this.getMethodsName()) {
+			MethodMetric method = this.getMethod(name);
+			methodsPerType[position++] = method.getLoc();
+		}
+	}
+	
+	public double getMedianOfMethods() {
+		defineNumberOfMethodsPerType();
+		Arrays.sort(methodsPerType);
+		
+		int odd = methodsPerType.length % 2;
+		if (odd == 1)	return methodsPerType[((methodsPerType.length + 1) / 2) - 1];
+		
+		int middle = methodsPerType.length / 2;
+		return (methodsPerType[middle - 1] + methodsPerType[middle]) / 2;
+	}
+	
+	private double getSumOfSquareOfMethodsPerType() {
+		double sum = 0;
+		for (int indx = 0; indx < methodsPerType.length; indx++)
+			sum += Math.pow(methodsPerType[indx], 2);
+		return sum;
+	}
+
+	private double getMethodsVariance() {
+		double p1 = 1 / Double.valueOf(methodsPerType.length - 1);
+		double p2 = (getSumOfSquareOfMethodsPerType()
+				- (Math.pow(getTotalNumberOfMethods(), 2) ) / Double.valueOf(methodsPerType.length));
+		return p1 * p2;
+	}
+	
+	public double getStandardDeviationSLOC() {
+		return Math.sqrt(getMethodsVariance());
+	}
+
 }
