@@ -17,6 +17,7 @@ import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
 import output.MetricFile;
+import structures.metrics.MetricDefinition;
 
 public abstract class DataFixture implements MetricFile {
 	private Map<String, LinkedHashSet<TypeResonanceData>> typesResonanceData;
@@ -57,33 +58,33 @@ public abstract class DataFixture implements MetricFile {
 	}
 
 	public List<SummaryData> getSummaryData() {
-		summary.add(new SummaryData("total_namespaces", 6, 100));
-		summary.add(new SummaryData("total_types", 17, 2));
-		summary.add(new SummaryData("total_sloc", 393, 23));
-		summary.add(new SummaryData("total_methods", 56, 3));
-		summary.add(new SummaryData("total_cyclo", 86, 5));
+		summary.add(new SummaryData("total_namespaces", 6, 100, 0.0, 0.0));
+		summary.add(new SummaryData("total_types", 17, 2, 2.0, 2.041241452319315));
+		summary.add(new SummaryData("total_sloc", 393, 23, 6.0, 62.42395373572552));
+		summary.add(new SummaryData("total_methods", 56, 3, 3.0, 10.428108867165443));
+		summary.add(new SummaryData("total_cyclo", 86, 5, 0.0, 0.0));
 
 		return summary;
 	}
 
 	public List<TypeData> getTypeData() {
-		types.add(new TypeData("javaProject.com.controller.Type",245,35,25,58,7,2,0,9,13));
-		types.add(new TypeData("javaProject.com.model.Man",29,5,5,9,1,0,1,2,0));
-		types.add(new TypeData("javaProject.com.controller.Dispatcher",27,4,4,4,4,4,1,4,3));
-		types.add(new TypeData("javaProject.com.model.Woman",16,3,3,5,0,0,1,1,0));
-		types.add(new TypeData("javaProject.com.model.Human",10,2,2,2,0,0,2,1,1));
-		types.add(new TypeData("javaProject.com.view.QueueViewer",10,0,1,2,1,1,0,2,0));
-		types.add(new TypeData("javaProject.com.controller.ClassWithComments",8,1,1,1,0,0,0,0,0));
-		types.add(new TypeData("javaProject.com.model.Child",7,1,1,1,0,0,1,1,1));
-		types.add(new TypeData("javaProject.com.controller.XClass",6,1,1,1,0,0,0,0,0));
-		types.add(new TypeData("javaProject.others.AnalysisContext",6,1,1,1,0,0,0,0,0));
-		types.add(new TypeData("javaProject.others.ClassVertex",6,1,1,1,0,0,1,0,0));
-		types.add(new TypeData("javaProject.one.A",5,0,0,1,1,1,1,1,1));
-		types.add(new TypeData("javaProject.two.B",5,0,0,1,1,1,1,1,1));
-		types.add(new TypeData("javaProject.com.model.Person",4,1,1,1,0,0,3,0,0));
-		types.add(new TypeData("javaProject.com.controller.XMethod",3,0,0,1,0,0,0,0,0));
-		types.add(new TypeData("javaProject.others.ClassDescriptor",3,0,0,1,0,0,1,0,0));
-		types.add(new TypeData("javaProject.others.ObjectType",3,0,0,1,0,0,0,0,0));
+		types.add(new TypeData("javaProject.com.controller.Type",245,35,25,58,7,2,0,9,13,0.8484162895927602));
+		types.add(new TypeData("javaProject.com.model.Man",29,5,5,9,1,0,1,2,0,0.0));
+		types.add(new TypeData("javaProject.com.controller.Dispatcher",27,4,4,4,4,4,1,4,3,0.6666666666666666));
+		types.add(new TypeData("javaProject.com.model.Woman",16,3,3,5,0,0,1,1,0,0.0));
+		types.add(new TypeData("javaProject.com.model.Human",10,2,2,2,0,0,2,1,1,1.0));
+		types.add(new TypeData("javaProject.com.view.QueueViewer",10,0,1,2,1,1,0,2,0,0.0));
+		types.add(new TypeData("javaProject.com.controller.ClassWithComments",8,1,1,1,0,0,0,0,0,0.0));
+		types.add(new TypeData("javaProject.com.model.Child",7,1,1,1,0,0,1,1,1,0.0));
+		types.add(new TypeData("javaProject.com.controller.XClass",6,1,1,1,0,0,0,0,0,0.0));
+		types.add(new TypeData("javaProject.others.AnalysisContext",6,1,1,1,0,0,0,0,0,0.0));
+		types.add(new TypeData("javaProject.others.ClassVertex",6,1,1,1,0,0,1,0,0,0.0));
+		types.add(new TypeData("javaProject.one.A",5,0,0,1,1,1,1,1,1,0.0));
+		types.add(new TypeData("javaProject.two.B",5,0,0,1,1,1,1,1,1,0.0));
+		types.add(new TypeData("javaProject.com.model.Person",4,1,1,1,0,0,3,0,0,0.0));
+		types.add(new TypeData("javaProject.com.controller.XMethod",3,0,0,1,0,0,0,0,0,0.0));
+		types.add(new TypeData("javaProject.others.ClassDescriptor",3,0,0,1,0,0,1,0,0,0.0));
+		types.add(new TypeData("javaProject.others.ObjectType",3,0,0,1,0,0,0,0,0,0.0));
 		
 		return types;
 	}
@@ -184,7 +185,10 @@ public abstract class DataFixture implements MetricFile {
 		thresholds.add(new MetricThresholdData("NPM", "Number of Public Methods",
 				"Good: <= 10; Regular: between 11 and 40; Bad: > 40", 10, 40));
 		thresholds.add(new MetricThresholdData("NOA", "Number of Attributes/Fields",
-				"Good: <= 3; Regular: between 3 and 8; Bad: > 8", 3, 8));
+				"Good: <= 3; Regular: between 3 and 8; Bad: > 8", 3, 8));	
+		thresholds.add(new MetricThresholdData("LCOM3", "Lack of Cohesion in Methods",
+				"Good: = 0; Regular: between 0 and 1; Bad: > 1", 0, 1));
+
 
 		thresholds.add(new MetricThresholdData("MLOC", "Method Lines of Code",
 				"Good: <= 10; Regular: between 10 and 30; Bad: > 30", 10, 30));

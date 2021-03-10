@@ -32,6 +32,8 @@ public class MetricThreshold {
 				"Good: <= 10; Regular: between 11 and 40; Bad: > 40", 10, 40));
 		thresholds.add(new MetricDefinition("NOA", "Number of Attributes/Fields",
 				"Good: <= 3; Regular: between 3 and 8; Bad: > 8", 3, 8));
+		thresholds.add(new MetricDefinition("LCOM3", "Lack of Cohesion in Methods",
+				"Good: = 0; Regular: between 0 and 1; Bad: > 1", 0, 1));
 
 		thresholds.add(new MetricDefinition("MLOC", "Method Lines of Code",
 				"Good: <= 10; Regular: between 10 and 30; Bad: > 30", 10, 30));
