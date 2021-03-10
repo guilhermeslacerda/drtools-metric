@@ -1,7 +1,7 @@
 package output;
 
 public class InfoConsole {
-	private static final String VERSION = "1.5.2";
+	private static final String VERSION = "1.5.4";
 
 	private InfoConsole() {
 	}
@@ -75,7 +75,8 @@ public class InfoConsole {
 		System.out.println("\t\tMLOC   - Number of lines of a method");
 		System.out.print("PARAM - Number of parameters of a method");
 		System.out.println("\t\t\tCYCLO  - Cyclomatic complexity (McCabe) of a method");
-		System.out.println("CALLS - Number of invocations made from within a method");
+		System.out.print("CALLS - Number of invocations made from within a method");
+		System.out.println("\t\tLCOM3  - Lack of cohesion in methods");
 	}
 
 	private static void printUsageExamples() {
