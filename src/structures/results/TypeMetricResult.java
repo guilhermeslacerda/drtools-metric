@@ -356,6 +356,10 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 		}
 	}
 
+	private double getAverageOfSLOC() {
+		return Arrays.stream(slocPerType).average().orElse(0);
+	}
+
 	public double getMedianOfSLOC() {
 		defineNumberOfSLOCPerTypes();
 		Arrays.sort(slocPerType);
@@ -368,17 +372,16 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	}
 
 	private double getSumOfSquareOfSLOCPerType() {
+		defineNumberOfSLOCPerTypes();
 		double sum = 0;
+		double average = getAverageOfSLOC();
 		for (int indx = 0; indx < slocPerType.length; indx++)
-			sum += Math.pow(slocPerType[indx], 2);
+			sum += Math.pow(slocPerType[indx] - average, 2);
 		return sum;
 	}
 
 	private double getSLOCVariance() {
-		double p1 = 1 / Double.valueOf(slocPerType.length - 1);
-		double p2 = (getSumOfSquareOfSLOCPerType()
-				- (Math.pow(getTotalNumberOfTypes(), 2)) / Double.valueOf(slocPerType.length));
-		return p1 * p2;
+		return getSumOfSquareOfSLOCPerType() / Double.valueOf(slocPerType.length);
 	}
 
 	public double getStandardDeviationSLOC() {

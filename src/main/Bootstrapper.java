@@ -143,10 +143,10 @@ public class Bootstrapper {
 
 	private static void verifyInvalidOptions() {
 		String[][] options = {{"-a", "--csv", "This option is only available in console format..."},
-				{"-d", "--csv", "This option is only available in console and JSON format..."},
-				{"-id", "--csv", "This option is only available in console and JSON format..."},
-				{"-ac", "--csv", "This option is only available in console format..."},
-				{"-a", "--json", "This option is only available in console format..."},
+				{"-d", "--csv",   "This option is only available in console and JSON format..."},
+				{"-id", "--csv",  "This option is only available in console and JSON format..."},
+				{"-ac", "--csv",  "This option is only available in console format..."},
+				{"-a", "--json",  "This option is only available in console format..."},
 				{"-ac", "--json", "This option is only available in console format..."}};
 		
 		for (int indx = 0; indx < options.length; indx++) {

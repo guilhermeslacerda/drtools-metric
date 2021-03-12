@@ -101,7 +101,7 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 	}
 	
 	public void defineNumberOfMethodsPerType() {
-		methodsPerType = new int[ getTotalNumberOfMethods() ];
+		methodsPerType = new int[getTotalNumberOfMethods()];
 		int position = 0;
 		for (String name : this.getMethodsName()) {
 			MethodMetric method = this.getMethod(name);
@@ -109,6 +109,10 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 		}
 	}
 	
+	private double getAverageOfSLOC() {
+		return Arrays.stream(methodsPerType).average().orElse(0);
+	}
+
 	public double getMedianOfMethods() {
 		defineNumberOfMethodsPerType();
 		Arrays.sort(methodsPerType);
@@ -121,21 +125,19 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 	}
 	
 	private double getSumOfSquareOfMethodsPerType() {
+		defineNumberOfMethodsPerType();
 		double sum = 0;
+		double average = getAverageOfSLOC();
 		for (int indx = 0; indx < methodsPerType.length; indx++)
-			sum += Math.pow(methodsPerType[indx], 2);
+			sum += Math.pow(methodsPerType[indx] - average, 2);
 		return sum;
 	}
 
 	private double getMethodsVariance() {
-		double p1 = 1 / Double.valueOf(methodsPerType.length - 1);
-		double p2 = (getSumOfSquareOfMethodsPerType()
-				- (Math.pow(getTotalNumberOfMethods(), 2) ) / Double.valueOf(methodsPerType.length));
-		return p1 * p2;
+		return getSumOfSquareOfMethodsPerType() / Double.valueOf(methodsPerType.length);
 	}
 	
 	public double getStandardDeviationSLOC() {
 		return Math.sqrt(getMethodsVariance());
 	}
-
 }
