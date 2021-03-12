@@ -101,7 +101,7 @@ public class TypeMetricResultTest {
 	@Test
 	public void testGetStandardDeviationSLOC() {
 		tmr.defineNumberOfSLOCPerTypes();
-		assertEquals(99.649, tmr.getStandardDeviationSLOC(), 0.001);
+		assertEquals(56.426, tmr.getStandardDeviationSLOC(), 0.001);
 	}	
 	
 	@Test

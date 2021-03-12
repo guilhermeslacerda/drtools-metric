@@ -47,7 +47,7 @@ public class MethodMetricResultTest {
 	@Test
 	public void testGetStandardDeviationSLOC() {
 		mmr.defineNumberOfMethodsPerType();
-		assertEquals(40.286, mmr.getStandardDeviationSLOC(), 0.001);
+		assertEquals(7.5, mmr.getStandardDeviationSLOC(), 0.001);
 	}
 
 	@Test

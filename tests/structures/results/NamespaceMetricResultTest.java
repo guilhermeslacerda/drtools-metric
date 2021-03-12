@@ -37,7 +37,7 @@ public class NamespaceMetricResultTest {
 	@Test
 	public void testGetStandardDeviationTypes() {
 		nmr.defineNumberOfTypesPerNamespace();
-		assertEquals(4.949, nmr.getStandardDeviationTypes(), 0.001);
+		assertEquals(3.5, nmr.getStandardDeviationTypes(), 0.001);
 	}
 
 	@Test
