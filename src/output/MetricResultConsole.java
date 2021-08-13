@@ -16,7 +16,7 @@ public class MetricResultConsole implements MetricOutput {
 	private NamespaceMetricResult nmr;
 	private TypeMetricResult tmr;
 	private MethodMetricResult mmr;
- 
+
 	@Override
 	public void setResults(NamespaceMetricResult nmr, TypeMetricResult tmr, MethodMetricResult mmr) {
 		this.nmr = nmr;
@@ -47,12 +47,13 @@ public class MetricResultConsole implements MetricOutput {
 
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
-			System.out.printf("%60s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%.2f\n", StringFormat.withLimit(type.getFullName(), 60),
-					type.getSloc(), type.getNumOfMethods(), type.getNumOfPublicMethods(), tmr.getTotalCycloBy(type.getFullName()),
+			System.out.printf("%60s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%.2f\n",
+					StringFormat.withLimit(type.getFullName(), 60), type.getSloc(), type.getNumOfMethods(),
+					type.getNumOfPublicMethods(), tmr.getTotalCycloBy(type.getFullName()),
 					type.getNumberOfDependencies(), type.getNumberOfInternalDependencies(), tmr.getFanInOf(name),
 					type.getFanOut(), type.getNumOfVariables(), tmr.getLackCohesionMethods(type.getFullName()));
 		}
-	} 
+	}
 
 	@Override
 	public void showMethods() {
@@ -76,17 +77,20 @@ public class MetricResultConsole implements MetricOutput {
 		System.out.println("SUMMARY OF METRICS");
 		System.out.println("------------------");
 		System.out.printf("            Total of Namespaces: %d", nmr.getTotalNumberOfNamespaces());
-		System.out.printf("\n                 Total of Types: %d", nmr.getTotalNumberOfTypes());
+		System.out.printf("\n                 Total of Types: %d", tmr.getTotalNumberOfTypes());
 		System.out.printf(" - %.2f (number of types/namespaces - median: %.2f - std dev: %.2f)",
-				(float) nmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces(), nmr.getMedianOfTypes(), nmr.getStandardDeviationTypes());
+			(float) tmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces(), nmr.getMedianOfTypes(),
+			nmr.getStandardDeviationTypes());
 		System.out.printf("\n                  Total of SLOC: %d", tmr.getTotalSLOC());
-		System.out.printf(" - %.2f (number of SLOC/types - median: %.2f - std dev: %.2f)", (float) tmr.getTotalSLOC() / nmr.getTotalNumberOfTypes(), 
-						tmr.getMedianOfSLOC(), tmr.getStandardDeviationSLOC());
+		System.out.printf(" - %.2f (number of SLOC/types - median: %.2f - std dev: %.2f)",
+				(float) tmr.getTotalSLOC() / tmr.getTotalNumberOfTypes(), tmr.getMedianOfSLOC(),
+				tmr.getStandardDeviationSLOC());
 		System.out.printf("\n               Total of Methods: %d", mmr.getTotalNumberOfMethods());
 		System.out.printf(" - %.2f (number of methods/types - median: %.2f - std dev: %.2f)",
-				(float) mmr.getTotalNumberOfMethods() / nmr.getTotalNumberOfTypes(), mmr.getMedianOfMethods(), mmr.getStandardDeviationSLOC());
+				(float) mmr.getTotalNumberOfMethods() / tmr.getTotalNumberOfTypes(), mmr.getMedianOfMethods(),
+				mmr.getStandardDeviationSLOC());
 		System.out.printf("\n                 Total of CYCLO: %d", mmr.getTotalCyclo());
-		System.out.printf(" - %.2f (number of CYCLO/types)", (float) mmr.getTotalCyclo() / nmr.getTotalNumberOfTypes());
+		System.out.printf(" - %.2f (number of CYCLO/types)", (float) mmr.getTotalCyclo() / tmr.getTotalNumberOfTypes());
 	}
 
 	@Override
@@ -141,13 +145,13 @@ public class MetricResultConsole implements MetricOutput {
 
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
-			
+
 			System.out.println(
 					"\n--------------------------------------------------------------------------------------------------------");
 			System.out.println("Type: " + StringFormat.withLimit(type.getFullName(), 60) + "\tSLOC: " + type.getSloc()
 					+ "\tNumber of Internal Dependencies: " + type.getNumberOfInternalDependencies());
 			Set<String> dependencies = type.getInternalImports();
-			
+
 			System.out.println("INTERNAL DEPENDENCIES:");
 			for (String dependency : dependencies) {
 				System.out.println("\t" + dependency);
@@ -157,19 +161,22 @@ public class MetricResultConsole implements MetricOutput {
 
 	@Override
 	public void showNamespaceCoupling() {
-		System.out.println("\n\n---------------------------------------------------------------------------------------------");
+		System.out.println(
+				"\n\n---------------------------------------------------------------------------------------------");
 		System.out.println("NAMESPACES\t\t\t\t\t\tCA\tCE\tI\tA\tD");
-		System.out.println("---------------------------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------");
 
 		for (String name : nmr.getNamesResult()) {
 			NamespaceMetric namespace = nmr.getNamespace(name);
 			int ca = tmr.getAfferentCoupling(namespace.getName());
 			int ce = tmr.getEfferentCoupling(namespace.getName());
-			double abstractness = nmr.getAbstractness(tmr.getTotalOfAbstractTypesIn(namespace.getName()), namespace.getNumOfTypes());
+			double abstractness = nmr.getAbstractness(tmr.getTotalOfAbstractTypesIn(namespace.getName()),
+					namespace.getNumOfTypes());
 			double instability = nmr.getInstability(ca, ce);
 			double distance = nmr.getDistance(abstractness, instability);
-			System.out.printf("%50s\t%d\t%d\t%.3f\t%.3f\t%.3f\n", StringFormat.withLimit(namespace.getName(), 50), ca, ce,
-					instability, abstractness, distance);
+			System.out.printf("%50s\t%d\t%d\t%.3f\t%.3f\t%.3f\n", StringFormat.withLimit(namespace.getName(), 50), ca,
+					ce, instability, abstractness, distance);
 		}
 	}
 
@@ -186,7 +193,8 @@ public class MetricResultConsole implements MetricOutput {
 		System.out.println("-----------------------------------");
 		MetricThreshold mt = new MetricThreshold();
 		for (MetricDefinition metric : mt.getThresholds()) {
-			System.out.printf("%-60s", StringFormat.withLimit(metric.getName() + " (" + metric.getAcronym() + ") ", 60));
+			System.out.printf("%-60s",
+					StringFormat.withLimit(metric.getName() + " (" + metric.getAcronym() + ") ", 60));
 			System.out.print(metric.getDescription() + "\n");
 		}
 	}
@@ -205,8 +213,8 @@ public class MetricResultConsole implements MetricOutput {
 		for (String name : tmr.getNamesResult()) {
 			TypeMetric type = tmr.getType(name);
 			System.out.printf("%60s\t%d\t%d\t%d\t%d\n", StringFormat.withLimit(type.getFullName(), 60),
-					type.getNumberOfDependencies(), type.getNumberOfInternalDependencies(), 
-					tmr.getFanInOf(name), type.getFanOut());
+					type.getNumberOfDependencies(), type.getNumberOfInternalDependencies(), tmr.getFanInOf(name),
+					type.getFanOut());
 		}
-	} 
+	}
 }

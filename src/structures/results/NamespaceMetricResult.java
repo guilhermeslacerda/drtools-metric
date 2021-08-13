@@ -64,7 +64,7 @@ public class NamespaceMetricResult implements MetricResultNotifier<NamespaceMetr
 	}
 
 	public int getTotalNumberOfNamespaces() {
-		return this.getNamespacesName().size();
+		return this.getNamespacesName().size() > 0? this.getNamespacesName().size() : 1;
 	}
 
 	public Set<String> getNamesResult() {
@@ -117,9 +117,10 @@ public class NamespaceMetricResult implements MetricResultNotifier<NamespaceMetr
 		defineNumberOfTypesPerNamespace();
 		Arrays.sort(typesPerNamespace);
 
+		if (typesPerNamespace.length == 0) 	return 1;
+		
 		int odd = typesPerNamespace.length % 2;
-		if (odd == 1)
-			return typesPerNamespace[((typesPerNamespace.length + 1) / 2) - 1];
+		if (odd == 1) 	return typesPerNamespace[((typesPerNamespace.length + 1) / 2) - 1];
 
 		int middle = typesPerNamespace.length / 2;
 		return (typesPerNamespace[middle - 1] + typesPerNamespace[middle]) / 2;
@@ -135,7 +136,8 @@ public class NamespaceMetricResult implements MetricResultNotifier<NamespaceMetr
 	}
 
 	private double getTypesVariance() {
-		return getSumOfSquareOfTypePerNamespace() / Double.valueOf(typesPerNamespace.length);
+		int numberOfNamespaces = typesPerNamespace.length > 0 ? typesPerNamespace.length : 1;
+		return getSumOfSquareOfTypePerNamespace() / Double.valueOf(numberOfNamespaces);
 	}
 	
 	public double getStandardDeviationTypes() {

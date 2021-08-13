@@ -89,7 +89,7 @@ public class TypeMetric implements Comparable<TypeMetric> {
 	}
 
 	public String getFullName() {
-		return getNamespace() + ELEMENT_SEPARATOR + getName();
+		return (getNamespace() != null ? getNamespace() + ELEMENT_SEPARATOR : "") + getName();
 	}
 	
 	@Override

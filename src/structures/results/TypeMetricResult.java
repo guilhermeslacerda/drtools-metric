@@ -363,7 +363,7 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	public double getMedianOfSLOC() {
 		defineNumberOfSLOCPerTypes();
 		Arrays.sort(slocPerType);
-
+		
 		int odd = slocPerType.length % 2;
 		if (odd == 1) 	return slocPerType[((slocPerType.length + 1) / 2) - 1];
 
