@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import fixtures.MethodMetricFixture;
 import structures.metrics.MethodMetric;
-import utils.StatisticalAnalysis;
+import utils.calc.StatisticalAnalysis;
 
 public class MethodMetricResultTest {
 	private MethodMetricResult mmr;

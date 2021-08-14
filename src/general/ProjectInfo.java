@@ -11,7 +11,7 @@ import parser.java.JavaParser;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
-import utils.SystemUtils;
+import utils.files.SystemUtils;
 
 public class ProjectInfo {
 	private List<File> javaFiles;

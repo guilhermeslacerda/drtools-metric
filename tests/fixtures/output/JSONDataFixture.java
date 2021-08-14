@@ -18,7 +18,7 @@ import fixtures.output.data.NamespaceDependencyData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
-import utils.JSONBuilder;
+import utils.files.JSONBuilder;
 
 public class JSONDataFixture extends DataFixture {
 	private StringBuilder sb;

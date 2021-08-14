@@ -1,4 +1,4 @@
-package utils;
+package utils.files;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.junit.Test;
+
+import utils.files.SourceCodeLineCounter;
 
 public class SourceCodeLineCounterTest {
 

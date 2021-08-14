@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import structures.MetricResultNotifier;
 import structures.metrics.TypeMetric;
-import utils.StringFormat;
+import utils.files.StringFormat;
 
 public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	private static final String VARIABLE_SEPARATOR = " ";

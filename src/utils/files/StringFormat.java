@@ -1,4 +1,4 @@
-package utils;
+package utils.files;
 
 public class StringFormat {
 

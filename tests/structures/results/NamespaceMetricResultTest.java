@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import fixtures.NamespaceMetricFixture;
 import structures.metrics.NamespaceMetric;
-import utils.StatisticalAnalysis;
+import utils.calc.StatisticalAnalysis;
 
 public class NamespaceMetricResultTest {
 	private NamespaceMetricResult nmr;

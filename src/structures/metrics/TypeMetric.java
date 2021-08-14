@@ -10,7 +10,7 @@ import java.util.TreeSet;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 
 import structures.results.MethodMetricResult;
-import utils.SourceCodeLineCounter;
+import utils.files.SourceCodeLineCounter;
 
 public class TypeMetric implements Comparable<TypeMetric> {
 	private static final String ELEMENT_SEPARATOR = ".";

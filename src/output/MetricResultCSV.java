@@ -10,8 +10,8 @@ import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
-import utils.StatisticalAnalysis;
-import utils.StringFormat;
+import utils.calc.StatisticalAnalysis;
+import utils.files.StringFormat;
 
 public class MetricResultCSV implements MetricOutput, MetricFile {
 	private NamespaceMetricResult nmr;

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import fixtures.TypeMetricFixture;
 import structures.metrics.TypeMetric;
-import utils.StatisticalAnalysis;
+import utils.calc.StatisticalAnalysis;
 
 public class TypeMetricResultTest {
 	private TypeMetricResult tmr;

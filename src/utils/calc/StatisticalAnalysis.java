@@ -1,4 +1,4 @@
-package utils;
+package utils.calc;
 
 import java.util.Arrays;
 

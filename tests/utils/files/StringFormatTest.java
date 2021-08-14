@@ -1,8 +1,10 @@
-package utils;
+package utils.files;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import utils.files.StringFormat;
 
 public class StringFormatTest {
 

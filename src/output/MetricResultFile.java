@@ -3,7 +3,7 @@ package output;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
-import utils.SystemUtils;
+import utils.files.SystemUtils;
 
 public class MetricResultFile implements MetricOutput {
 	private static final String SUMMARY_INFO = "drtools-metric-summary.csv";

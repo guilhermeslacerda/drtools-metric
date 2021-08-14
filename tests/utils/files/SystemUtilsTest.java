@@ -1,4 +1,4 @@
-package utils;
+package utils.files;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Collection;
 
 import org.junit.Test;
+
+import utils.files.SystemUtils;
 
 public class SystemUtilsTest {
 	private static final String RESOURCES_JAVA_PROJECT = "./resources/javaProject";
