@@ -10,18 +10,21 @@ import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
+import utils.StatisticalAnalysis;
 import utils.StringFormat;
 
 public class MetricResultCSV implements MetricOutput, MetricFile {
 	private NamespaceMetricResult nmr;
 	private TypeMetricResult tmr;
 	private MethodMetricResult mmr;
+	private StatisticalAnalysis sa;
 
 	@Override
 	public void setResults(NamespaceMetricResult nmr, TypeMetricResult tmr, MethodMetricResult mmr) {
 		this.nmr = nmr;
 		this.tmr = tmr;
 		this.mmr = mmr;
+		this.sa  = new StatisticalAnalysis();
 	}
 
 	@Override
@@ -99,29 +102,43 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 	@Override
 	public String generateSummary() {
 		StringBuilder sb = new StringBuilder();
-
+		loadCollectionsToStatisticalComputation();
+		
+		sa.setElements(nmr.getTypesPerNamespace());
 		sb.append("\"description\",value,percent,median,std_dev\n");
 		sb.append("\"total_namespaces\"," + nmr.getTotalNumberOfNamespaces() + ",100,0.0,0.0\n");
 		sb.append(
 				"\"total_types\"," + tmr.getTotalNumberOfTypes() + ","
 						+ String.valueOf(tmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces())
 								.replace(',', '.')
-						+ "," + String.valueOf(nmr.getMedianOfTypes()).replace(',', '.') + ","
-						+ String.valueOf(nmr.getStandardDeviationTypes()).replace(',', '.') + "\n");
+						+ "," + String.valueOf(sa.getMedian()).replace(',', '.') + ","
+						+ String.valueOf(sa.getStandardDeviation()).replace(',', '.') + "\n");
+
+		sa.setElements(tmr.getSLOCPerType());
 		sb.append("\"total_sloc\"," + tmr.getTotalSLOC() + ","
 				+ String.valueOf(tmr.getTotalSLOC() / tmr.getTotalNumberOfTypes()).replace(',', '.') + ","
-				+ String.valueOf(tmr.getMedianOfSLOC()).replace(',', '.') + ","
-				+ String.valueOf(tmr.getStandardDeviationSLOC()).replace(',', '.') + "\n");
+				+ String.valueOf(sa.getMedian()).replace(',', '.') + ","
+				+ String.valueOf(sa.getStandardDeviation()).replace(',', '.') + "\n");
+		
+		sa.setElements(mmr.getMethodsPerType());
 		sb.append("\"total_methods\"," + mmr.getTotalNumberOfMethods() + ","
 				+ String.valueOf(mmr.getTotalNumberOfMethods() / tmr.getTotalNumberOfTypes()).replace(',', '.') + ","
-				+ String.valueOf(mmr.getMedianOfMethods()).replace(',', '.') + ","
-				+ String.valueOf(mmr.getStandardDeviationSLOC()).replace(',', '.') + "\n");
+				+ String.valueOf(sa.getMedian()).replace(',', '.') + ","
+				+ String.valueOf(sa.getStandardDeviation()).replace(',', '.') + "\n");
+		
 		sb.append("\"total_cyclo\"," + mmr.getTotalCyclo() + ","
 				+ String.valueOf(mmr.getTotalCyclo() / tmr.getTotalNumberOfTypes()).replace(',', '.') + ",0.0,0.0\n");
 
 		return sb.toString();
 	}
-
+	
+	@Override
+	public void loadCollectionsToStatisticalComputation() {
+		nmr.defineNumberOfTypesPerNamespace();
+		tmr.defineNumberOfSLOCPerTypes();
+		mmr.defineNumberOfMethodsPerType();
+	}
+	
 	@Override
 	public void showDependencies() {
 	}

@@ -10,13 +10,16 @@ import org.junit.Test;
 
 import fixtures.TypeMetricFixture;
 import structures.metrics.TypeMetric;
+import utils.StatisticalAnalysis;
 
 public class TypeMetricResultTest {
 	private TypeMetricResult tmr;
+	private StatisticalAnalysis sa;
 	
 	@Before
 	public void setUp() {
 		tmr = new TypeMetricResult();
+		sa  = new StatisticalAnalysis();
 		createTypes();
 	}
 	
@@ -95,13 +98,14 @@ public class TypeMetricResultTest {
 
 	@Test
 	public void testGetMedianOfSLOC() {
-		assertEquals(50.0, tmr.getMedianOfSLOC(), 0.001);
-	}	
-	
+		loadCollectionsToStatisticalComputation();
+		assertEquals(50.0, sa.getMedian(), 0.001);
+	}
+
 	@Test
 	public void testGetStandardDeviationSLOC() {
-		tmr.defineNumberOfSLOCPerTypes();
-		assertEquals(56.426, tmr.getStandardDeviationSLOC(), 0.001);
+		loadCollectionsToStatisticalComputation();
+		assertEquals(56.426, sa.getStandardDeviation(), 0.001);
 	}	
 	
 	@Test
@@ -146,4 +150,9 @@ public class TypeMetricResultTest {
 		tmr.add(t4);
 		tmr.add(t5);
 	}
+
+	private void loadCollectionsToStatisticalComputation() {
+		tmr.defineNumberOfSLOCPerTypes();
+		sa.setElements(tmr.getSLOCPerType());
+	}		
 }

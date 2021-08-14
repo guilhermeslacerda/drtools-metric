@@ -185,4 +185,8 @@ public class MetricResultFile implements MetricOutput {
 	public boolean generateArchitecturalDependenciesFile(String fileName) {
 		return SystemUtils.writeFile(fileName, dot.generateArchitecturalDependencies());
 	}
+
+	@Override
+	public void loadCollectionsToStatisticalComputation() {
+	}
 }

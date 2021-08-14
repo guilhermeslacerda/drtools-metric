@@ -109,38 +109,7 @@ public class NamespaceMetricResult implements MetricResultNotifier<NamespaceMetr
 		}
 	}
 
-	private double getAverageOfTypes() {
-		return Arrays.stream(typesPerNamespace).average().orElse(0);
-	}
-
-	public double getMedianOfTypes() {
-		defineNumberOfTypesPerNamespace();
-		Arrays.sort(typesPerNamespace);
-
-		if (typesPerNamespace.length == 0) 	return 1;
-		
-		int odd = typesPerNamespace.length % 2;
-		if (odd == 1) 	return typesPerNamespace[((typesPerNamespace.length + 1) / 2) - 1];
-
-		int middle = typesPerNamespace.length / 2;
-		return (typesPerNamespace[middle - 1] + typesPerNamespace[middle]) / 2;
-	}
-
-	private double getSumOfSquareOfTypePerNamespace() {
-		defineNumberOfTypesPerNamespace();
-		double sum = 0;
-		double average = getAverageOfTypes();
-		for (int indx = 0; indx < typesPerNamespace.length; indx++)
-			sum += Math.pow(typesPerNamespace[indx] - average, 2);
-		return sum;
-	}
-
-	private double getTypesVariance() {
-		int numberOfNamespaces = typesPerNamespace.length > 0 ? typesPerNamespace.length : 1;
-		return getSumOfSquareOfTypePerNamespace() / Double.valueOf(numberOfNamespaces);
-	}
-	
-	public double getStandardDeviationTypes() {
-		return Math.sqrt(getTypesVariance());
-	}
+	public int[] getTypesPerNamespace() {
+		return typesPerNamespace;
+	}	
 }

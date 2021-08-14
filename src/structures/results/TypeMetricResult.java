@@ -356,36 +356,8 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 		}
 	}
 
-	private double getAverageOfSLOC() {
-		return Arrays.stream(slocPerType).average().orElse(0);
-	}
-
-	public double getMedianOfSLOC() {
-		defineNumberOfSLOCPerTypes();
-		Arrays.sort(slocPerType);
-		
-		int odd = slocPerType.length % 2;
-		if (odd == 1) 	return slocPerType[((slocPerType.length + 1) / 2) - 1];
-
-		int middle = slocPerType.length / 2;
-		return (slocPerType[middle - 1] + slocPerType[middle]) / 2;
-	}
-
-	private double getSumOfSquareOfSLOCPerType() {
-		defineNumberOfSLOCPerTypes();
-		double sum = 0;
-		double average = getAverageOfSLOC();
-		for (int indx = 0; indx < slocPerType.length; indx++)
-			sum += Math.pow(slocPerType[indx] - average, 2);
-		return sum;
-	}
-
-	private double getSLOCVariance() {
-		return getSumOfSquareOfSLOCPerType() / Double.valueOf(slocPerType.length);
-	}
-
-	public double getStandardDeviationSLOC() {
-		return Math.sqrt(getSLOCVariance());
+	public int[] getSLOCPerType() {
+		return slocPerType;
 	}
 
 	public double getLackCohesionMethods(String name) {

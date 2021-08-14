@@ -19,12 +19,14 @@ import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
 import utils.JSONBuilder;
+import utils.StatisticalAnalysis;
 import utils.StringFormat;
 
 public class MetricResultJSON implements MetricOutput, MetricFile {
 	private NamespaceMetricResult nmr;
 	private TypeMetricResult tmr;
 	private MethodMetricResult mmr;
+	private StatisticalAnalysis sa;
 	private Gson gson;
 
 	@Override
@@ -32,6 +34,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		this.nmr = nmr;
 		this.tmr = tmr;
 		this.mmr = mmr;
+		this.sa  = new StatisticalAnalysis();
 		this.gson = new GsonBuilder().disableHtmlEscaping().create();
 	}
 
@@ -105,6 +108,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 	@Override
 	public String generateSummary() {
 		JsonArray summaryList = new JsonArray();
+		loadCollectionsToStatisticalComputation();
 
 		JsonObject totalNamespaces = new JsonObject();
 		totalNamespaces.addProperty("description", "total_namespaces");
@@ -114,25 +118,28 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		totalNamespaces.addProperty("std_dev", 0.0);
 
 		JsonObject totalTypes = new JsonObject();
+		sa.setElements(nmr.getTypesPerNamespace());
 		totalTypes.addProperty("description", "total_types");
 		totalTypes.addProperty("value", tmr.getTotalNumberOfTypes());
 		totalTypes.addProperty("percent", tmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces());
-		totalTypes.addProperty("median", nmr.getMedianOfTypes());
-		totalTypes.addProperty("std_dev", nmr.getStandardDeviationTypes());
+		totalTypes.addProperty("median", sa.getMedian());
+		totalTypes.addProperty("std_dev", sa.getStandardDeviation());
 
 		JsonObject totalSloc = new JsonObject();
+		sa.setElements(tmr.getSLOCPerType());
 		totalSloc.addProperty("description", "total_sloc");
 		totalSloc.addProperty("value", tmr.getTotalSLOC());
 		totalSloc.addProperty("percent", tmr.getTotalSLOC() / tmr.getTotalNumberOfTypes());
-		totalSloc.addProperty("median", tmr.getMedianOfSLOC());
-		totalSloc.addProperty("std_dev", tmr.getStandardDeviationSLOC());
+		totalSloc.addProperty("median", sa.getMedian());
+		totalSloc.addProperty("std_dev", sa.getStandardDeviation());
 
 		JsonObject totalMethods = new JsonObject();
+		sa.setElements(mmr.getMethodsPerType());
 		totalMethods.addProperty("description", "total_methods");
 		totalMethods.addProperty("value", mmr.getTotalNumberOfMethods());
 		totalMethods.addProperty("percent", mmr.getTotalNumberOfMethods() / tmr.getTotalNumberOfTypes());
-		totalMethods.addProperty("median", mmr.getMedianOfMethods());
-		totalMethods.addProperty("std_dev", mmr.getStandardDeviationSLOC());
+		totalMethods.addProperty("median", sa.getMedian());
+		totalMethods.addProperty("std_dev", sa.getStandardDeviation());
 
 		JsonObject totalCyclo = new JsonObject();
 		totalCyclo.addProperty("description", "total_cyclo");
@@ -147,6 +154,13 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		summaryList.add(totalMethods);
 		summaryList.add(totalCyclo);
 		return gson.toJson(summaryList);
+	}
+
+	@Override
+	public void loadCollectionsToStatisticalComputation() {
+		nmr.defineNumberOfTypesPerNamespace();
+		tmr.defineNumberOfSLOCPerTypes();
+		mmr.defineNumberOfMethodsPerType();
 	}
 
 	@Override

@@ -109,35 +109,7 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 		}
 	}
 	
-	private double getAverageOfSLOC() {
-		return Arrays.stream(methodsPerType).average().orElse(0);
-	}
-
-	public double getMedianOfMethods() {
-		defineNumberOfMethodsPerType();
-		Arrays.sort(methodsPerType);
-		
-		int odd = methodsPerType.length % 2;
-		if (odd == 1)	return methodsPerType[((methodsPerType.length + 1) / 2) - 1];
-		
-		int middle = methodsPerType.length / 2;
-		return (methodsPerType[middle - 1] + methodsPerType[middle]) / 2;
-	}
-	
-	private double getSumOfSquareOfMethodsPerType() {
-		defineNumberOfMethodsPerType();
-		double sum = 0;
-		double average = getAverageOfSLOC();
-		for (int indx = 0; indx < methodsPerType.length; indx++)
-			sum += Math.pow(methodsPerType[indx] - average, 2);
-		return sum;
-	}
-
-	private double getMethodsVariance() {
-		return getSumOfSquareOfMethodsPerType() / Double.valueOf(methodsPerType.length);
-	}
-	
-	public double getStandardDeviationSLOC() {
-		return Math.sqrt(getMethodsVariance());
+	public int[] getMethodsPerType() {
+		return methodsPerType;
 	}
 }

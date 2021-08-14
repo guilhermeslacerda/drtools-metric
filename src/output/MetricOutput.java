@@ -19,4 +19,5 @@ public interface MetricOutput {
 	void showAllCoupling();
 	void showThresholds();
 	void showTypeCoupling();
+	void loadCollectionsToStatisticalComputation();
 }

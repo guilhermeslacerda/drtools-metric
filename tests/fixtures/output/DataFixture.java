@@ -60,7 +60,7 @@ public abstract class DataFixture implements MetricFile {
 		summary.add(new SummaryData("total_namespaces", 6, 100, 0.0, 0.0));
 		summary.add(new SummaryData("total_types", 17, 2, 2.0, 1.8633899812498247));
 		summary.add(new SummaryData("total_sloc", 393, 23, 6.0, 55.983067138451545));
-		summary.add(new SummaryData("total_methods", 56, 3, 3.0, 8.024019267429612));
+		summary.add(new SummaryData("total_methods", 56, 3, 3.0, 8.02401926742961));
 		summary.add(new SummaryData("total_cyclo", 86, 5, 0.0, 0.0));
 
 		return summary;

@@ -9,13 +9,16 @@ import org.junit.Test;
 
 import fixtures.MethodMetricFixture;
 import structures.metrics.MethodMetric;
+import utils.StatisticalAnalysis;
 
 public class MethodMetricResultTest {
 	private MethodMetricResult mmr;
+	private StatisticalAnalysis sa;
 	
 	@Before
 	public void setUp() {
 		mmr = new MethodMetricResult();
+		sa  = new StatisticalAnalysis();
 		createTypes();
 	}
 	
@@ -41,13 +44,14 @@ public class MethodMetricResultTest {
 
 	@Test
 	public void testGetMedianOfMethods() {
-		assertEquals(27.0, mmr.getMedianOfMethods(), 0.001);
+		loadCollectionsToStatisticalComputation();
+		assertEquals(27.0, sa.getMedian(), 0.001);
 	}
 
 	@Test
 	public void testGetStandardDeviationSLOC() {
-		mmr.defineNumberOfMethodsPerType();
-		assertEquals(7.5, mmr.getStandardDeviationSLOC(), 0.001);
+		loadCollectionsToStatisticalComputation();
+		assertEquals(7.5, sa.getStandardDeviation(), 0.001);
 	}
 
 	@Test
@@ -96,5 +100,10 @@ public class MethodMetricResultTest {
 		mmr.add(m1);
 		mmr.add(m2);
 		mmr.add(m3);
+	}
+
+	private void loadCollectionsToStatisticalComputation() {
+		mmr.defineNumberOfMethodsPerType();
+		sa.setElements(mmr.getMethodsPerType());
 	}
 }

@@ -10,18 +10,21 @@ import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
+import utils.StatisticalAnalysis;
 import utils.StringFormat;
 
 public class MetricResultConsole implements MetricOutput {
 	private NamespaceMetricResult nmr;
 	private TypeMetricResult tmr;
 	private MethodMetricResult mmr;
+	private StatisticalAnalysis sa;
 
 	@Override
 	public void setResults(NamespaceMetricResult nmr, TypeMetricResult tmr, MethodMetricResult mmr) {
 		this.nmr = nmr;
 		this.tmr = tmr;
 		this.mmr = mmr;
+		this.sa  = new StatisticalAnalysis();
 	}
 
 	@Override
@@ -73,24 +76,39 @@ public class MetricResultConsole implements MetricOutput {
 
 	@Override
 	public void showSummary() {
+		loadCollectionsToStatisticalComputation();
+		
+		sa.setElements(nmr.getTypesPerNamespace());
 		System.out.println("------------------");
 		System.out.println("SUMMARY OF METRICS");
 		System.out.println("------------------");
 		System.out.printf("            Total of Namespaces: %d", nmr.getTotalNumberOfNamespaces());
 		System.out.printf("\n                 Total of Types: %d", tmr.getTotalNumberOfTypes());
 		System.out.printf(" - %.2f (number of types/namespaces - median: %.2f - std dev: %.2f)",
-			(float) tmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces(), nmr.getMedianOfTypes(),
-			nmr.getStandardDeviationTypes());
+			(float) tmr.getTotalNumberOfTypes() / nmr.getTotalNumberOfNamespaces(), sa.getMedian(),
+			sa.getStandardDeviation());
+		
+		sa.setElements(tmr.getSLOCPerType());
 		System.out.printf("\n                  Total of SLOC: %d", tmr.getTotalSLOC());
 		System.out.printf(" - %.2f (number of SLOC/types - median: %.2f - std dev: %.2f)",
-				(float) tmr.getTotalSLOC() / tmr.getTotalNumberOfTypes(), tmr.getMedianOfSLOC(),
-				tmr.getStandardDeviationSLOC());
+				(float) tmr.getTotalSLOC() / tmr.getTotalNumberOfTypes(), sa.getMedian(),
+				sa.getStandardDeviation());
+		
+		sa.setElements(mmr.getMethodsPerType());
 		System.out.printf("\n               Total of Methods: %d", mmr.getTotalNumberOfMethods());
 		System.out.printf(" - %.2f (number of methods/types - median: %.2f - std dev: %.2f)",
-				(float) mmr.getTotalNumberOfMethods() / tmr.getTotalNumberOfTypes(), mmr.getMedianOfMethods(),
-				mmr.getStandardDeviationSLOC());
+				(float) mmr.getTotalNumberOfMethods() / tmr.getTotalNumberOfTypes(), sa.getMedian(),
+				sa.getStandardDeviation());
+		
 		System.out.printf("\n                 Total of CYCLO: %d", mmr.getTotalCyclo());
 		System.out.printf(" - %.2f (number of CYCLO/types)", (float) mmr.getTotalCyclo() / tmr.getTotalNumberOfTypes());
+	}
+
+	@Override
+	public void loadCollectionsToStatisticalComputation() {
+		nmr.defineNumberOfTypesPerNamespace();
+		tmr.defineNumberOfSLOCPerTypes();
+		mmr.defineNumberOfMethodsPerType();
 	}
 
 	@Override

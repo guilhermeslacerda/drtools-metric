@@ -9,13 +9,16 @@ import org.junit.Test;
 
 import fixtures.NamespaceMetricFixture;
 import structures.metrics.NamespaceMetric;
+import utils.StatisticalAnalysis;
 
 public class NamespaceMetricResultTest {
 	private NamespaceMetricResult nmr;
+	private StatisticalAnalysis sa;
 	
 	@Before
 	public void setUp() {
 		nmr = new NamespaceMetricResult();
+		sa  = new StatisticalAnalysis();
 		createNamespaces();
 	}
 	
@@ -31,13 +34,14 @@ public class NamespaceMetricResultTest {
 
 	@Test
 	public void testGetMedianOfTypes() {
-		assertEquals(6, nmr.getMedianOfTypes(), 0.001);
+		loadCollectionsToStatisticalComputation();		
+		assertEquals(6, sa.getMedian(), 0.001);
 	}
-	
+
 	@Test
 	public void testGetStandardDeviationTypes() {
-		nmr.defineNumberOfTypesPerNamespace();
-		assertEquals(3.5, nmr.getStandardDeviationTypes(), 0.001);
+		loadCollectionsToStatisticalComputation();
+		assertEquals(3.5, sa.getStandardDeviation(), 0.001);
 	}
 
 	@Test
@@ -78,5 +82,10 @@ public class NamespaceMetricResultTest {
 		
 		nmr.add(ns1);
 		nmr.add(ns2);
+	}
+
+	private void loadCollectionsToStatisticalComputation() {
+		nmr.defineNumberOfTypesPerNamespace();
+		sa.setElements(nmr.getTypesPerNamespace());
 	}
 }
