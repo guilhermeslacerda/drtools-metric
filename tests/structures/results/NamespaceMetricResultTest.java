@@ -35,7 +35,7 @@ public class NamespaceMetricResultTest {
 	@Test
 	public void testGetMedianOfTypes() {
 		loadCollectionsToStatisticalComputation();		
-		assertEquals(6, sa.getMedian(), 0.001);
+		assertEquals(6.5, sa.getMedian(), 0.001);
 	}
 
 	@Test

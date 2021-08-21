@@ -14,7 +14,7 @@ import structures.metrics.MethodMetric;
 
 public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 	private Map<String, MethodMetric> methodMetrics;
-	private int methodsPerType[];
+	private double methodsPerType[];
 	private int number = 0;
 
 	public MethodMetricResult() {
@@ -101,7 +101,7 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 	}
 	
 	public void defineNumberOfMethodsPerType() {
-		methodsPerType = new int[getTotalNumberOfMethods()];
+		methodsPerType = new double[getTotalNumberOfMethods()];
 		int position = 0;
 		for (String name : this.getMethodsName()) {
 			MethodMetric method = this.getMethod(name);
@@ -109,7 +109,7 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 		}
 	}
 	
-	public int[] getMethodsPerType() {
+	public double[] getMethodsPerType() {
 		return methodsPerType;
 	}
 }

@@ -14,7 +14,7 @@ import structures.metrics.NamespaceMetric;
 
 public class NamespaceMetricResult implements MetricResultNotifier<NamespaceMetric> {
 	private Map<String, NamespaceMetric> namespaceMetrics;
-	private int typesPerNamespace[];
+	private double typesPerNamespace[];
 	private int number = 0;
 
 	public NamespaceMetricResult() {
@@ -101,7 +101,7 @@ public class NamespaceMetricResult implements MetricResultNotifier<NamespaceMetr
 	}
 
 	public void defineNumberOfTypesPerNamespace() {
-		typesPerNamespace = new int[getTotalNumberOfNamespaces()];
+		typesPerNamespace = new double[getTotalNumberOfNamespaces()];
 		int position = 0;
 		for (String name : this.getNamespacesName()) {
 			NamespaceMetric namespace = this.getNamespace(name);
@@ -109,7 +109,7 @@ public class NamespaceMetricResult implements MetricResultNotifier<NamespaceMetr
 		}
 	}
 
-	public int[] getTypesPerNamespace() {
+	public double[] getTypesPerNamespace() {
 		return typesPerNamespace;
 	}	
 }

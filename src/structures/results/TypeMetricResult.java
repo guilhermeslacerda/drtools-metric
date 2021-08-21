@@ -21,7 +21,7 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	private Map<String, TypeMetric> typeMetrics;
 	private Map<String, LinkedHashSet<TypeMetric>> typesResonance;
 	private Map<String, Integer> typeFanIn;
-	private int slocPerType[];
+	private double slocPerType[];
 	private int number = 0;
 	private MethodMetricResult mmr;
 
@@ -348,7 +348,7 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	}
 
 	public void defineNumberOfSLOCPerTypes() {
-		slocPerType = new int[getTotalNumberOfTypes()];
+		slocPerType = new double[getTotalNumberOfTypes()];
 		int position = 0;
 		for (String name : this.getTypesName()) {
 			TypeMetric type = this.getType(name);
@@ -356,7 +356,7 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 		}
 	}
 
-	public int[] getSLOCPerType() {
+	public double[] getSLOCPerType() {
 		return slocPerType;
 	}
 

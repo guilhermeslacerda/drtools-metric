@@ -45,7 +45,7 @@ public class MethodMetricResultTest {
 	@Test
 	public void testGetMedianOfMethods() {
 		loadCollectionsToStatisticalComputation();
-		assertEquals(27.0, sa.getMedian(), 0.001);
+		assertEquals(27.5, sa.getMedian(), 0.001);
 	}
 
 	@Test
