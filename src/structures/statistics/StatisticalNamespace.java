@@ -1,17 +1,32 @@
 package structures.statistics;
 
-import structures.results.NamespaceMetricResult;
-import utils.calc.StatisticalAnalysis;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class StatisticalNamespace {
-	private StatisticalAnalysis sa;
-	private NamespaceMetricResult nmr;
+import structures.metrics.NamespaceMetric;
+import structures.results.NamespaceMetricResult;
+
+public class StatisticalNamespace extends StatisticalOperations {
+	private List<NamespaceMetric> namespaceMetrics;
+	private double[] noc;
 	
 	public StatisticalNamespace() {
-		sa = new StatisticalAnalysis();
+		super();
 	}
 	
 	public void defineResults(NamespaceMetricResult nmr) {
-		this.nmr = nmr;
+		namespaceMetrics = nmr.getNamespaceMetrics().values().stream().collect(Collectors.toList());
+	}
+	
+	@Override
+	public void compute() {
+		noc = new double[namespaceMetrics.size()];
+		int indx = 0;
+		for (NamespaceMetric namespaceMetric : namespaceMetrics) 
+			noc[indx++] = namespaceMetric.getNumOfTypes();
+	}
+	
+	public void useNOC() {
+		sa.setElements(noc);
 	}
 }
