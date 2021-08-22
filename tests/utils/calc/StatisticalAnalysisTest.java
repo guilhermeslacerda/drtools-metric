@@ -1,11 +1,9 @@
 package utils.calc;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import utils.calc.StatisticalAnalysis;
 
 public class StatisticalAnalysisTest {
 	private StatisticalAnalysis sa;
