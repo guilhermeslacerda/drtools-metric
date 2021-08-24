@@ -1,4 +1,4 @@
-package structures.statistics;
+package structures.statistics.namespaces;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,6 +8,7 @@ import org.junit.Test;
 import fixtures.NamespaceMetricFixture;
 import structures.metrics.NamespaceMetric;
 import structures.results.NamespaceMetricResult;
+import structures.statistics.StatisticalOfNamespace;
 
 public class StatisticalOfNamespaceTest {
 	private NamespaceMetricResult nmr;
