@@ -1,8 +1,24 @@
-package general.options;
+package selection.options;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
+
+import selection.options.OptionDefinition;
+import selection.options.Options;
+import selection.options.dependencies.AllCouplingOption;
+import selection.options.dependencies.CyclicDependencyOption;
+import selection.options.dependencies.DependencyOption;
+import selection.options.dependencies.InternalDependencyOption;
+import selection.options.dependencies.NamespaceCouplingOption;
+import selection.options.dependencies.TypeCouplingOption;
+import selection.options.general.AllMetricsOption;
+import selection.options.general.MetricVisualizationOption;
+import selection.options.general.SummaryOption;
+import selection.options.general.ThresholdsOption;
+import selection.options.strutures.MethodOption;
+import selection.options.strutures.NamespaceOption;
+import selection.options.strutures.TypeOption;
 
 public class OptionsTest {
 

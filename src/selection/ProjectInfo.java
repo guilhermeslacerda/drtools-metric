@@ -1,13 +1,13 @@
-package general;
+package selection;
 
 import java.io.File;
 import java.util.List;
 
-import general.options.Options;
 import output.Gauge;
 import output.MetricOutput;
 import parser.TypeParser;
 import parser.java.JavaParser;
+import selection.options.Options;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;
