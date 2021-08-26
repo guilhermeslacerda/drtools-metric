@@ -245,9 +245,7 @@ public class MetricResultConsole implements MetricOutput {
 		sn.defineResults(nmr);
 		sn.useNOC();
 		List<StatisticMetricResult> list = sn.getList();
-		System.out.println("-----------------------------------------------------------------------------------------");
-		System.out.println("METRIC\t1stQ\t3rdQ\tAvg\tMedian\tMin\tMax\tMax-Min\tStdDev\tU-Fnc\tThreshold");
-		System.out.println("-----------------------------------------------------------------------------------------");
+		InfoConsole.printStatisticalLabels();
 		for (StatisticMetricResult metric : list) {
 			System.out.printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", metric.getAcronym(), 
 					metric.getFirstQuartile(), metric.getThirdQuartile(), metric.getAverage(), 

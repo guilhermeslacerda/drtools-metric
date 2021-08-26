@@ -105,6 +105,12 @@ public class InfoConsole {
 		System.out.println("3 - do the setup on dr-tools-properties.js and you're done!");	
 	}
 	
+	public static void printStatisticalLabels() {
+		System.out.println("-----------------------------------------------------------------------------------------");
+		System.out.println("METRIC\t1stQ\t3rdQ\tAvg\tMedian\tMin\tMax\tMax-Min\tStdDev\tU-Fnc\tThreshold");
+		System.out.println("-----------------------------------------------------------------------------------------");
+	}
+	
 	public static void printStatisticalLegend() {
 		System.out.println("\n\nLegend:");
 		System.out.println("\t1stQ=First Quartile, 3rdQ=Third Quartile, Avg=Average, Median=Median, Min=Min value, Max=Max value");
