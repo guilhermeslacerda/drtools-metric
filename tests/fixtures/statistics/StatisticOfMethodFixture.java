@@ -3,11 +3,11 @@ package fixtures.statistics;
 import fixtures.MethodMetricFixture;
 import structures.metrics.MethodMetric;
 import structures.results.MethodMetricResult;
-import structures.statistics.StatisticalOfMethod;
+import structures.statistics.StatisticOfMethod;
 
-public abstract class StatisticalOfMethodFixture {
+public abstract class StatisticOfMethodFixture {
 	protected MethodMetricResult mmr;
-	protected StatisticalOfMethod sm;
+	protected StatisticOfMethod sm;
 
 	protected void createMethods() {
 		MethodMetric m1 = new MethodMetricFixture().withType("test.model.Client").withName("getClient").withCyclo(5).parameters(1)
@@ -24,7 +24,7 @@ public abstract class StatisticalOfMethodFixture {
 
 	protected void createStructureToTest() {
 		mmr = new MethodMetricResult();
-		sm  = new StatisticalOfMethod();
+		sm  = new StatisticOfMethod();
 		createMethods();
 		loadData();
 	}

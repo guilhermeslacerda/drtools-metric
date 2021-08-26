@@ -1,33 +1,33 @@
 package structures.statistics.types;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import fixtures.statistics.StatisticalOfTypeFixture;
+import fixtures.statistics.StatisticOfTypeFixture;
 
-public class StatisticalNpmOfTypeTest extends StatisticalOfTypeFixture {
+public class StatisticNoaOfTypeTest extends StatisticOfTypeFixture {
 
 	@Before
 	public void setUp() {
 		createStructureToTest();
-		st.useNPM();
+		st.useNOA();
 	}
 
 	@Test
 	public void testGetMedian() {
-		assertEquals(0.0, st.getMedian(), 0.01);
+		assertEquals(1.0, st.getMedian(), 0.01);
 	}
 	
 	@Test 
 	public void testGetAverage() {
-		assertEquals(0.2, st.getAverage(), 0.01);
+		assertEquals(1.4, st.getAverage(), 0.01);
 	}
 	
 	@Test
 	public void testGetAmplitude() {
-		assertEquals(1.0, st.getAmplitude(), 0.01);
+		assertEquals(3.0, st.getAmplitude(), 0.01);
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class StatisticalNpmOfTypeTest extends StatisticalOfTypeFixture {
 	
 	@Test
 	public void testGetThirdQuartile() {
-		assertEquals(0.5, st.getThirdQuartile(), 0.01);
+		assertEquals(3.0, st.getThirdQuartile(), 0.01);
 	}
 	
 	@Test
@@ -47,26 +47,26 @@ public class StatisticalNpmOfTypeTest extends StatisticalOfTypeFixture {
 	
 	@Test
 	public void testGetMaxValue() {
-		assertEquals(1.0, st.getMaxValue(), 0.01);
+		assertEquals(3.0, st.getMaxValue(), 0.01);
 	}
 	
 	@Test
 	public void testGetLowerFence() {
-		assertEquals(-0.75, st.getLowerFence(), 0.01);
+		assertEquals(-4.5, st.getLowerFence(), 0.01);
 	}
 	
 	@Test
 	public void testGetUpperFence() {
-		assertEquals(1.25, st.getUpperFence(), 0.01);
+		assertEquals(7.5, st.getUpperFence(), 0.01);
 	}
 	
 	@Test 
 	public void testGetStandardDeviation() {
-		assertEquals(0.4, st.getStandardDeviation(), 0.01);
+		assertEquals(1.35, st.getStandardDeviation(), 0.01);
 	}
 	
 	@Test
 	public void testGetInterQuartileRange() {
-		assertEquals(0.5, st.getInterQuartileRange(), 0.01);
+		assertEquals(3.0, st.getInterQuartileRange(), 0.01);
 	}
 }

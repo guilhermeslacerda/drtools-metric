@@ -6,11 +6,11 @@ import java.util.TreeSet;
 import fixtures.TypeMetricFixture;
 import structures.metrics.TypeMetric;
 import structures.results.TypeMetricResult;
-import structures.statistics.StatisticalOfType;
+import structures.statistics.StatisticOfType;
 
-public abstract class StatisticalOfTypeFixture {
+public abstract class StatisticOfTypeFixture {
 	protected TypeMetricResult tmr;
-	protected StatisticalOfType st;
+	protected StatisticOfType st;
 
 	protected void createTypes() {
 		Set<String> imports1 = new TreeSet<>();
@@ -47,7 +47,7 @@ public abstract class StatisticalOfTypeFixture {
 
 	protected void createStructureToTest() {
 		tmr = new TypeMetricResult();
-		st  = new StatisticalOfType();
+		st  = new StatisticOfType();
 		createTypes();
 		loadData();
 	}

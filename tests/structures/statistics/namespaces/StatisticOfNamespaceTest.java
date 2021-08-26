@@ -8,16 +8,16 @@ import org.junit.Test;
 import fixtures.NamespaceMetricFixture;
 import structures.metrics.NamespaceMetric;
 import structures.results.NamespaceMetricResult;
-import structures.statistics.StatisticalOfNamespace;
+import structures.statistics.StatisticOfNamespace;
 
-public class StatisticalOfNamespaceTest {
+public class StatisticOfNamespaceTest {
 	private NamespaceMetricResult nmr;
-	private StatisticalOfNamespace sn;
+	private StatisticOfNamespace sn;
 	
 	@Before
 	public void setUp() {
 		nmr = new NamespaceMetricResult();
-		sn  = new StatisticalOfNamespace();
+		sn  = new StatisticOfNamespace();
 		createNamespaces();
 		loadData();
 	}
@@ -93,7 +93,6 @@ public class StatisticalOfNamespaceTest {
 
 	private void loadData() {
 		sn.defineResults(nmr);
-		sn.compute();
 		sn.useNOC();
 	}
 }

@@ -5,14 +5,14 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import fixtures.statistics.StatisticalOfTypeFixture;
+import fixtures.statistics.StatisticOfTypeFixture;
 
-public class StatisticalFanInOfTypeTest extends StatisticalOfTypeFixture {
+public class StatisticIDepOfTypeTest extends StatisticOfTypeFixture {
 
 	@Before
 	public void setUp() {
 		createStructureToTest();
-		st.useFanIn();
+		st.useIDEP();
 	}
 
 	@Test
@@ -22,12 +22,12 @@ public class StatisticalFanInOfTypeTest extends StatisticalOfTypeFixture {
 	
 	@Test 
 	public void testGetAverage() {
-		assertEquals(0.0, st.getAverage(), 0.01);
+		assertEquals(0.6, st.getAverage(), 0.01);
 	}
 	
 	@Test
 	public void testGetAmplitude() {
-		assertEquals(0.0, st.getAmplitude(), 0.01);
+		assertEquals(3.0, st.getAmplitude(), 0.01);
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class StatisticalFanInOfTypeTest extends StatisticalOfTypeFixture {
 	
 	@Test
 	public void testGetThirdQuartile() {
-		assertEquals(0.0, st.getThirdQuartile(), 0.01);
+		assertEquals(1.5, st.getThirdQuartile(), 0.01);
 	}
 	
 	@Test
@@ -47,26 +47,26 @@ public class StatisticalFanInOfTypeTest extends StatisticalOfTypeFixture {
 	
 	@Test
 	public void testGetMaxValue() {
-		assertEquals(0.0, st.getMaxValue(), 0.01);
+		assertEquals(3.0, st.getMaxValue(), 0.01);
 	}
 	
 	@Test
 	public void testGetLowerFence() {
-		assertEquals(0.0, st.getLowerFence(), 0.01);
+		assertEquals(-2.25, st.getLowerFence(), 0.01);
 	}
 	
 	@Test
 	public void testGetUpperFence() {
-		assertEquals(0.0, st.getUpperFence(), 0.01);
+		assertEquals(3.75, st.getUpperFence(), 0.01);
 	}
 	
 	@Test 
 	public void testGetStandardDeviation() {
-		assertEquals(0.0, st.getStandardDeviation(), 0.01);
+		assertEquals(1.2, st.getStandardDeviation(), 0.01);
 	}
 	
 	@Test
 	public void testGetInterQuartileRange() {
-		assertEquals(0.0, st.getInterQuartileRange(), 0.01);
+		assertEquals(1.5, st.getInterQuartileRange(), 0.01);
 	}
 }

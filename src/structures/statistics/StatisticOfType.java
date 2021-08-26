@@ -7,12 +7,12 @@ import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.TypeMetricResult;
 
-public class StatisticalOfType extends StatisticalOperations {
+public class StatisticOfType extends StatisticalOperations {
 	private List<TypeMetric> typeMetrics;
-	private double[] sloc, nom, npm, wmc, dep, idep, fanIn, fanOut, noa;
+	private double[] sloc, nom, npm, wmc, dep, idep, fanIn, fanOut, noa, lcom;
 	private TypeMetricResult tmr;
 	
-	public StatisticalOfType() {
+	public StatisticOfType() {
 		super();
 	}
 	
@@ -36,6 +36,7 @@ public class StatisticalOfType extends StatisticalOperations {
 			 fanIn[indx] = tmr.getFanInOf(typeMetric.getName());
 			fanOut[indx] = typeMetric.getFanOut();
 			   noa[indx] = typeMetric.getNumOfVariables();
+			  lcom[indx] = tmr.getLackCohesionMethods(typeMetric.getFullName());
 			 indx++;
 		}
 	}
@@ -50,6 +51,7 @@ public class StatisticalOfType extends StatisticalOperations {
 		 fanIn = new double[typeMetrics.size()];
 		fanOut = new double[typeMetrics.size()];
 		   noa = new double[typeMetrics.size()];
+		  lcom = new double[typeMetrics.size()];
 	}
 	
 	public void useSLOC() {
@@ -86,5 +88,15 @@ public class StatisticalOfType extends StatisticalOperations {
 
 	public void useNOA() {
 		sa.setElements(noa);
+	}
+
+	public void useLCOM() {
+		sa.setElements(lcom);
+	}
+
+	@Override
+	protected void setInfo() {
+		// TODO Auto-generated method stub
+		
 	}
 }

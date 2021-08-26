@@ -1,12 +1,20 @@
 package structures.statistics;
 
+import java.util.List;
+
+import structures.metrics.MetricDefinition;
+import structures.metrics.MetricThreshold;
+import structures.results.StatisticalMetricResult;
 import utils.calc.StatisticalAnalysis;
 
 public abstract class StatisticalOperations {
 	protected StatisticalAnalysis sa;
+	protected List<StatisticalMetricResult> statisticList;
+	protected MetricThreshold mt;
 
 	public StatisticalOperations() {
 		sa = new StatisticalAnalysis();
+		mt = new MetricThreshold();
 	}
 	
 	public abstract void compute();
@@ -53,5 +61,16 @@ public abstract class StatisticalOperations {
 
 	public double getStandardDeviation() {
 		return sa.getStandardDeviation();
+	}
+	
+	protected abstract void setInfo();
+	
+	public List<StatisticalMetricResult> getList() {
+		setInfo();
+		return statisticList;
+	}
+	
+	public MetricDefinition getMetric(String acronym) {
+		return mt.getMetricDefinition(acronym);
 	}
 }

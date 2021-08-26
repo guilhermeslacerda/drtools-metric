@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 import structures.metrics.MethodMetric;
 import structures.results.MethodMetricResult;
 
-public class StatisticalOfMethod extends StatisticalOperations {
+public class StatisticOfMethod extends StatisticalOperations {
 	private List<MethodMetric> methodMetrics;
 	private double[] mloc, cyclo, calls, nbd, param;
 	
-	public StatisticalOfMethod() {
+	public StatisticOfMethod() {
 		super();
 	}
 	
