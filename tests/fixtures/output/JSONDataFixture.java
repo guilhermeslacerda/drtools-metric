@@ -2,6 +2,7 @@ package fixtures.output;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -15,9 +16,12 @@ import fixtures.output.data.MetricThresholdData;
 import fixtures.output.data.NamespaceCouplingData;
 import fixtures.output.data.NamespaceData;
 import fixtures.output.data.NamespaceDependencyData;
+import fixtures.output.data.StatisticData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
+import structures.results.StatisticMetricResult;
+import structures.statistics.StatisticOfNamespace;
 import utils.files.JSONBuilder;
 
 public class JSONDataFixture extends DataFixture {
@@ -305,5 +309,26 @@ public class JSONDataFixture extends DataFixture {
 		}
 		
 		return linksList;
+	}
+
+	@Override
+	public String generateStatisticalNamespace() {
+		JsonArray namespaceList = new JsonArray();
+
+		for (StatisticData metric : getStatisticNamespaceData()) {
+			namespaceList.add(new JSONBuilder()
+				.add("metric", metric.getAcronym())
+				.add("1stQ", metric.getFirstQuartile())
+				.add("3stQ", metric.getThirdQuartile())
+				.add("avg", metric.getAverage())
+				.add("median", metric.getMedian())
+				.add("min", metric.getMinValue())
+				.add("max", metric.getMaxValue())
+				.add("stddev", metric.getStandardDeviation())
+				.add("u-fence", metric.getUpperFence())
+				.add("threshold", metric.getThreshold()).create());
+		}
+
+		return gson.toJson(namespaceList);
 	}
 }

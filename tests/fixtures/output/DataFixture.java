@@ -13,6 +13,7 @@ import fixtures.output.data.MetricThresholdData;
 import fixtures.output.data.NamespaceCouplingData;
 import fixtures.output.data.NamespaceData;
 import fixtures.output.data.NamespaceDependencyData;
+import fixtures.output.data.StatisticData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
@@ -22,6 +23,7 @@ public abstract class DataFixture implements MetricFile {
 	private Map<String, LinkedHashSet<TypeResonanceData>> typesResonanceData;
 	private List<SummaryData> summary;
 	private List<NamespaceData> namespaces;
+	private List<StatisticData> statistics;
 	private List<TypeData> types;
 	private List<MethodData> methods;
 	private List<NamespaceCouplingData> namespaceCoupling;
@@ -30,14 +32,15 @@ public abstract class DataFixture implements MetricFile {
 	private Set<NamespaceDependencyData> namespacesDependencies;
 	
 	public DataFixture() {
-		typesResonanceData = new LinkedHashMap<>(); 
-		summary = new ArrayList<>();
-		namespaces = new ArrayList<>();
-		types = new ArrayList<>();
-		methods = new ArrayList<>();
-		namespaceCoupling = new ArrayList<>();
-		thresholds = new ArrayList<>();
-		dependencies = new ArrayList<>();
+		typesResonanceData     = new LinkedHashMap<>(); 
+		summary                = new ArrayList<>();
+		namespaces             = new ArrayList<>();
+		statistics             = new ArrayList<>();
+		types                  = new ArrayList<>();
+		methods                = new ArrayList<>();
+		namespaceCoupling      = new ArrayList<>();
+		thresholds             = new ArrayList<>();
+		dependencies           = new ArrayList<>();
 		namespacesDependencies = new LinkedHashSet<>(); 
 	}
 
@@ -271,4 +274,10 @@ public abstract class DataFixture implements MetricFile {
 
 		return typesResonanceData;
 	}	
+
+	public List<StatisticData> getStatisticNamespaceData() {
+		statistics.add(new StatisticData("NOC", 1.0,5.0,2.8333333333333335,2.5,1.0,
+					5.0,4.0,1.8633899812498247,11.0,28.0));
+		return statistics;
+	}
 }

@@ -4,12 +4,12 @@ import java.util.List;
 
 import structures.metrics.MetricDefinition;
 import structures.metrics.MetricThreshold;
-import structures.results.StatisticalMetricResult;
+import structures.results.StatisticMetricResult;
 import utils.calc.StatisticalAnalysis;
 
 public abstract class StatisticalOperations {
 	protected StatisticalAnalysis sa;
-	protected List<StatisticalMetricResult> statisticList;
+	protected List<StatisticMetricResult> statisticList;
 	protected MetricThreshold mt;
 
 	public StatisticalOperations() {
@@ -65,7 +65,7 @@ public abstract class StatisticalOperations {
 	
 	protected abstract void setInfo();
 	
-	public List<StatisticalMetricResult> getList() {
+	public List<StatisticMetricResult> getList() {
 		setInfo();
 		return statisticList;
 	}

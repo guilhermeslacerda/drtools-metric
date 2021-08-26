@@ -1,12 +1,17 @@
 package fixtures.output;
 
+import java.util.List;
+
 import fixtures.output.data.CyclicDependencyData;
 import fixtures.output.data.MethodData;
 import fixtures.output.data.MetricThresholdData;
 import fixtures.output.data.NamespaceCouplingData;
 import fixtures.output.data.NamespaceData;
+import fixtures.output.data.StatisticData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
+import structures.results.StatisticMetricResult;
+import structures.statistics.StatisticOfNamespace;
 
 public class CSVDataFixture extends DataFixture {
 	StringBuilder sb;
@@ -121,6 +126,27 @@ public class CSVDataFixture extends DataFixture {
 		sb.append("\"from\",\"to\",\"number\"\n");
 		for (CyclicDependencyData dependency : getCyclicDependencyData()) 
 			sb.append(String.format("\"%s\",\"%s\",%d\n", dependency.getFrom(), dependency.getTo(), dependency.getNumber()));
+		return sb.toString();
+	}
+
+	@Override
+	public String generateStatisticalNamespace() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\"metric\",\"1stQ\",\"3rdQ\",\"avg\",\"median\",\"min\",\"max\",\"max-min\",\"stddev\",\"u-fence\",\"threshold\"\n");
+		for (StatisticData metric : getStatisticNamespaceData()) {
+			sb.append("\"" + metric.getAcronym() + "\"," 
+					+ String.valueOf(metric.getFirstQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThirdQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAverage()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMedian()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMinValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMaxValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAmplitude()).replace(',', '.') + ","
+					+ String.valueOf(metric.getStandardDeviation()).replace(',', '.') + ","
+					+ String.valueOf(metric.getUpperFence()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThreshold()).replace(',', '.'));
+		}
+		
 		return sb.toString();
 	}
 }

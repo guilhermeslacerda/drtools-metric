@@ -136,4 +136,10 @@ public class MetricResultJSONTest {
 		projectInfo.show("-n");
 		assertEquals(jdf.generateNamespacesDependencies(), mr.generateNamespacesDependencies());
 	}
+	
+	@Test
+	public void testGetStatisticOfNamespaceJSON() {
+		projectInfo.show("-sn");
+		assertEquals(jdf.generateStatisticalNamespace(), mr.generateStatisticalNamespace());
+	}
 }

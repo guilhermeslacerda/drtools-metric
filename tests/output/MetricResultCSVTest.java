@@ -112,4 +112,10 @@ public class MetricResultCSVTest {
 		projectInfo.show("-nc");
 		assertEquals(cdf.generateCyclicDependencies(), mr.generateCyclicDependencies());
 	}
+
+	@Test
+	public void testGetStatisticOfNamespaceCSV() {
+		projectInfo.show("-sn");
+		assertEquals(cdf.generateStatisticalNamespace(), mr.generateStatisticalNamespace());
+	}
 }

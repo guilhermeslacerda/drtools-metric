@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import structures.metrics.NamespaceMetric;
 import structures.results.NamespaceMetricResult;
-import structures.results.StatisticalMetricResult;
+import structures.results.StatisticMetricResult;
 
 public class StatisticOfNamespace extends StatisticalOperations {
 	private List<NamespaceMetric> namespaceMetrics;
@@ -37,7 +37,7 @@ public class StatisticOfNamespace extends StatisticalOperations {
 	@Override
 	protected void setInfo() {
 		statisticList = new ArrayList<>();
-		statisticList.add(new StatisticalMetricResult(mt.getMetricDefinition(NOC).getAcronym(),
+		statisticList.add(new StatisticMetricResult(mt.getMetricDefinition(NOC).getAcronym(),
 				sa.getAverage(), sa.getMedian(), sa.getAmplitude(), sa.getFirstQuartile(),
 				sa.getThirdQuartile(), sa.getStandardDeviation(), sa.getLowerFence(),
 				sa.getUpperFence(), sa.getInterQuartileRange(), sa.getMinValue(), sa.getMaxValue(),
