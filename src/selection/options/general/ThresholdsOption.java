@@ -1,6 +1,7 @@
-package general.options;
+package selection.options.general;
 
 import output.MetricOutput;
+import selection.options.OptionDefinition;
 
 public class ThresholdsOption implements OptionDefinition {
 

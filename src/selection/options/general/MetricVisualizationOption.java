@@ -1,8 +1,9 @@
-package general.options;
+package selection.options.general;
 
 import output.MetricOutput;
+import selection.options.OptionDefinition;
 
-public class AllMetricsOption implements OptionDefinition {
+public class MetricVisualizationOption implements OptionDefinition {
 
 	@Override
 	public void execute(MetricOutput output) {
@@ -10,4 +11,5 @@ public class AllMetricsOption implements OptionDefinition {
 		output.getTypeMetricResult().defineFanIn();
 		output.show();
 	}
+
 }

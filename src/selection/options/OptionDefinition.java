@@ -1,4 +1,4 @@
-package general.options;
+package selection.options;
 
 import output.MetricOutput;
 
