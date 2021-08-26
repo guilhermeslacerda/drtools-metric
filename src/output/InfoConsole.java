@@ -51,6 +51,7 @@ public class InfoConsole {
 		System.out.println("-mt\tlist information about METRIC THRESHOLDS");
 		System.out.println("-i\tlist INFORMATION about tool development team");
 		System.out.println("-mv\tgenerate files to drtools-metric-visualization tool (use only with --save output option)");
+		System.out.println("-sn\tlist the STATISTICS of NAMESPACES metrics");
 	}
 
 	private static void printMetrics() {
@@ -102,5 +103,11 @@ public class InfoConsole {
 		System.out.println("1 - create a folder of your project within the datasets folder");
 		System.out.println("2 - copy the generated files (CSV and JSON) to the created folder"); 	
 		System.out.println("3 - do the setup on dr-tools-properties.js and you're done!");	
+	}
+	
+	public static void printStatisticalLegend() {
+		System.out.println("\n\nLegend:");
+		System.out.println("\t1stQ=First Quartile, 3rdQ=Third Quartile, Avg=Average, Median=Median, Min=Min value, Max=Max value");
+		System.out.println("\tMax-Min=Amplitude, StdDev=Standard Deviation, U-Fnc=Upper Fence, Threshold=Metric Threshold");
 	}
 }

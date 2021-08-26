@@ -66,4 +66,10 @@ public class MetricResultFake implements MetricOutput {
 	@Override
 	public void loadCollectionsToStatisticalComputation() {
 	}
+
+	@Override
+	public void showStatisticalNamespace() {
+		// TODO Auto-generated method stub
+		
+	}
 }

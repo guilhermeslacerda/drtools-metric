@@ -1,5 +1,6 @@
 package output;
 
+import java.util.List;
 import java.util.Set;
 
 import structures.metrics.MethodMetric;
@@ -9,7 +10,9 @@ import structures.metrics.NamespaceMetric;
 import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
+import structures.results.StatisticMetricResult;
 import structures.results.TypeMetricResult;
+import structures.statistics.StatisticOfNamespace;
 import utils.calc.StatisticalAnalysis;
 import utils.files.StringFormat;
 
@@ -234,5 +237,24 @@ public class MetricResultConsole implements MetricOutput {
 					type.getNumberOfDependencies(), type.getNumberOfInternalDependencies(), tmr.getFanInOf(name),
 					type.getFanOut());
 		}
+	}
+
+	@Override
+	public void showStatisticalNamespace() {
+		StatisticOfNamespace sn = new StatisticOfNamespace();
+		sn.defineResults(nmr);
+		sn.useNOC();
+		List<StatisticMetricResult> list = sn.getList();
+		System.out.println("-----------------------------------------------------------------------------------------");
+		System.out.println("METRIC\t1stQ\t3rdQ\tAvg\tMedian\tMin\tMax\tMax-Min\tStdDev\tU-Fnc\tThreshold");
+		System.out.println("-----------------------------------------------------------------------------------------");
+		for (StatisticMetricResult metric : list) {
+			System.out.printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", metric.getAcronym(), 
+					metric.getFirstQuartile(), metric.getThirdQuartile(), metric.getAverage(), 
+					metric.getMedian(), metric.getMinValue(),
+					metric.getMaxValue(), metric.getAmplitude(), metric.getStandardDeviation(), 
+					metric.getUpperFence(), metric.getThreshold());
+		}
+		InfoConsole.printStatisticalLegend();
 	}
 }

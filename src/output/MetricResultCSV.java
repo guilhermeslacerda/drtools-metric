@@ -1,5 +1,6 @@
 package output;
 
+import java.util.List;
 import java.util.Set;
 
 import structures.metrics.MethodMetric;
@@ -9,7 +10,9 @@ import structures.metrics.NamespaceMetric;
 import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
+import structures.results.StatisticMetricResult;
 import structures.results.TypeMetricResult;
+import structures.statistics.StatisticOfNamespace;
 import utils.calc.StatisticalAnalysis;
 import utils.files.StringFormat;
 
@@ -245,6 +248,38 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 					type.getNumberOfInternalDependencies(), tmr.getFanInOf(name), type.getFanOut()));
 		}
 
+		return sb.toString();
+	}
+
+	@Override
+	public void showStatisticalNamespace() {
+		String lines = generateStatisticalNamespace();
+		System.out.print(lines);
+	}
+
+	@Override
+	public String generateStatisticalNamespace() {
+		StringBuilder sb = new StringBuilder();
+		StatisticOfNamespace sn = new StatisticOfNamespace();
+		sn.defineResults(nmr);
+		sn.useNOC();
+		List<StatisticMetricResult> list = sn.getList();
+
+		sb.append("\"metric\",\"1stQ\",\"3rdQ\",\"avg\",\"median\",\"min\",\"max\",\"max-min\",\"stddev\",\"u-fence\",\"threshold\"\n");
+		for (StatisticMetricResult metric : list) {
+			sb.append("\"" + metric.getAcronym() + "\"," 
+					+ String.valueOf(metric.getFirstQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThirdQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAverage()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMedian()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMinValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMaxValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAmplitude()).replace(',', '.') + ","
+					+ String.valueOf(metric.getStandardDeviation()).replace(',', '.') + ","
+					+ String.valueOf(metric.getUpperFence()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThreshold()).replace(',', '.'));
+		}
+		
 		return sb.toString();
 	}
 }

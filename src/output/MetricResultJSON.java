@@ -2,6 +2,7 @@ package output;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,7 +18,9 @@ import structures.metrics.NamespaceMetric;
 import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
+import structures.results.StatisticMetricResult;
 import structures.results.TypeMetricResult;
+import structures.statistics.StatisticOfNamespace;
 import utils.calc.StatisticalAnalysis;
 import utils.files.JSONBuilder;
 import utils.files.StringFormat;
@@ -365,4 +368,35 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 		return linksList;
 	}
+
+	@Override
+	public void showStatisticalNamespace() {
+		System.out.println(generateStatisticalNamespace());
+	}
+
+	@Override
+	public String generateStatisticalNamespace() {
+		JsonArray namespaceList = new JsonArray();
+		StatisticOfNamespace sn = new StatisticOfNamespace();
+		sn.defineResults(nmr);
+		sn.useNOC();
+		List<StatisticMetricResult> list = sn.getList();
+
+		for (StatisticMetricResult metric : list) {
+			namespaceList.add(new JSONBuilder()
+				.add("metric", metric.getAcronym())
+				.add("1stQ", metric.getFirstQuartile())
+				.add("3stQ", metric.getThirdQuartile())
+				.add("avg", metric.getAverage())
+				.add("median", metric.getMedian())
+				.add("min", metric.getMinValue())
+				.add("max", metric.getMaxValue())
+				.add("stddev", metric.getStandardDeviation())
+				.add("u-fence", metric.getUpperFence())
+				.add("threshold", metric.getThreshold()).create());
+		}
+		return gson.toJson(namespaceList);
+	}
 }
+
+

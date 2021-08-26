@@ -10,7 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import general.ProjectInfo;
+import selection.ProjectInfo;
 
 public class MetricResultFileTest {
 	private static final String PROJECT_DIRECTORY = "./resources/javaProject/";

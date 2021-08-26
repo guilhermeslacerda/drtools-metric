@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fixtures.output.JSONDataFixture;
-import general.ProjectInfo;
+import selection.ProjectInfo;
 
 public class MetricResultJSONTest {
 	private static final String PROJECT_DIRECTORY = "./resources/javaProject/";

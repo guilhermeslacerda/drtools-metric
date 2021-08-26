@@ -189,4 +189,10 @@ public class MetricResultFile implements MetricOutput {
 	@Override
 	public void loadCollectionsToStatisticalComputation() {
 	}
+
+	@Override
+	public void showStatisticalNamespace() {
+		// TODO Auto-generated method stub
+		
+	}
 }

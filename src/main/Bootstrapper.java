@@ -2,13 +2,13 @@ package main;
 
 import java.io.File;
 
-import general.ProjectInfo;
 import output.InfoConsole;
 import output.MetricOutput;
 import output.MetricResultCSV;
 import output.MetricResultConsole;
 import output.MetricResultFile;
 import output.MetricResultJSON;
+import selection.ProjectInfo;
 
 public class Bootstrapper {
 	private static int number = 0;
@@ -129,7 +129,8 @@ public class Bootstrapper {
 	}
 
 	private static void verifyOptions() {
-		String[] options = {"-a", "-s", "-n", "-t", "-m", "-d", "-cd", "-id", "-nc", "-ac", "-mt", "-tc", "-i", "-mv"};
+		String[] options = {"-a", "-s", "-n", "-t", "-m", "-d", "-cd", "-id", 
+				"-nc", "-ac", "-mt", "-tc", "-i", "-mv", "-sn"};
 		boolean invalidOption = true;
 		
 		for (String option : options) {

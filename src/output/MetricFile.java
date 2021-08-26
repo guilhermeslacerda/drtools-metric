@@ -9,4 +9,5 @@ public interface MetricFile {
 	String generateNamespaceCoupling();
 	String generateThresholds();
 	String generateTypeCoupling();
+	String generateStatisticalNamespace();
 }
