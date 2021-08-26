@@ -61,5 +61,14 @@ public class MetricThreshold {
 	public List<MetricDefinition> getThresholds() {
 		return thresholds;
 	}
+	
+	public MetricDefinition getMetricDefinition(String acronym) {
+		for (MetricDefinition metricDefinition : thresholds) {
+			if (acronym.equals(metricDefinition.getAcronym()))
+					return metricDefinition;
+		}
+		return null;
+	}
+	
 }
 
