@@ -1,5 +1,6 @@
 package structures.statistics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import structures.metrics.MetricDefinition;
@@ -15,6 +16,7 @@ public abstract class StatisticalOperations {
 	public StatisticalOperations() {
 		sa = new StatisticalAnalysis();
 		mt = new MetricThreshold();
+		statisticList = new ArrayList<>();
 	}
 	
 	public abstract void compute();

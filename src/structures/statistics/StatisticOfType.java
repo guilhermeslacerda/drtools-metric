@@ -1,10 +1,12 @@
 package structures.statistics;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;
+import structures.results.StatisticMetricResult;
 import structures.results.TypeMetricResult;
 
 public class StatisticOfType extends StatisticalOperations {
@@ -14,6 +16,7 @@ public class StatisticOfType extends StatisticalOperations {
 	
 	public StatisticOfType() {
 		super();
+		statisticList = new ArrayList<>();
 	}
 	
 	public void defineResults(TypeMetricResult tmr) {
@@ -56,6 +59,12 @@ public class StatisticOfType extends StatisticalOperations {
 	
 	public void useSLOC() {
 		sa.setElements(sloc);
+		statisticList.add(new StatisticMetricResult(mt.getMetricDefinition("SLOC").getAcronym(),
+				sa.getAverage(), sa.getMedian(), sa.getAmplitude(), sa.getFirstQuartile(),
+				sa.getThirdQuartile(), sa.getStandardDeviation(), sa.getLowerFence(),
+				sa.getUpperFence(), sa.getInterQuartileRange(), sa.getMinValue(), sa.getMaxValue(),
+				mt.getMetricDefinition("SLOC").getMax()));
+
 	}
 	
 	public void useNOM() {
@@ -96,7 +105,8 @@ public class StatisticOfType extends StatisticalOperations {
 
 	@Override
 	protected void setInfo() {
-		// TODO Auto-generated method stub
+		useSLOC();
+// TODO Auto-generated method stub
 		
 	}
 }

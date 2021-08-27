@@ -1,6 +1,5 @@
 package structures.statistics;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,15 +31,15 @@ public class StatisticOfNamespace extends StatisticalOperations {
 	
 	public void useNOC() {
 		sa.setElements(noc);
-	}
-	
-	@Override
-	protected void setInfo() {
-		statisticList = new ArrayList<>();
 		statisticList.add(new StatisticMetricResult(mt.getMetricDefinition(NOC).getAcronym(),
 				sa.getAverage(), sa.getMedian(), sa.getAmplitude(), sa.getFirstQuartile(),
 				sa.getThirdQuartile(), sa.getStandardDeviation(), sa.getLowerFence(),
 				sa.getUpperFence(), sa.getInterQuartileRange(), sa.getMinValue(), sa.getMaxValue(),
 				mt.getMetricDefinition(NOC).getMax()));
+	}
+	
+	@Override
+	protected void setInfo() {
+		useNOC();
 	}
 }
