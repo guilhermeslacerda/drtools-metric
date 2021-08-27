@@ -13,6 +13,7 @@ import structures.results.NamespaceMetricResult;
 import structures.results.StatisticMetricResult;
 import structures.results.TypeMetricResult;
 import structures.statistics.StatisticOfNamespace;
+import structures.statistics.StatisticOfType;
 import utils.calc.StatisticalAnalysis;
 import utils.files.StringFormat;
 
@@ -243,8 +244,23 @@ public class MetricResultConsole implements MetricOutput {
 	public void showStatisticalNamespace() {
 		StatisticOfNamespace sn = new StatisticOfNamespace();
 		sn.defineResults(nmr);
-		sn.useNOC();
 		List<StatisticMetricResult> list = sn.getList();
+		InfoConsole.printStatisticalLabels();
+		for (StatisticMetricResult metric : list) {
+			System.out.printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", metric.getAcronym(), 
+					metric.getFirstQuartile(), metric.getThirdQuartile(), metric.getAverage(), 
+					metric.getMedian(), metric.getMinValue(),
+					metric.getMaxValue(), metric.getAmplitude(), metric.getStandardDeviation(), 
+					metric.getUpperFence(), metric.getThreshold());
+		}
+		InfoConsole.printStatisticalLegend();
+	}
+
+	@Override
+	public void showStatisticalType() {
+		StatisticOfType st = new StatisticOfType();
+		st.defineResults(tmr);
+		List<StatisticMetricResult> list = st.getList();
 		InfoConsole.printStatisticalLabels();
 		for (StatisticMetricResult metric : list) {
 			System.out.printf("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", metric.getAcronym(), 

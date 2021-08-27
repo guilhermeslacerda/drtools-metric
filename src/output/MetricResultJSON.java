@@ -379,7 +379,6 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		JsonArray namespaceList = new JsonArray();
 		StatisticOfNamespace sn = new StatisticOfNamespace();
 		sn.defineResults(nmr);
-		sn.useNOC();
 		List<StatisticMetricResult> list = sn.getList();
 
 		for (StatisticMetricResult metric : list) {
@@ -396,6 +395,12 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 				.add("threshold", metric.getThreshold()).create());
 		}
 		return gson.toJson(namespaceList);
+	}
+
+	@Override
+	public void showStatisticalType() {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

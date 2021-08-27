@@ -195,4 +195,10 @@ public class MetricResultFile implements MetricOutput {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void showStatisticalType() {
+		// TODO Auto-generated method stub
+		
+	}
 }

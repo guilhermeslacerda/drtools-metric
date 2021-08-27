@@ -262,7 +262,6 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 		StringBuilder sb = new StringBuilder();
 		StatisticOfNamespace sn = new StatisticOfNamespace();
 		sn.defineResults(nmr);
-		sn.useNOC();
 		List<StatisticMetricResult> list = sn.getList();
 
 		sb.append("\"metric\",\"1stQ\",\"3rdQ\",\"avg\",\"median\",\"min\",\"max\",\"max-min\",\"stddev\",\"u-fence\",\"threshold\"\n");
@@ -281,5 +280,11 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 		}
 		
 		return sb.toString();
+	}
+
+	@Override
+	public void showStatisticalType() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -21,4 +21,5 @@ public interface MetricOutput {
 	void showTypeCoupling();
 	void loadCollectionsToStatisticalComputation();
 	void showStatisticalNamespace();
+	void showStatisticalType();
 }
