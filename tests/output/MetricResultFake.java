@@ -69,13 +69,13 @@ public class MetricResultFake implements MetricOutput {
 
 	@Override
 	public void showStatisticalNamespace() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void showStatisticalType() {
-		// TODO Auto-generated method stub
-		
+	}
+
+	@Override
+	public void showStatisticalMethod() {
 	}
 }
