@@ -115,7 +115,6 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 		int totalCyclo = 0;
 		TypeMetric type = this.getType(name);
 		totalCyclo = mmr.getTotalCycloBy(name);
-
 		for (String internalTypeName : type.getInternalTypes()) {
 			totalCyclo += mmr.getTotalCycloBy(internalTypeName);
 		}
@@ -368,6 +367,8 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	}
 
 	private int getTotalOfVariablesUsedInMethods(TypeMetric type) {
+		if (type.getVariables() == null) 	return 0;
+
 		int totalVariables = 0;
 		int totalVariablesUsed = 0;
 		for (String variable : type.getVariables()) {
