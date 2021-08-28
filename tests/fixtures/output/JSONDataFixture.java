@@ -2,7 +2,6 @@ package fixtures.output;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -20,8 +19,6 @@ import fixtures.output.data.StatisticData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
 import fixtures.output.data.TypeResonanceData;
-import structures.results.StatisticMetricResult;
-import structures.statistics.StatisticOfNamespace;
 import utils.files.JSONBuilder;
 
 public class JSONDataFixture extends DataFixture {

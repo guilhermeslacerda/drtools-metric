@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import output.MetricResultConsole;
-import selection.ProjectInfo;
 import structures.metrics.MethodMetric;
 import structures.metrics.TypeMetric;
 import structures.results.MethodMetricResult;

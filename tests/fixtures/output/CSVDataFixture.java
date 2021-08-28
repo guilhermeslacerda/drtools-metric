@@ -1,7 +1,5 @@
 package fixtures.output;
 
-import java.util.List;
-
 import fixtures.output.data.CyclicDependencyData;
 import fixtures.output.data.MethodData;
 import fixtures.output.data.MetricThresholdData;
@@ -10,8 +8,6 @@ import fixtures.output.data.NamespaceData;
 import fixtures.output.data.StatisticData;
 import fixtures.output.data.SummaryData;
 import fixtures.output.data.TypeData;
-import structures.results.StatisticMetricResult;
-import structures.statistics.StatisticOfNamespace;
 
 public class CSVDataFixture extends DataFixture {
 	StringBuilder sb;
