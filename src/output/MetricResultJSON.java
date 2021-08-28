@@ -402,6 +402,12 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void showStatisticalMethod() {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 

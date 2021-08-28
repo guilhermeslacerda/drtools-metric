@@ -1,6 +1,5 @@
 package structures.statistics;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +15,6 @@ public class StatisticOfType extends StatisticalOperations {
 	
 	public StatisticOfType() {
 		super();
-		statisticList = new ArrayList<>();
 	}
 	
 	public void defineResults(TypeMetricResult tmr, MethodMetricResult mmr) {

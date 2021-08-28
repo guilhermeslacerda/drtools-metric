@@ -22,4 +22,5 @@ public interface MetricOutput {
 	void loadCollectionsToStatisticalComputation();
 	void showStatisticalNamespace();
 	void showStatisticalType();
+	void showStatisticalMethod();
 }

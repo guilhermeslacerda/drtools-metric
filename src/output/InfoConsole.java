@@ -52,6 +52,8 @@ public class InfoConsole {
 		System.out.println("-i\tlist INFORMATION about tool development team");
 		System.out.println("-mv\tgenerate files to drtools-metric-visualization tool (use only with --save output option)");
 		System.out.println("-sn\tlist the STATISTICS of NAMESPACES metrics");
+		System.out.println("-st\tlist the STATISTICS of TYPE metrics");
+		System.out.println("-sm\tlist the STATISTICS of METHOD metrics");
 	}
 
 	private static void printMetrics() {
