@@ -1,1 +1,17 @@
+# binary files
 /bin/
+*.class
+
+# generate data files
+*.csv
+*.dot
+*.json
+
+# build system
+/build/
+/.gradle/
+
+# eclipse files
+.project
+.classpath
+/.settings/
