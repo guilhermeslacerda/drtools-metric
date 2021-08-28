@@ -1,4 +1,7 @@
-package output;
+package output.utils;
+
+import output.MetricOutput;
+import output.MetricResultConsole;
 
 public class Gauge {
 	private static MetricOutput outputGauge;

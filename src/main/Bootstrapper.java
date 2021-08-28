@@ -2,12 +2,12 @@ package main;
 
 import java.io.File;
 
-import output.InfoConsole;
 import output.MetricOutput;
 import output.MetricResultCSV;
 import output.MetricResultConsole;
 import output.MetricResultFile;
 import output.MetricResultJSON;
+import output.utils.InfoConsole;
 import selection.ProjectInfo;
 
 public class Bootstrapper {

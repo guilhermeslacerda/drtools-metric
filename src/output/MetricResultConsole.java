@@ -3,6 +3,7 @@ package output;
 import java.util.List;
 import java.util.Set;
 
+import output.utils.InfoConsole;
 import structures.metrics.MethodMetric;
 import structures.metrics.MetricDefinition;
 import structures.metrics.MetricThreshold;

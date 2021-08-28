@@ -3,8 +3,8 @@ package selection;
 import java.io.File;
 import java.util.List;
 
-import output.Gauge;
 import output.MetricOutput;
+import output.utils.Gauge;
 import parser.TypeParser;
 import parser.java.JavaParser;
 import selection.options.Options;

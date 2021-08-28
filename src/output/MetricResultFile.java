@@ -1,5 +1,6 @@
 package output;
 
+import output.utils.InfoConsole;
 import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.TypeMetricResult;

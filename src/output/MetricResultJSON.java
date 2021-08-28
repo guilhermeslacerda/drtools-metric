@@ -11,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import output.utils.InfoConsole;
 import structures.metrics.MethodMetric;
 import structures.metrics.MetricDefinition;
 import structures.metrics.MetricThreshold;

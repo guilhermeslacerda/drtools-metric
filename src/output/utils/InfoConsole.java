@@ -1,4 +1,4 @@
-package output;
+package output.utils;
 
 public class InfoConsole {
 	private static final String VERSION = "1.5.4";
