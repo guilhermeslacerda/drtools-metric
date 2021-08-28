@@ -114,8 +114,17 @@ public class TypeMetricResultTest {
 	}
 
 	@Test
-	public void testgetInternalImportsByNamespaces() {
+	public void testGetInternalImportsByNamespaces() {
 		assertEquals(3, tmr.getInternalImportsBy("services").size());
+	}
+
+	@Test
+	public void testGetLackOfCohesionMethods() {
+		System.out.println(tmr.getTypeMetrics().size());
+		for (String t : tmr.getTypeMetrics().keySet()) {
+			System.out.println(t);
+		}
+		assertEquals(1.25, tmr.getLackCohesionMethods("test.model.Client"), 0.01);
 	}
 
 	private void createTypes() {
