@@ -10,5 +10,4 @@ public class StatisticTypeOption implements OptionDefinition {
 		output.getTypeMetricResult().defineInternalDependencies();
 		output.showStatisticalType();
 	}
-
 }
