@@ -38,7 +38,7 @@ public class MetricThreshold {
 		thresholds.add(new MetricDefinition("MLOC", "Method Lines of Code",
 				"Good: <= 10; Regular: between 10 and 30; Bad: > 30", 10, 30));
 		thresholds.add(new MetricDefinition("CYCLO", "Cyclomatic Complexity",
-				"Good: <= 2; Regular: between 2 and 4; Bad: > 4", 2, 4));
+				"Good: <= 2; Regular: between 2 and 10; Bad: > 10", 2, 10));
 		thresholds.add(new MetricDefinition("CALLS", "Number of Invocations", "Bad: > 5", 0, 5));
 		thresholds.add(new MetricDefinition("NBD", "Nested Block Depth","Good: <= 1; Regular: between 1 and 3; Bad: > 3",
 				1, 3));
