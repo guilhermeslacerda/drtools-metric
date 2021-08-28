@@ -130,7 +130,7 @@ public class Bootstrapper {
 
 	private static void verifyOptions() {
 		String[] options = {"-a", "-s", "-n", "-t", "-m", "-d", "-cd", "-id", 
-				"-nc", "-ac", "-mt", "-tc", "-i", "-mv", "-sn", "-st"};
+				"-nc", "-ac", "-mt", "-tc", "-i", "-mv", "-sn", "-st", "-sm"};
 		boolean invalidOption = true;
 		
 		for (String option : options) {
