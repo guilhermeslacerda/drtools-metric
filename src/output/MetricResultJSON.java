@@ -20,7 +20,9 @@ import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.StatisticMetricResult;
 import structures.results.TypeMetricResult;
+import structures.statistics.StatisticOfMethod;
 import structures.statistics.StatisticOfNamespace;
+import structures.statistics.StatisticOfType;
 import utils.calc.StatisticalAnalysis;
 import utils.files.JSONBuilder;
 import utils.files.StringFormat;
@@ -376,13 +378,42 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 	@Override
 	public String generateStatisticalNamespace() {
-		JsonArray namespaceList = new JsonArray();
 		StatisticOfNamespace sn = new StatisticOfNamespace();
 		sn.defineResults(nmr);
 		List<StatisticMetricResult> list = sn.getList();
+		return getStatisticalMetrics(list);
+	}
 
+	@Override
+	public void showStatisticalType() {
+		System.out.println(generateStatisticalType());		
+	}
+
+	@Override
+	public String generateStatisticalType() {
+		StatisticOfType st = new StatisticOfType();
+		st.defineResults(tmr, mmr);
+		List<StatisticMetricResult> list = st.getList();
+		return getStatisticalMetrics(list);
+	}
+
+	@Override
+	public void showStatisticalMethod() {
+		System.out.println(generateStatisticalMethod());		
+	}
+
+	@Override
+	public String generateStatisticalMethod() {
+		StatisticOfMethod sm = new StatisticOfMethod();
+		sm.defineResults(mmr);
+		List<StatisticMetricResult> list = sm.getList();
+		return getStatisticalMetrics(list);
+	}
+
+	public String getStatisticalMetrics(List<StatisticMetricResult> list) {
+		JsonArray metricsList = new JsonArray();
 		for (StatisticMetricResult metric : list) {
-			namespaceList.add(new JSONBuilder()
+			metricsList.add(new JSONBuilder()
 				.add("metric", metric.getAcronym())
 				.add("1stQ", metric.getFirstQuartile())
 				.add("3stQ", metric.getThirdQuartile())
@@ -394,19 +425,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 				.add("u-fence", metric.getUpperFence())
 				.add("threshold", metric.getThreshold()).create());
 		}
-		return gson.toJson(namespaceList);
-	}
-
-	@Override
-	public void showStatisticalType() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void showStatisticalMethod() {
-		// TODO Auto-generated method stub
-		
+		return gson.toJson(metricsList);
 	}
 }
 

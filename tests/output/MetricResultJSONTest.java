@@ -142,4 +142,16 @@ public class MetricResultJSONTest {
 		projectInfo.show("-sn");
 		assertEquals(jdf.generateStatisticalNamespace(), mr.generateStatisticalNamespace());
 	}
+
+	@Test
+	public void testGetStatisticOfTypeJSON() {
+		projectInfo.show("-st");
+		assertEquals(jdf.generateStatisticalType(), mr.generateStatisticalType());
+	}
+
+	@Test
+	public void testGetStatisticOfMethodJSON() {
+		projectInfo.show("-sm");
+		assertEquals(jdf.generateStatisticalMethod(), mr.generateStatisticalMethod());
+	}
 }

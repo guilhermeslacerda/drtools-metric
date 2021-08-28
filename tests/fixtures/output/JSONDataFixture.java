@@ -328,4 +328,46 @@ public class JSONDataFixture extends DataFixture {
 
 		return gson.toJson(namespaceList);
 	}
+
+	@Override
+	public String generateStatisticalType() {
+		JsonArray typeList = new JsonArray();
+
+		for (StatisticData metric : getStatisticTypeData()) {
+			typeList.add(new JSONBuilder()
+				.add("metric", metric.getAcronym())
+				.add("1stQ", metric.getFirstQuartile())
+				.add("3stQ", metric.getThirdQuartile())
+				.add("avg", metric.getAverage())
+				.add("median", metric.getMedian())
+				.add("min", metric.getMinValue())
+				.add("max", metric.getMaxValue())
+				.add("stddev", metric.getStandardDeviation())
+				.add("u-fence", metric.getUpperFence())
+				.add("threshold", metric.getThreshold()).create());
+		}
+
+		return gson.toJson(typeList);
+	}
+
+	@Override
+	public String generateStatisticalMethod() {
+		JsonArray methodList = new JsonArray();
+
+		for (StatisticData metric : getStatisticMethodData()) {
+			methodList.add(new JSONBuilder()
+				.add("metric", metric.getAcronym())
+				.add("1stQ", metric.getFirstQuartile())
+				.add("3stQ", metric.getThirdQuartile())
+				.add("avg", metric.getAverage())
+				.add("median", metric.getMedian())
+				.add("min", metric.getMinValue())
+				.add("max", metric.getMaxValue())
+				.add("stddev", metric.getStandardDeviation())
+				.add("u-fence", metric.getUpperFence())
+				.add("threshold", metric.getThreshold()).create());
+		}
+
+		return gson.toJson(methodList);
+	}
 }

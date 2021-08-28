@@ -145,4 +145,46 @@ public class CSVDataFixture extends DataFixture {
 		
 		return sb.toString();
 	}
+
+	@Override
+	public String generateStatisticalType() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\"metric\",\"1stQ\",\"3rdQ\",\"avg\",\"median\",\"min\",\"max\",\"max-min\",\"stddev\",\"u-fence\",\"threshold\"\n");
+		for (StatisticData metric : getStatisticTypeData()) {
+			sb.append("\"" + metric.getAcronym() + "\"," 
+					+ String.valueOf(metric.getFirstQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThirdQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAverage()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMedian()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMinValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMaxValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAmplitude()).replace(',', '.') + ","
+					+ String.valueOf(metric.getStandardDeviation()).replace(',', '.') + ","
+					+ String.valueOf(metric.getUpperFence()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThreshold()).replace(',', '.'));
+		}
+		
+		return sb.toString();
+	}
+
+	@Override
+	public String generateStatisticalMethod() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\"metric\",\"1stQ\",\"3rdQ\",\"avg\",\"median\",\"min\",\"max\",\"max-min\",\"stddev\",\"u-fence\",\"threshold\"\n");
+		for (StatisticData metric : getStatisticMethodData()) {
+			sb.append("\"" + metric.getAcronym() + "\"," 
+					+ String.valueOf(metric.getFirstQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThirdQuartile()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAverage()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMedian()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMinValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getMaxValue()).replace(',', '.') + ","
+					+ String.valueOf(metric.getAmplitude()).replace(',', '.') + ","
+					+ String.valueOf(metric.getStandardDeviation()).replace(',', '.') + ","
+					+ String.valueOf(metric.getUpperFence()).replace(',', '.') + ","
+					+ String.valueOf(metric.getThreshold()).replace(',', '.'));
+		}
+		
+		return sb.toString();
+	}
 }

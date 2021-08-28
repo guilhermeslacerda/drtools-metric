@@ -118,4 +118,16 @@ public class MetricResultCSVTest {
 		projectInfo.show("-sn");
 		assertEquals(cdf.generateStatisticalNamespace(), mr.generateStatisticalNamespace());
 	}
+
+	@Test
+	public void testGetStatisticOfTypeCSV() {
+		projectInfo.show("-st");
+		assertEquals(cdf.generateStatisticalType(), mr.generateStatisticalType());
+	}
+	
+	@Test
+	public void testGetStatisticOfMethodCSV() {
+		projectInfo.show("-sm");
+		assertEquals(cdf.generateStatisticalMethod(), mr.generateStatisticalMethod());
+	}
 }

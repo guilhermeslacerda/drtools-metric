@@ -10,4 +10,6 @@ public interface MetricFile {
 	String generateThresholds();
 	String generateTypeCoupling();
 	String generateStatisticalNamespace();
+	String generateStatisticalType();
+	String generateStatisticalMethod();
 }

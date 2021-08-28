@@ -280,4 +280,27 @@ public abstract class DataFixture implements MetricFile {
 					5.0,4.0,1.8633899812498247,11.0,28.0));
 		return statistics;
 	}
+
+	public List<StatisticData> getStatisticTypeData() {
+		statistics.add(new StatisticData("SLOC",4.5,13.0,23.11764705882353,6.0,3.0,245.0,242.0,55.983067138451545,25.75,500.0));
+		statistics.add(new StatisticData("NOM",0.0,2.5,3.235294117647059,1.0,0.0,35.0,35.0,8.069765006890597,6.25,14.0));
+		statistics.add(new StatisticData("NPM",0.0,2.5,2.7058823529411766,1.0,0.0,25.0,25.0,5.747272559093758,6.25,40.0));
+		statistics.add(new StatisticData("WMC",1.0,3.0,5.352941176470588,1.0,1.0,58.0,57.0,13.323756653042,6.0,100.0));
+		statistics.add(new StatisticData("DEP",0.0,1.0,0.8823529411764706,0.0,0.0,7.0,7.0,1.8111534492165473,2.5,20.0));
+		statistics.add(new StatisticData("I-DEP",0.0,1.0,0.5294117647058824,0.0,0.0,4.0,4.0,1.0356951095093534,2.5,15.0));
+		statistics.add(new StatisticData("FAN-IN",0.0,0.0,0.11764705882352941,0.0,0.0,1.0,1.0,0.32218973970892123,0.0,10.0));
+		statistics.add(new StatisticData("FAN-OUT",0.0,1.5,1.2941176470588236,1.0,0.0,9.0,9.0,2.1899424081160337,3.75,15.0));
+		statistics.add(new StatisticData("NOA",0.0,1.0,1.1764705882352942,0.0,0.0,13.0,13.0,3.0531621817319956,2.5,8.0));
+		statistics.add(new StatisticData("LCOM3",0.0,0.0,0.14794605625055451,0.0,0.0,1.0,1.0,0.3246860964041879,0.0,1.0));
+		return statistics;
+	}
+	
+	public List<StatisticData> getStatisticMethodData() {
+		statistics.add(new StatisticData("MLOC",2.0,9.0,6.589285714285714,3.0,0.0,45.0,45.0,8.02401926742961,19.5,30.0));
+		statistics.add(new StatisticData("CYCLO",1.0,1.0,1.5357142857142858,1.0,1.0,7.0,6.0,1.2951045974620534,1.0,10.0));
+		statistics.add(new StatisticData("CALLS",0.0,1.0,0.7857142857142857,0.0,0.0,5.0,5.0,1.2351154618421845,2.5,5.0));
+		statistics.add(new StatisticData("NBD",1.0,2.0,1.4107142857142858,2.0,0.0,2.0,2.0,0.818901391985579,3.5,3.0));
+		statistics.add(new StatisticData("PARAM",0.0,1.5,1.0,1.0,0.0,3.0,3.0,0.8451542547285166,3.75,4.0));
+		return statistics;
+	}
 }

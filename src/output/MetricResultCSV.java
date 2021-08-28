@@ -12,7 +12,9 @@ import structures.results.MethodMetricResult;
 import structures.results.NamespaceMetricResult;
 import structures.results.StatisticMetricResult;
 import structures.results.TypeMetricResult;
+import structures.statistics.StatisticOfMethod;
 import structures.statistics.StatisticOfNamespace;
+import structures.statistics.StatisticOfType;
 import utils.calc.StatisticalAnalysis;
 import utils.files.StringFormat;
 
@@ -259,11 +261,42 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 
 	@Override
 	public String generateStatisticalNamespace() {
-		StringBuilder sb = new StringBuilder();
 		StatisticOfNamespace sn = new StatisticOfNamespace();
 		sn.defineResults(nmr);
 		List<StatisticMetricResult> list = sn.getList();
+		return getStatisticalMetrics(list);
+	}
 
+	@Override
+	public void showStatisticalType() {
+		String lines = generateStatisticalType();
+		System.out.print(lines);
+	}
+
+	@Override
+	public String generateStatisticalType() {
+		StatisticOfType st = new StatisticOfType();
+		st.defineResults(tmr, mmr);
+		List<StatisticMetricResult> list = st.getList();
+		return getStatisticalMetrics(list);
+	}
+
+	@Override
+	public void showStatisticalMethod() {
+		String lines = generateStatisticalType();
+		System.out.print(lines);
+	}
+
+	@Override
+	public String generateStatisticalMethod() {
+		StatisticOfMethod st = new StatisticOfMethod();
+		st.defineResults(mmr);
+		List<StatisticMetricResult> list = st.getList();
+		return getStatisticalMetrics(list);
+	}
+
+	public String getStatisticalMetrics(List<StatisticMetricResult> list) {
+		StringBuilder sb = new StringBuilder();
 		sb.append("\"metric\",\"1stQ\",\"3rdQ\",\"avg\",\"median\",\"min\",\"max\",\"max-min\",\"stddev\",\"u-fence\",\"threshold\"\n");
 		for (StatisticMetricResult metric : list) {
 			sb.append("\"" + metric.getAcronym() + "\"," 
@@ -278,19 +311,6 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 					+ String.valueOf(metric.getUpperFence()).replace(',', '.') + ","
 					+ String.valueOf(metric.getThreshold()).replace(',', '.'));
 		}
-		
 		return sb.toString();
-	}
-
-	@Override
-	public void showStatisticalType() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void showStatisticalMethod() {
-		// TODO Auto-generated method stub
-		
 	}
 }
