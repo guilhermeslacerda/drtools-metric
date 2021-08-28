@@ -57,7 +57,7 @@ public class MetricResultConsole implements MetricOutput {
 			System.out.printf("%60s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%.2f\n",
 					StringFormat.withLimit(type.getFullName(), 60), type.getSloc(), type.getNumOfMethods(),
 					type.getNumOfPublicMethods(), tmr.getTotalCycloBy(type.getFullName()),
-					type.getNumberOfDependencies(), type.getNumberOfInternalDependencies(), tmr.getFanInOf(name),
+					type.getNumberOfDependencies(), type.getNumberOfInternalDependencies(), tmr.getFanInOf(type.getFullName()),
 					type.getFanOut(), type.getNumOfVariables(), tmr.getLackCohesionMethods(type.getFullName()));
 		}
 	}
@@ -259,7 +259,7 @@ public class MetricResultConsole implements MetricOutput {
 	@Override
 	public void showStatisticalType() {
 		StatisticOfType st = new StatisticOfType();
-		st.defineResults(tmr);
+		st.defineResults(tmr, mmr);
 		List<StatisticMetricResult> list = st.getList();
 		InfoConsole.printStatisticalLabels();
 		for (StatisticMetricResult metric : list) {

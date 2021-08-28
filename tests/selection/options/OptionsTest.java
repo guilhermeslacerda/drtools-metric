@@ -16,6 +16,7 @@ import selection.options.general.MetricVisualizationOption;
 import selection.options.general.SummaryOption;
 import selection.options.general.ThresholdsOption;
 import selection.options.statistics.StatisticNamespaceOption;
+import selection.options.statistics.StatisticTypeOption;
 import selection.options.strutures.MethodOption;
 import selection.options.strutures.NamespaceOption;
 import selection.options.strutures.TypeOption;
@@ -94,5 +95,10 @@ public class OptionsTest {
 	@Test
 	public void testStatisticNamespaceOption() {
 		 assertThat(prepareOption("-sn"), IsInstanceOf.instanceOf(StatisticNamespaceOption.class));
+	}
+
+	@Test
+	public void testStatisticTypeOption() {
+		 assertThat(prepareOption("-st"), IsInstanceOf.instanceOf(StatisticTypeOption.class));
 	}
 }

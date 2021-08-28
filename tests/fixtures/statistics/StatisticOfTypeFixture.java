@@ -5,6 +5,7 @@ import java.util.TreeSet;
 
 import fixtures.TypeMetricFixture;
 import structures.metrics.TypeMetric;
+import structures.results.MethodMetricResult;
 import structures.results.TypeMetricResult;
 import structures.statistics.StatisticOfType;
 
@@ -53,7 +54,7 @@ public abstract class StatisticOfTypeFixture {
 	}
 
 	protected void loadData() {
-		st.defineResults(tmr);
+		st.defineResults(tmr, new MethodMetricResult());
 		st.compute();
 	}
 }

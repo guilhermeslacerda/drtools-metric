@@ -14,6 +14,7 @@ import selection.options.general.MetricVisualizationOption;
 import selection.options.general.SummaryOption;
 import selection.options.general.ThresholdsOption;
 import selection.options.statistics.StatisticNamespaceOption;
+import selection.options.statistics.StatisticTypeOption;
 import selection.options.strutures.MethodOption;
 import selection.options.strutures.NamespaceOption;
 import selection.options.strutures.TypeOption;
@@ -37,6 +38,7 @@ public class Options {
 		options.put("-tc", new TypeCouplingOption());
 		options.put("-mv", new MetricVisualizationOption());
 		options.put("-sn", new StatisticNamespaceOption());
+		options.put("-st", new StatisticTypeOption());
 	}
 
 	public OptionDefinition selectBy(String argument) {

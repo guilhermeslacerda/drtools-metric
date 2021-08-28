@@ -113,7 +113,7 @@ public class InfoConsole {
 	
 	public static void printStatisticalLegend() {
 		System.out.println("\n\nLegend:");
-		System.out.println("\t1stQ=First Quartile, 3rdQ=Third Quartile, Avg=Average, Median=Median, Min=Min value, Max=Max value");
-		System.out.println("\tMax-Min=Amplitude, StdDev=Standard Deviation, U-Fnc=Upper Fence, Threshold=Metric Threshold");
+		System.out.println("\t1stQ=First Quartile | 3rdQ=Third Quartile | Avg=Average | Median=Median | Min=Min value | Max=Max value");
+		System.out.println("\tMax-Min=Amplitude | StdDev=Standard Deviation | U-Fnc=Upper Fence | Threshold=Metric Threshold");
 	}
 }

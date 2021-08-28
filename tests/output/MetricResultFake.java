@@ -72,4 +72,10 @@ public class MetricResultFake implements MetricOutput {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void showStatisticalType() {
+		// TODO Auto-generated method stub
+		
+	}
 }

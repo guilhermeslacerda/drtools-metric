@@ -14,8 +14,8 @@ public abstract class StatisticalOperations {
 	protected MetricThreshold mt;
 
 	public StatisticalOperations() {
-		sa = new StatisticalAnalysis();
-		mt = new MetricThreshold();
+		sa            = new StatisticalAnalysis();
+		mt            = new MetricThreshold();
 		statisticList = new ArrayList<>();
 	}
 	
