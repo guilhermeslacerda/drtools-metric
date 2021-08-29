@@ -288,7 +288,7 @@ public abstract class DataFixture implements MetricFile {
 		statistics.add(new StatisticData("WMC",1.0,3.0,5.352941176470588,1.0,1.0,58.0,57.0,13.323756653042,6.0,100.0));
 		statistics.add(new StatisticData("DEP",0.0,1.0,0.8823529411764706,0.0,0.0,7.0,7.0,1.8111534492165473,2.5,20.0));
 		statistics.add(new StatisticData("I-DEP",0.0,1.0,0.5294117647058824,0.0,0.0,4.0,4.0,1.0356951095093534,2.5,15.0));
-		statistics.add(new StatisticData("FAN-IN",0.0,0.0,0.11764705882352941,0.0,0.0,1.0,1.0,0.32218973970892123,0.0,10.0));
+		statistics.add(new StatisticData("FAN-IN",0.0,1.0,0.7647058823529411,1.0,0.0,3.0,3.0,0.8065476000471816,2.5,10.0));
 		statistics.add(new StatisticData("FAN-OUT",0.0,1.5,1.2941176470588236,1.0,0.0,9.0,9.0,2.1899424081160337,3.75,15.0));
 		statistics.add(new StatisticData("NOA",0.0,1.0,1.1764705882352942,0.0,0.0,13.0,13.0,3.0531621817319956,2.5,8.0));
 		statistics.add(new StatisticData("LCOM3",0.0,0.0,0.14794605625055451,0.0,0.0,1.0,1.0,0.3246860964041879,0.0,1.0));
