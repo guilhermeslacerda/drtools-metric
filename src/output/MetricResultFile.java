@@ -21,6 +21,7 @@ public class MetricResultFile implements MetricOutput {
 	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
 	private static final String STATISTICAL_NAMESPACE_INFO = "drtools-metric-statistics-namespace.csv";
 	private static final String STATISTICAL_TYPE_INFO = "drtools-metric-statistics-type.csv";
+	private static final String STATISTICAL_METHOD_INFO = "drtools-metric-statistics-method.csv";
 	private static final String DONE = "[DONE]";
 	private static final String FAIL = "[FAIL]";
 	private TypeMetricResult tmr;
@@ -215,7 +216,11 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showStatisticalMethod() {
-		// TODO Auto-generated method stub
-		
+		InfoConsole.print("\nStatistics of methods info (CSV)......");
+		InfoConsole.print(generateStatisticalMethodsFile(STATISTICAL_METHOD_INFO) ? DONE : FAIL);
+	}
+
+	public boolean generateStatisticalMethodsFile(String fileName) {
+		return SystemUtils.writeFile(fileName, csv.generateStatisticalMethod());
 	}
 }

@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -30,7 +29,7 @@ public class MetricResultFileTest {
 	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
 	private static final String STATISTICAL_NAMESPACE_INFO = "drtools-metric-statistics-namespace.csv";
 	private static final String STATISTICAL_TYPE_INFO = "drtools-metric-statistics-type.csv";
-
+	private static final String STATISTICAL_METHOD_INFO = "drtools-metric-statistics-method.csv";
 
 	private static ProjectInfo projectInfo;
 	private static MetricResultFile file;
@@ -69,6 +68,7 @@ public class MetricResultFileTest {
 		new File(ARCHITECTURAL_DEPENDENCIES_INFO).delete();
 		new File(STATISTICAL_NAMESPACE_INFO).delete();
 		new File(STATISTICAL_TYPE_INFO).delete();
+		new File(STATISTICAL_METHOD_INFO).delete();
 	}
 
 	@Test
@@ -167,6 +167,13 @@ public class MetricResultFileTest {
 		assertTrue(file.generateStatisticalTypesFile(STATISTICAL_TYPE_INFO));
 		assertTrue(new File(STATISTICAL_TYPE_INFO).exists());
 		assertEquals(csv.generateStatisticalType(), readStringFrom(STATISTICAL_TYPE_INFO));
+	}
+
+	@Test
+	public void testForStatisticalMethodsFile() {
+		assertTrue(file.generateStatisticalMethodsFile(STATISTICAL_METHOD_INFO));
+		assertTrue(new File(STATISTICAL_METHOD_INFO).exists());
+		assertEquals(csv.generateStatisticalMethod(), readStringFrom(STATISTICAL_METHOD_INFO));
 	}
 
 	private String readStringFrom(String fileName) {
