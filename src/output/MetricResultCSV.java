@@ -314,4 +314,12 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 		}
 		return sb.toString();
 	}
+
+	@Override
+	public void showStatisticAndNamespace() {
+	}
+
+	@Override
+	public void showStatisticAndType() {
+	}
 }

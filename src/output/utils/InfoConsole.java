@@ -1,7 +1,7 @@
 package output.utils;
 
 public class InfoConsole {
-	private static final String VERSION = "1.5.4";
+	private static final String VERSION = "1.6.0";
 
 	private InfoConsole() {
 	}
@@ -51,9 +51,12 @@ public class InfoConsole {
 		System.out.println("-mt\tlist information about METRIC THRESHOLDS");
 		System.out.println("-i\tlist INFORMATION about tool development team");
 		System.out.println("-mv\tgenerate files to drtools-metric-visualization tool (use only with --save output option)");
-		System.out.println("-sn\tlist the STATISTICS of NAMESPACES metrics");
+		System.out.println("-sn\tlist the STATISTICS of NAMESPACE metrics");
 		System.out.println("-st\tlist the STATISTICS of TYPE metrics");
 		System.out.println("-sm\tlist the STATISTICS of METHOD metrics");
+		System.out.println("-san\tlist the STATISTICS AND NAMESPACES");
+		System.out.println("-sat\tlist the STATISTICS AND TYPES");
+		System.out.println("-sam\tlist the STATISTICS AND METHODS");
 	}
 
 	private static void printMetrics() {

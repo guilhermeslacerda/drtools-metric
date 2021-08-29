@@ -130,7 +130,8 @@ public class Bootstrapper {
 
 	private static void verifyOptions() {
 		String[] options = {"-a", "-s", "-n", "-t", "-m", "-d", "-cd", "-id", 
-				"-nc", "-ac", "-mt", "-tc", "-i", "-mv", "-sn", "-st", "-sm"};
+				"-nc", "-ac", "-mt", "-tc", "-i", "-mv", "-sn", "-st", "-sm",
+				"-san", "-sat", "-sam"};
 		boolean invalidOption = true;
 		
 		for (String option : options) {
@@ -147,6 +148,12 @@ public class Bootstrapper {
 				{"-d", "--csv",   "This option is only available in console and JSON format..."},
 				{"-id", "--csv",  "This option is only available in console and JSON format..."},
 				{"-ac", "--csv",  "This option is only available in console format..."},
+				{"-san", "--json",  "This option is only available in console format..."},
+				{"-san", "--csv",  "This option is only available in console format..."},
+				{"-sat", "--json",  "This option is only available in console format..."},
+				{"-sat", "--csv",  "This option is only available in console format..."},
+				{"-sam", "--json",  "This option is only available in console format..."},
+				{"-sam", "--csv",  "This option is only available in console format..."},
 				{"-a", "--json",  "This option is only available in console format..."},
 				{"-ac", "--json", "This option is only available in console format..."}};
 		

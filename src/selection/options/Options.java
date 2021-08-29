@@ -13,6 +13,9 @@ import selection.options.general.AllMetricsOption;
 import selection.options.general.MetricVisualizationOption;
 import selection.options.general.SummaryOption;
 import selection.options.general.ThresholdsOption;
+import selection.options.statistics.StatisticAndMethodOption;
+import selection.options.statistics.StatisticAndNamespaceOption;
+import selection.options.statistics.StatisticAndTypeOption;
 import selection.options.statistics.StatisticMethodOption;
 import selection.options.statistics.StatisticNamespaceOption;
 import selection.options.statistics.StatisticTypeOption;
@@ -41,6 +44,9 @@ public class Options {
 		options.put("-sn", new StatisticNamespaceOption());
 		options.put("-st", new StatisticTypeOption());
 		options.put("-sm", new StatisticMethodOption());
+		options.put("-san", new StatisticAndNamespaceOption());
+		options.put("-sat", new StatisticAndTypeOption());
+		options.put("-sam", new StatisticAndMethodOption());
 	}
 
 	public OptionDefinition selectBy(String argument) {

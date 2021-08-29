@@ -223,4 +223,12 @@ public class MetricResultFile implements MetricOutput {
 	public boolean generateStatisticalMethodsFile(String fileName) {
 		return SystemUtils.writeFile(fileName, csv.generateStatisticalMethod());
 	}
+
+	@Override
+	public void showStatisticAndNamespace() {
+	}
+
+	@Override
+	public void showStatisticAndType() {
+	}
 }

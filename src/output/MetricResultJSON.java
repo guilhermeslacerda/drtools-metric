@@ -428,6 +428,14 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 		}
 		return gson.toJson(metricsList);
 	}
+
+	@Override
+	public void showStatisticAndNamespace() {
+	}
+
+	@Override
+	public void showStatisticAndType() {
+	}
 }
 
 

@@ -23,4 +23,6 @@ public interface MetricOutput {
 	void showStatisticalNamespace();
 	void showStatisticalType();
 	void showStatisticalMethod();
+	void showStatisticAndNamespace();
+	void showStatisticAndType();
 }
