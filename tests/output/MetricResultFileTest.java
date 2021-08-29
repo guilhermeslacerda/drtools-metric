@@ -27,6 +27,7 @@ public class MetricResultFileTest {
 	private static final String TYPE_RESONANCE_INFO = SAVED_FILES + "drtools-metric-resonance.json";
 	private static final String NAMESPACES_DEPENDENCIES_INFO = SAVED_FILES + "drtools-metric-namespaces-dependencies.json";
 	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
+	private static final String STATISTICAL_NAMESPACE_INFO = "drtools-metric-statistics-namespace.csv";
 
 	private static ProjectInfo projectInfo;
 	private static MetricResultFile file;
@@ -63,6 +64,7 @@ public class MetricResultFileTest {
 		new File(TYPE_COUPLING_INFO).delete();
 		new File(TYPE_RESONANCE_INFO).delete();
 		new File(ARCHITECTURAL_DEPENDENCIES_INFO).delete();
+		new File(STATISTICAL_NAMESPACE_INFO).delete();
 	}
 
 	@Test
@@ -147,6 +149,13 @@ public class MetricResultFileTest {
 		assertTrue(file.generateArchitecturalDependenciesFile(ARCHITECTURAL_DEPENDENCIES_INFO));
 		assertTrue(new File(ARCHITECTURAL_DEPENDENCIES_INFO).exists());
 		assertEquals(dot.generateArchitecturalDependencies(), readStringFrom(ARCHITECTURAL_DEPENDENCIES_INFO));
+	}
+
+	@Test
+	public void testForStatisticalNamespacesFile() {
+		assertTrue(file.generateStatisticalNamespacesFile(STATISTICAL_NAMESPACE_INFO));
+		assertTrue(new File(STATISTICAL_NAMESPACE_INFO).exists());
+		assertEquals(csv.generateStatisticalNamespace(), readStringFrom(STATISTICAL_NAMESPACE_INFO));
 	}
 
 	private String readStringFrom(String fileName) {

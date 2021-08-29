@@ -310,7 +310,7 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 					+ String.valueOf(metric.getAmplitude()).replace(',', '.') + ","
 					+ String.valueOf(metric.getStandardDeviation()).replace(',', '.') + ","
 					+ String.valueOf(metric.getUpperFence()).replace(',', '.') + ","
-					+ String.valueOf(metric.getThreshold()).replace(',', '.'));
+					+ String.valueOf(metric.getThreshold()).replace(',', '.') + "\n");
 		}
 		return sb.toString();
 	}

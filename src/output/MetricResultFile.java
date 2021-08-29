@@ -19,6 +19,7 @@ public class MetricResultFile implements MetricOutput {
 	private static final String TYPE_RESONANCE_INFO = "drtools-metric-resonance.json";
 	private static final String NAMESPACES_DEPENDENCIES_INFO = "drtools-metric-namespaces-dependencies.json";
 	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
+	private static final String STATISTICAL_NAMESPACE_INFO = "drtools-metric-statistics-namespace.csv";
 	private static final String DONE = "[DONE]";
 	private static final String FAIL = "[FAIL]";
 	private TypeMetricResult tmr;
@@ -193,8 +194,12 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showStatisticalNamespace() {
-		// TODO Auto-generated method stub
-		
+		InfoConsole.print("\nStatistics of namespaces info (CSV)...");
+		InfoConsole.print(generateStatisticalNamespacesFile(STATISTICAL_NAMESPACE_INFO) ? DONE : FAIL);
+	}
+
+	public boolean generateStatisticalNamespacesFile(String fileName) {
+		return SystemUtils.writeFile(fileName, csv.generateStatisticalNamespace());
 	}
 
 	@Override
