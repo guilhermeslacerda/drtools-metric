@@ -231,4 +231,8 @@ public class MetricResultFile implements MetricOutput {
 	@Override
 	public void showStatisticAndType() {
 	}
+
+	@Override
+	public void showStatisticAndMethod() {
+	}
 }

@@ -322,4 +322,8 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 	@Override
 	public void showStatisticAndType() {
 	}
+
+	@Override
+	public void showStatisticAndMethod() {
+	}
 }

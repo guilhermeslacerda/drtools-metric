@@ -289,4 +289,10 @@ public class MetricResultConsole implements MetricOutput {
 		showStatisticalType();
 		showTypes();
 	}
+
+	@Override
+	public void showStatisticAndMethod() {
+		showStatisticalMethod();
+		showMethods();
+	}
 }

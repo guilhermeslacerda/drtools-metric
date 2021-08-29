@@ -86,4 +86,8 @@ public class MetricResultFake implements MetricOutput {
 	@Override
 	public void showStatisticAndType() {
 	}
+
+	@Override
+	public void showStatisticAndMethod() {
+	}
 }

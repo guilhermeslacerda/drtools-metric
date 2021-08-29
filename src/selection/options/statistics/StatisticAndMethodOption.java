@@ -7,6 +7,6 @@ public class StatisticAndMethodOption implements OptionDefinition {
 
 	@Override
 	public void execute(MetricOutput output) {
-		output.showStatisticalMethod();
+		output.showStatisticAndMethod();
 	}
 }
