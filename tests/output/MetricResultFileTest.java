@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -28,6 +29,8 @@ public class MetricResultFileTest {
 	private static final String NAMESPACES_DEPENDENCIES_INFO = SAVED_FILES + "drtools-metric-namespaces-dependencies.json";
 	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
 	private static final String STATISTICAL_NAMESPACE_INFO = "drtools-metric-statistics-namespace.csv";
+	private static final String STATISTICAL_TYPE_INFO = "drtools-metric-statistics-type.csv";
+
 
 	private static ProjectInfo projectInfo;
 	private static MetricResultFile file;
@@ -65,6 +68,7 @@ public class MetricResultFileTest {
 		new File(TYPE_RESONANCE_INFO).delete();
 		new File(ARCHITECTURAL_DEPENDENCIES_INFO).delete();
 		new File(STATISTICAL_NAMESPACE_INFO).delete();
+		new File(STATISTICAL_TYPE_INFO).delete();
 	}
 
 	@Test
@@ -156,6 +160,13 @@ public class MetricResultFileTest {
 		assertTrue(file.generateStatisticalNamespacesFile(STATISTICAL_NAMESPACE_INFO));
 		assertTrue(new File(STATISTICAL_NAMESPACE_INFO).exists());
 		assertEquals(csv.generateStatisticalNamespace(), readStringFrom(STATISTICAL_NAMESPACE_INFO));
+	}
+
+	@Test
+	public void testForStatisticalTypesFile() {
+		assertTrue(file.generateStatisticalTypesFile(STATISTICAL_TYPE_INFO));
+		assertTrue(new File(STATISTICAL_TYPE_INFO).exists());
+		assertEquals(csv.generateStatisticalType(), readStringFrom(STATISTICAL_TYPE_INFO));
 	}
 
 	private String readStringFrom(String fileName) {

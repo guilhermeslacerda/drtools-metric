@@ -20,6 +20,7 @@ public class MetricResultFile implements MetricOutput {
 	private static final String NAMESPACES_DEPENDENCIES_INFO = "drtools-metric-namespaces-dependencies.json";
 	private static final String ARCHITECTURAL_DEPENDENCIES_INFO = "drtools-metric-architectural-dependencies.dot";
 	private static final String STATISTICAL_NAMESPACE_INFO = "drtools-metric-statistics-namespace.csv";
+	private static final String STATISTICAL_TYPE_INFO = "drtools-metric-statistics-type.csv";
 	private static final String DONE = "[DONE]";
 	private static final String FAIL = "[FAIL]";
 	private TypeMetricResult tmr;
@@ -204,8 +205,12 @@ public class MetricResultFile implements MetricOutput {
 
 	@Override
 	public void showStatisticalType() {
-		// TODO Auto-generated method stub
-		
+		InfoConsole.print("\nStatistics of types info (CSV)........");
+		InfoConsole.print(generateStatisticalTypesFile(STATISTICAL_TYPE_INFO) ? DONE : FAIL);
+	}
+
+	public boolean generateStatisticalTypesFile(String fileName) {
+		return SystemUtils.writeFile(fileName, csv.generateStatisticalType());
 	}
 
 	@Override
