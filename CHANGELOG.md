@@ -1,5 +1,10 @@
 #CHANGELOG
 
+##1.6.0
+- fix undefined package problem
+- Inclusion of several options about statistical analysis
+- Inclusion of more statistical computation (1st and 3rd quartile, outliers analysis, min/max values of metrics)
+
 ##1.5.4
 - Inclusion of LCOM3 metric
 - Inclusion of some statistical computation (standard deviation, median)
