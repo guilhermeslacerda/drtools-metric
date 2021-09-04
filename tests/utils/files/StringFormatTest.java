@@ -48,5 +48,4 @@ public class StringFormatTest {
 		assertEquals("void foo(int @parameter(\'id\') id)", 
 						StringFormat.convertQuotation("void foo(int @parameter(\"id\") id)"));
 	}
-
 }

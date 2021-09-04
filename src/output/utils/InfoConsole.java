@@ -106,7 +106,7 @@ public class InfoConsole {
 	public static void printMetricVisualizationUsage() {
 		System.out.println("\n\nTo use the data with drtools-metric visualization, you need:");
 		System.out.println("1 - create a folder of your project within the datasets folder");
-		System.out.println("2 - copy the generated files (CSV and JSON) to the created folder"); 	
+		System.out.println("2 - copy the generated files (CSV, DOT and JSON) to the created folder"); 	
 		System.out.println("3 - do the setup on dr-tools-properties.js and you're done!");	
 	}
 	

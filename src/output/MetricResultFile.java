@@ -87,6 +87,9 @@ public class MetricResultFile implements MetricOutput {
 		showTypeCoupling();
 		showNamespacesDependencies();
 		showArchitecturalDependencies();
+		showStatisticalNamespace();
+		showStatisticalType();
+		showStatisticalMethod();
 		InfoConsole.printMetricVisualizationUsage();
 	}
 

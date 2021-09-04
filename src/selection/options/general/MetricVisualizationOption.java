@@ -11,5 +11,4 @@ public class MetricVisualizationOption implements OptionDefinition {
 		output.getTypeMetricResult().defineFanIn();
 		output.show();
 	}
-
 }

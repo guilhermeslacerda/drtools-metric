@@ -189,5 +189,4 @@ public class TypeMetric implements Comparable<TypeMetric> {
 	public Set<String> getVariablesUsedInMethods() {
 		return variablesUsedInMethods;
 	}
-
 }

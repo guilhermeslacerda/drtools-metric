@@ -59,14 +59,14 @@ public class TypeVisitor extends ASTVisitor implements MetricActivator<TypeMetri
 
 	@Override
 	public boolean visit(PackageDeclaration node) {
-		if (node == null) return false;
+		if (node == null) 	return false;
 		typeMetric.setNamespace(node.getName().getFullyQualifiedName());
 		return true;
 	}
 
 	@Override
 	public boolean visit(TypeDeclaration node) {
-		if (node == null) return false;
+		if (node == null) 	return false;
 
 		getInternalTypes(node);
 		getAllMethods(node);
@@ -83,7 +83,7 @@ public class TypeVisitor extends ASTVisitor implements MetricActivator<TypeMetri
 	}
 
 	private void getImplementedInterfaces(TypeDeclaration node) {
-		if (node.resolveBinding() == null) return;	
+		if (node.resolveBinding() == null) 	return;	
 		ITypeBinding[] interfaces = node.resolveBinding().getInterfaces();
 			for (ITypeBinding superType : interfaces) {
 				fanOut.add(superType.getQualifiedName());
@@ -92,7 +92,7 @@ public class TypeVisitor extends ASTVisitor implements MetricActivator<TypeMetri
 	}
 
 	private void getSuperTypes(TypeDeclaration node) {
-		if (node.resolveBinding() == null) return;	
+		if (node.resolveBinding() == null) 	return;	
 		ITypeBinding superType = node.resolveBinding().getSuperclass();
 		if (superType != null && !superType.getQualifiedName().endsWith(OBJECT_CLASS)) { 
 			fanOut.add(superType.getQualifiedName());

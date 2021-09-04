@@ -15,7 +15,7 @@
 "NOA","Number of Attributes/Fields","Good: <= 3; Regular: between 3 and 8; Bad: > 8",3.0,8.0
 "LCOM3","Lack of Cohesion in Methods","Good: = 0; Regular: between 0 and 1; Bad: > 1",0.0,1.0
 "MLOC","Method Lines of Code","Good: <= 10; Regular: between 10 and 30; Bad: > 30",10.0,30.0
-"CYCLO","Cyclomatic Complexity","Good: <= 2; Regular: between 2 and 4; Bad: > 4",2.0,4.0
+"CYCLO","Cyclomatic Complexity","Good: <= 2; Regular: between 2 and 10; Bad: > 10",2.0,10.0
 "CALLS","Number of Invocations","Bad: > 5",0.0,5.0
 "NBD","Nested Block Depth","Good: <= 1; Regular: between 1 and 3; Bad: > 3",1.0,3.0
 "PARAM","Number of Parameters","Good: <= 2; Regular: between 2 and 4; Bad: > 4",2.0,4.0

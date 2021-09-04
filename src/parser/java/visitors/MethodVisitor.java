@@ -59,7 +59,7 @@ public class MethodVisitor extends ASTVisitor implements MetricActivator<MethodM
 
 	@Override
 	public boolean visit(MethodDeclaration node) {
-		if (node == null) return false;
+		if (node == null)	return false;
 
 		anotherMethod = node;
 		if (method.equals(anotherMethod)) {
@@ -204,7 +204,7 @@ public class MethodVisitor extends ASTVisitor implements MetricActivator<MethodM
 
 	@Override
 	public void endVisit(Block node) {
-		maxNbd = Math.max(nbd,  maxNbd);
+		maxNbd = Math.max(nbd, maxNbd);
 		nbd--;
 	}
 	

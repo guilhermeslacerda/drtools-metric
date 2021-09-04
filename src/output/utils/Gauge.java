@@ -13,8 +13,8 @@ public class Gauge {
 	
 	public static void progress(int number) {
 		if (outputGauge instanceof MetricResultConsole) {
-			if (number % 2 == 0) System.out.print("|\b");
-			else System.out.print("-\b");
+			if (number % 2 == 0)	System.out.print("|\b");
+			else	System.out.print("-\b");
 		}
 	}
 	

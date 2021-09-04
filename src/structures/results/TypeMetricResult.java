@@ -124,13 +124,13 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	public int getTotalOfAbstractTypesIn(String namespace) {
 		int totalAbstractTypes = 0;
 
-		if (namespace == null)
-			return totalAbstractTypes;
+		if (namespace == null) 	return totalAbstractTypes;
 
 		for (String name : this.getTypesName()) {
 			TypeMetric type = this.getType(name);
-			if (isNull(namespace, type))
-				continue;
+			
+			if (isNull(namespace, type))	continue;
+			
 			if (type.getNamespace().equals(namespace))
 				if (isAbstractType(type))
 					totalAbstractTypes++;
@@ -279,10 +279,9 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 
 		for (String name : getInternalNamesResult()) {
 			TypeMetric type = getType(name);
-			if (isNull(namespace, type))
-				continue;
-			if (type.getNamespace().equals(namespace))
-				continue;
+			if (isNull(namespace, type))	continue;
+			
+			if (type.getNamespace().equals(namespace)) 	continue;
 			identifyAfferentCoupling(namespace, afferents, type);
 		}
 
@@ -298,7 +297,8 @@ public class TypeMetricResult implements MetricResultNotifier<TypeMetric> {
 	}
 
 	private boolean isNull(String namespace, TypeMetric type) {
-		return type == null || type.getNamespace() == null || namespace == null;
+		return type == null || type.getNamespace() == null 
+								|| namespace == null;
 	}
 
 	public void defineFanIn() {

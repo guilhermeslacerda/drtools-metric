@@ -93,8 +93,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 
 		for (String name : mmr.getNamesResult()) {
 			MethodMetric method = mmr.getMethod(name);
-			if (name == null)
-				continue;
+			if (name == null)	continue;
 			methodList.add(new JSONBuilder().add("method", StringFormat.convertQuotation(method.getName()))
 					.add("loc", method.getLoc()).add("cyclo", method.getCyclo()).add("calls", method.getCalls())
 					.add("nbd", method.getNestedBlockDepth()).add("parameters", method.getNumOfParameters()).create());
@@ -204,8 +203,7 @@ public class MetricResultJSON implements MetricOutput, MetricFile {
 	public String generateCyclicDependencies() {
 		JsonArray typeList = new JsonArray();
 		Set<String> names = tmr.getCyclicDependencies();
-		if (names.isEmpty())
-			return "[]";
+		if (names.isEmpty())	return "[]";
 
 		for (String name : names) {
 			String[] types = name.split(" - ");

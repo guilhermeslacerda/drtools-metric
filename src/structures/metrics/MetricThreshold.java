@@ -55,7 +55,6 @@ public class MetricThreshold {
 				0, 1));
 		thresholds.add(new MetricDefinition("D", "Normalized Distance", "range between 0=exactly located in the main sequence and 1=far from the main sequence",
 				0, 1));
-
 	}
 
 	public List<MetricDefinition> getThresholds() {
@@ -69,6 +68,5 @@ public class MetricThreshold {
 		}
 		return null;
 	}
-	
 }
 

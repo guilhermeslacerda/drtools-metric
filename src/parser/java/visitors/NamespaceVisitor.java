@@ -16,7 +16,7 @@ public class NamespaceVisitor extends ASTVisitor implements MetricActivator<Name
 
 	@Override
 	public boolean visit(PackageDeclaration node) {
-		if (node == null) return false;
+		if (node == null)	return false;
 
 		String packageName = node.getName().toString();
 		namespaceMetric.setName(packageName);

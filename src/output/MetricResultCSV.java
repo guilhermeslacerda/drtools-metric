@@ -84,8 +84,7 @@ public class MetricResultCSV implements MetricOutput, MetricFile {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\"method\",\"loc\",\"cyclo\",\"calls\",\"nbd\",\"param\"\n");
 		for (String name : mmr.getNamesResult()) {
-			if (name == null)
-				continue;
+			if (name == null)	continue;
 			MethodMetric method = mmr.getMethod(name);
 			sb.append(String.format("\"%s\",%d,%d,%d,%d,%d\n", StringFormat.convertQuotation(method.getName()),
 					method.getLoc(), method.getCyclo(), method.getCalls(), method.getNestedBlockDepth(),

@@ -73,7 +73,7 @@ public class MethodMetricResult implements MetricResultNotifier<MethodMetric> {
 		int totalCyclo = 0;
 		String name = "";
 		for (String method : methodMetrics.keySet()) {
-			if (method == null) continue;
+			if (method == null) 	continue;
 			MethodMetric mm = methodMetrics.get(method);
 			if (!name.equals(mm.getTypeName())) {
 				name = mm.getTypeName();

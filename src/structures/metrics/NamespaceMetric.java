@@ -29,10 +29,6 @@ public class NamespaceMetric implements Comparable<NamespaceMetric> {
 		return numOfAbstractTypes;
 	}
 
-	public void addNumOfAbstractTypes() {
-		this.numOfAbstractTypes++;
-	}
-
 	public void setNumOfAbstractTypes(int numOfAbstractTypes) {
 		this.numOfAbstractTypes = numOfAbstractTypes;
 	}

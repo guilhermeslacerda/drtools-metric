@@ -31,10 +31,6 @@ public class MetricDefinition {
 		return max;
 	}
 	
-	public void setMax(double max) {
-		this.max = max;
-	}
-
 	public double getMin() {
 		return min;
 	}
