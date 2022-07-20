@@ -20,9 +20,9 @@ public class Bootstrapper {
 
 	public static void main(String[] args) {
 		verifyNumberOfArguments(args);
-		option = args[0];
-		argument = args[1];
-		outputFormat = args[2];
+		option = args[0].toLowerCase();
+		argument = args[1].toLowerCase();
+		outputFormat = args[2].toLowerCase();
 		runApp(args);
 	}
 

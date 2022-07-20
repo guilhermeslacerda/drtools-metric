@@ -1,5 +1,8 @@
 #CHANGELOG
 
+##1.6.1
+- fix upper case option
+
 ##1.6.0
 - fix undefined package problem
 - Inclusion of several options about statistical analysis
