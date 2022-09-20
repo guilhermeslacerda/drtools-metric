@@ -20,10 +20,11 @@ public class StatisticalAnalysis {
 	}
 	
     public double getMedian(double[] data) {
+    	if (data.length == 0)	return 0;
         if (data.length % 2 == 0)
             return (data[data.length / 2] + data[data.length / 2 - 1]) / 2;
-        else
-            return data[(data.length / 2)];
+        else 
+        	return data[(data.length / 2)];
     }
 
 	private double getSumOfSquareOfElements() {
