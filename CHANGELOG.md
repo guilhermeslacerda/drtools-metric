@@ -1,5 +1,8 @@
 #CHANGELOG
 
+##1.6.2
+- fix median computation
+
 ##1.6.1
 - fix upper case option
 
