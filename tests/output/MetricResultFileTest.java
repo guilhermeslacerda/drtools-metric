@@ -41,10 +41,10 @@ public class MetricResultFileTest {
 	public static void setUp() {
 		deleteFiles();
 		file = new MetricResultFile();
+		projectInfo = new ProjectInfo(PROJECT_DIRECTORY, file);
 		csv  = new MetricResultCSV();
 		json = new MetricResultJSON();
 		dot  = new MetricResultDOT();
-		projectInfo = new ProjectInfo(PROJECT_DIRECTORY, file);
 		projectInfo.analyze();
 		projectInfo.show("-mv");
 		csv.setResults(projectInfo.getNamespaceMetricResult(), 
