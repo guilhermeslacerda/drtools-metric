@@ -6,12 +6,14 @@
 *.csv
 *.dot
 *.json
+*.log
 
 # build system
 /build/
 /.gradle/
+/target/
 
 # eclipse files
 .project
 .classpath
-/.settings/
+.settings
