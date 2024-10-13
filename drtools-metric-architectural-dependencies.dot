@@ -1,0 +1,20 @@
+digraph {
+
+node [
+style="filled",
+ fontcolor = black,
+ color = white, fontname = Poppins];
+graph [rankdir=TB],
+
+"javaProject.com.controller" [shape="ellipse" label="javaProject.com.controller" fillcolor="lightgrey"],
+"javaProject.com.model" [shape="ellipse" label="javaProject.com.model" fillcolor="lightgrey"],
+"javaProject.others" [shape="ellipse" label="javaProject.others" fillcolor="lightgrey"],
+"javaProject.com.view" [shape="ellipse" label="javaProject.com.view" fillcolor="lightgrey"],
+"javaProject.one" [shape="ellipse" label="javaProject.one" fillcolor="lightgrey"],
+"javaProject.two" [shape="ellipse" label="javaProject.two" fillcolor="lightgrey"],
+"javaProject.com.controller" -> "javaProject.com.model",
+"javaProject.com.controller" -> "javaProject.others",
+"javaProject.com.view" -> "javaProject.com.controller",
+"javaProject.one" -> "javaProject.two",
+"javaProject.two" -> "javaProject.one",
+}

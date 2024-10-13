@@ -1,0 +1,98 @@
+CommitId;RefactoringType;RefactoringDetail
+44354586708d9f45d27a73a6bdc1cc00a9c1c146;Move Class;Move Class	output.Gauge moved to output.utils.Gauge
+44354586708d9f45d27a73a6bdc1cc00a9c1c146;Move Class;Move Class	output.InfoConsole moved to output.utils.InfoConsole
+ccf255d7c1bd0d67ec8383d2fa247ac2eb8d38ff;Extract Method;Extract Method	public getStatisticalMetrics(list List<StatisticMetricResult>) : String extracted from public generateStatisticalNamespace() : String in class output.MetricResultCSV
+ccf255d7c1bd0d67ec8383d2fa247ac2eb8d38ff;Extract Method;Extract Method	public getStatisticalMetrics(list List<StatisticMetricResult>) : String extracted from public generateStatisticalNamespace() : String in class output.MetricResultJSON
+ccf255d7c1bd0d67ec8383d2fa247ac2eb8d38ff;Rename Variable;Rename Variable	namespaceList : JsonArray to metricsList : JsonArray in method public getStatisticalMetrics(list List<StatisticMetricResult>) : String in class output.MetricResultJSON
+f6eddaf0447e3be3d0d1fe46d1a9d62a0dfe32fc;Extract Method;Extract Method	private showStatisticalMetrics(list List<StatisticMetricResult>) : void extracted from public showStatisticalNamespace() : void in class output.MetricResultConsole
+f6eddaf0447e3be3d0d1fe46d1a9d62a0dfe32fc;Extract Method;Extract Method	private showStatisticalMetrics(list List<StatisticMetricResult>) : void extracted from public showStatisticalType() : void in class output.MetricResultConsole
+bedc600438598bf1357477320fca0db61542039a;Rename Method;Rename Method	public testgetInternalImportsByNamespaces() : void renamed to public testGetInternalImportsByNamespaces() : void in class structures.results.TypeMetricResultTest
+d3d5d40891f540f3abd7d6f0fdede669c482199d;Extract And Move Method;Extract And Move Method	public printStatisticalLabels() : void extracted from public showStatisticalNamespace() : void in class output.MetricResultConsole & moved to class output.InfoConsole
+232d802c5b06207904490e7693c86aa2313cfae4;Change Return Type;Change Return Type	List<StatisticalMetricResult> to List<StatisticMetricResult> in method public getList() : List<StatisticMetricResult> in class structures.statistics.StatisticalOperations
+232d802c5b06207904490e7693c86aa2313cfae4;Change Attribute Type;Change Attribute Type	statisticList : List<StatisticalMetricResult> to statisticList : List<StatisticMetricResult> in class structures.statistics.StatisticalOperations
+845d319612877dc289bbb775b26ba69de65086c0;Move Class;Move Class	general.ProjectInfo moved to selection.ProjectInfo
+845d319612877dc289bbb775b26ba69de65086c0;Move Class;Move Class	general.ProjectInfoTest moved to selection.ProjectInfoTest
+845d319612877dc289bbb775b26ba69de65086c0;Move Class;Move Class	general.options.OptionsTest moved to selection.options.OptionsTest
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Change Package;Change Package	general.options to selection.options.dependencies
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.AllCouplingOption moved to selection.options.dependencies.AllCouplingOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.CyclicDependencyOption moved to selection.options.dependencies.CyclicDependencyOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.DependencyOption moved to selection.options.dependencies.DependencyOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.InternalDependencyOption moved to selection.options.dependencies.InternalDependencyOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.NamespaceCouplingOption moved to selection.options.dependencies.NamespaceCouplingOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.TypeCouplingOption moved to selection.options.dependencies.TypeCouplingOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Change Package;Change Package	general.options to selection.options.general
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.AllMetricsOption moved to selection.options.general.AllMetricsOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.MetricVisualizationOption moved to selection.options.general.MetricVisualizationOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.SummaryOption moved to selection.options.general.SummaryOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.ThresholdsOption moved to selection.options.general.ThresholdsOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Change Package;Change Package	general.options to selection.options.strutures
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.MethodOption moved to selection.options.strutures.MethodOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.NamespaceOption moved to selection.options.strutures.NamespaceOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.TypeOption moved to selection.options.strutures.TypeOption
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Change Package;Change Package	general to selection
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.OptionDefinition moved to selection.options.OptionDefinition
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Class;Move Class	general.options.Options moved to selection.options.Options
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Source Folder;Move Source Folder	src/general to src/selection
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Source Folder;Move Source Folder	tests/general to tests/selection
+d8c9cac5e115c96ef61d5a5e5c2ce36a6a182284;Move Source Folder;Move Source Folder	tests/general to tests/selection
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.StatisticalOfMethod renamed to structures.statistics.StatisticOfMethod
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.StatisticalOfType renamed to structures.statistics.StatisticOfType
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	fixtures.statistics.StatisticalOfMethodFixture renamed to fixtures.statistics.StatisticOfMethodFixture
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	fixtures.statistics.StatisticalOfTypeFixture renamed to fixtures.statistics.StatisticOfTypeFixture
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.methods.StatisticalCallsOfMethodTest renamed to structures.statistics.methods.StatisticCallsOfMethodTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.methods.StatisticalCycloOfMethodTest renamed to structures.statistics.methods.StatisticCycloOfMethodTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.methods.StatisticalMlocOfMethodTest renamed to structures.statistics.methods.StatisticMlocOfMethodTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.methods.StatisticalNbdOfMethodTest renamed to structures.statistics.methods.StatisticNbdOfMethodTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.methods.StatisticalParamOfMethodTest renamed to structures.statistics.methods.StatisticParamOfMethodTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.namespaces.StatisticalOfNamespaceTest renamed to structures.statistics.namespaces.StatisticOfNamespaceTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalDepOfTypeTest renamed to structures.statistics.types.StatisticDepOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalFanInOfTypeTest renamed to structures.statistics.types.StatisticFanInOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalFanOutOfTypeTest renamed to structures.statistics.types.StatisticFanOutOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalIDepOfTypeTest renamed to structures.statistics.types.StatisticIDepOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalNoaOfTypeTest renamed to structures.statistics.types.StatisticNoaOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalNomOfTypeTestTest renamed to structures.statistics.types.StatisticNomOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalNpmOfTypeTest renamed to structures.statistics.types.StatisticNpmOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalSlocOfTypeTest renamed to structures.statistics.types.StatisticSlocOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.types.StatisticalWmcOfTypeTest renamed to structures.statistics.types.StatisticWmcOfTypeTest
+cc0aff11319585360c319735a81268c8598df99a;Rename Class;Rename Class	structures.statistics.StatisticalOfNamespace renamed to structures.statistics.StatisticOfNamespace
+cc0aff11319585360c319735a81268c8598df99a;Change Attribute Type;Change Attribute Type	sm : StatisticalOfMethod to sm : StatisticOfMethod in class fixtures.statistics.StatisticOfMethodFixture
+cc0aff11319585360c319735a81268c8598df99a;Change Attribute Type;Change Attribute Type	st : StatisticalOfType to st : StatisticOfType in class fixtures.statistics.StatisticOfTypeFixture
+cc0aff11319585360c319735a81268c8598df99a;Change Attribute Type;Change Attribute Type	sn : StatisticalOfNamespace to sn : StatisticOfNamespace in class structures.statistics.namespaces.StatisticOfNamespaceTest
+787dde5012288ef53b4ea7bb76ab426d49153b0f;Move Class;Move Class	structures.statistics.StatisticalOfNamespaceTest moved to structures.statistics.namespaces.StatisticalOfNamespaceTest
+787dde5012288ef53b4ea7bb76ab426d49153b0f;Move And Rename Class;Move And Rename Class	structures.statistics.StatisticalNamespaceTest moved and renamed to structures.statistics.types.StatisticalNpmOfTypeTest
+787dde5012288ef53b4ea7bb76ab426d49153b0f;Extract Superclass;Extract Superclass	fixtures.statistics.StatisticalOfTypeFixture from classes [structures.statistics.types.StatisticalNpmOfTypeTest]
+787dde5012288ef53b4ea7bb76ab426d49153b0f;Pull Up Method;Pull Up Method	private loadData() : void from class structures.statistics.StatisticalNamespaceTest to protected loadData() : void from class fixtures.statistics.StatisticalOfTypeFixture
+1ad522640a4ab04d8aed27a64dba6512e5205ac6;Rename Attribute;Rename Attribute	nmr : NamespaceMetricResult to namespaceMetrics : List<NamespaceMetric> in class structures.statistics.StatisticalNamespace
+1ad522640a4ab04d8aed27a64dba6512e5205ac6;Change Attribute Type;Change Attribute Type	nmr : NamespaceMetricResult to namespaceMetrics : List<NamespaceMetric> in class structures.statistics.StatisticalNamespace
+1ad522640a4ab04d8aed27a64dba6512e5205ac6;Extract Superclass;Extract Superclass	structures.statistics.StatisticalOperations from classes [structures.statistics.StatisticalNamespace]
+1ad522640a4ab04d8aed27a64dba6512e5205ac6;Move Attribute;Move Attribute	private nmr : NamespaceMetricResult from class structures.statistics.StatisticalNamespace to private nmr : NamespaceMetricResult from class structures.statistics.StatisticalNamespaceTest
+1ad522640a4ab04d8aed27a64dba6512e5205ac6;Pull Up Attribute;Pull Up Attribute	private sa : StatisticalAnalysis from class structures.statistics.StatisticalNamespace to protected sa : StatisticalAnalysis from class structures.statistics.StatisticalOperations
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Return Type;Change Return Type	int[] to double[] in method public getMethodsPerType() : double[] in class structures.results.MethodMetricResult
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Attribute Type;Change Attribute Type	methodsPerType : int[] to methodsPerType : double[] in class structures.results.MethodMetricResult
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Return Type;Change Return Type	int[] to double[] in method public getTypesPerNamespace() : double[] in class structures.results.NamespaceMetricResult
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Attribute Type;Change Attribute Type	typesPerNamespace : int[] to typesPerNamespace : double[] in class structures.results.NamespaceMetricResult
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Return Type;Change Return Type	int[] to double[] in method public getSLOCPerType() : double[] in class structures.results.TypeMetricResult
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Attribute Type;Change Attribute Type	slocPerType : int[] to slocPerType : double[] in class structures.results.TypeMetricResult
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Attribute Type;Change Attribute Type	elements : int[] to elements : double[] in class utils.calc.StatisticalAnalysis
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Parameter Type;Change Parameter Type	elements : int[] to elements : double[] in method public setElements(elements double[]) : void in class utils.calc.StatisticalAnalysis
+8734538952cfc78045a0e5c4e68e9c99194c2a45;Change Attribute Type;Change Attribute Type	values : int[] to values : double[] in class utils.calc.StatisticalAnalysisTest
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.JSONBuilder moved to utils.files.JSONBuilder
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.SourceCodeLineCounter moved to utils.files.SourceCodeLineCounter
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.StatisticalAnalysis moved to utils.calc.StatisticalAnalysis
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.StringFormat moved to utils.files.StringFormat
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.SystemUtils moved to utils.files.SystemUtils
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.SourceCodeLineCounterTest moved to utils.files.SourceCodeLineCounterTest
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.StatisticalAnalysisTest moved to utils.calc.StatisticalAnalysisTest
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.StringFormatTest moved to utils.files.StringFormatTest
+369c8f471a96e66a0ab00e98666785c5d87ecabd;Move Class;Move Class	utils.SystemUtilsTest moved to utils.files.SystemUtilsTest
+9d37b43b12e1e7f6a77bb069777a640eb1f11efb;Extract Method;Extract Method	private loadCollectionsToStatisticalComputation() : void extracted from public testGetStandardDeviationSLOC() : void in class structures.results.MethodMetricResultTest
+9d37b43b12e1e7f6a77bb069777a640eb1f11efb;Extract Method;Extract Method	private loadCollectionsToStatisticalComputation() : void extracted from public testGetStandardDeviationTypes() : void in class structures.results.NamespaceMetricResultTest
+9d37b43b12e1e7f6a77bb069777a640eb1f11efb;Extract Method;Extract Method	private loadCollectionsToStatisticalComputation() : void extracted from public testGetStandardDeviationSLOC() : void in class structures.results.TypeMetricResultTest
+9d37b43b12e1e7f6a77bb069777a640eb1f11efb;Extract Class;Extract Class	utils.StatisticalAnalysis from class structures.results.MethodMetricResult
+9d37b43b12e1e7f6a77bb069777a640eb1f11efb;Extract Class;Extract Class	utils.StatisticalAnalysis from class structures.results.NamespaceMetricResult
+9d37b43b12e1e7f6a77bb069777a640eb1f11efb;Extract Class;Extract Class	utils.StatisticalAnalysis from class structures.results.TypeMetricResult
+3e82ace9809cbd7a41a6485844111dd95e8a8a11;Extract Method;Extract Method	private isEmptyOrLineComment(line String) : boolean extracted from public getNumberOfLines(bReader BufferedReader) : int in class utils.SourceCodeLineCounter
+3e82ace9809cbd7a41a6485844111dd95e8a8a11;Extract Method;Extract Method	private isEmptyOrLineComment(line String) : boolean extracted from public getNumberOfLines(bReader BufferedReader) : int in class utils.SourceCodeLineCounter
+3e82ace9809cbd7a41a6485844111dd95e8a8a11;Extract Method;Extract Method	private isEmptyOrLineComment(line String) : boolean extracted from private commentEnded(line String) : boolean in class utils.SourceCodeLineCounter
+3e82ace9809cbd7a41a6485844111dd95e8a8a11;Extract Method;Extract Method	private isEmptyOrLineComment(line String) : boolean extracted from private isSourceCodeLine(line String) : boolean in class utils.SourceCodeLineCounter
+616b1a4c5fc2577fc61f4bf6df32c7b06469e086;Extract Attribute;Extract Attribute	private FAIL : String in class output.MetricResultFile

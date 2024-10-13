@@ -3,9 +3,9 @@
 *.class
 
 # generate data files
-*.csv
-*.dot
-*.json
+#*.csv
+#*.dot
+#*.json
 *.log
 
 # build system
